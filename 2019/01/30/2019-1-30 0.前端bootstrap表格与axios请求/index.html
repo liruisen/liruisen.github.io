@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>问题与解决方案汇总（1） | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="Vue,axios,Bootstrap,前端问题">
+    <meta name="description" content="开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 Bootstrap 表格中插入按钮导致表格自适应失效 ，以及 axios.js 在 Vue.js 的搭配使用过程中的 this 无法指向 Vue 对象 。">
+<meta name="keywords" content="Vue,axios,Bootstrap,前端问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题与解决方案汇总（1）">
+<meta property="og:url" content="https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 Bootstrap 表格中插入按钮导致表格自适应失效 ，以及 axios.js 在 Vue.js 的搭配使用过程中的 this 无法指向 Vue 对象 。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006CBSf2ly1fzowjfng5nj3067076wec.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/mw690/006CBSf2ly1fzowrj4cxmj30h904edfx.jpg">
+<meta property="og:image" content="https://wx2.sinaimg.cn/large/006CBSf2ly1fzoxioompcj30wl03djrx.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/large/006CBSf2ly1fzoyis80vaj30tj07d0sz.jpg">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="问题与解决方案汇总（1）">
+<meta name="twitter:description" content="开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 Bootstrap 表格中插入按钮导致表格自适应失效 ，以及 axios.js 在 Vue.js 的搭配使用过程中的 this 无法指向 Vue 对象 。">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006CBSf2ly1fzowjfng5nj3067076wec.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">问题与解决方案汇总（1）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">问题与解决方案汇总（1）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-30T08:58:13.000Z" itemprop="datePublished" class="page-time">
+  2019-01-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/问题与解决方案/">问题与解决方案</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题1-：-Bootstrap-表格中插入按钮导致表格自适应失效"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题1 ： Bootstrap 表格中插入按钮导致表格自适应失效</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题描述："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思考过程："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">思考过程：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题2：axios-js-在-Vue-js-的配合中的-this"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题2：axios.js 在 Vue.js 的配合中的 this</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题描述：-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思考过程：-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">思考过程：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决过程："><span class="post-toc-number">2.3.</span> <span class="post-toc-text">解决过程：</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-1-30 0.前端bootstrap表格与axios请求" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">问题与解决方案汇总（1）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-30 16:58:13" datetime="2019-01-30T08:58:13.000Z" itemprop="datePublished">2019-01-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/问题与解决方案/">问题与解决方案</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 <code>Bootstrap 表格中插入按钮导致表格自适应失效</code> ，以及 <code>axios.js 在 Vue.js 的搭配使用过程中的 this 无法指向 Vue 对象</code> 。<br><a id="more"></a></p>
+<h2 id="问题1-：-Bootstrap-表格中插入按钮导致表格自适应失效"><a href="#问题1-：-Bootstrap-表格中插入按钮导致表格自适应失效" class="headerlink" title="问题1 ： Bootstrap 表格中插入按钮导致表格自适应失效"></a>问题1 ： Bootstrap 表格中插入按钮导致表格自适应失效</h2><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>昨天在写前台的时候，把前台的表格使用了Bootstrap美化了一下，立刻漂亮了很多，然后随手将表格里面的两个 <code>a</code> 标签加上了<code>btn btn-danger btn-sm</code> 、<code>btn btn-success btn-sm</code> 两个类，效果增强了很多，如图：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws3.sinaimg.cn/large/006CBSf2ly1fzowjfng5nj3067076wec.jpg" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>今天在写前台代码的时候，突然发现表格中的文字的行距不再居中对齐了，文本位置偏上。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/mw690/006CBSf2ly1fzowrj4cxmj30h904edfx.jpg" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h3 id="思考过程："><a href="#思考过程：" class="headerlink" title="思考过程："></a>思考过程：</h3><ol>
+<li>应该不是什么太大的问题吧，去问下前端比较厉害的同学吧，发了信息，该过年了比较忙，没有来得及回复。</li>
+<li>直接去调整表格里面文字的 <code>lin-hight</code> 吧，直接去浏览器定位到单元格的类，然后回编辑器进行修改。</li>
+</ol>
+<p><strong>解决问题的思路：</strong></p>
+<p>想如果适应到其他设备上，写固定值的行高会不会不合适？但是好像又没有什么好的解决方案，但是灵光一动想到（吃饱了以后想到），a 标签是行内元素，button 是块级元素，给 a 标签添加上 <code>btn</code> 类的时候，是否将 a 标签由行内元素转换成块级元素？实验后发现，想法正确。不添加 <code>btn</code> 类只是单独的 a 标签，这个时候表格的自适应还是有效的；将 a 标签换成 button 标签后，表单的自适应失效。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://wx2.sinaimg.cn/large/006CBSf2ly1fzoxioompcj30wl03djrx.jpg" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>既然发现了问题所在，那就容易解决了，将添加过 <code>btn btn-danger btn-sm</code> 的 a 标签由块级元素重新转换成行内元素就行了。</p>
+<p>考虑到其他地方添加 btn 类的内容不需要转换成行内元素，因此这里解决的办法是在内联样式表中添加上这样一行，或者是写一个类，只有下面一条样式，然后将这个类放在 class 属性的最后面。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn-sm</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">OR</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ainline</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline;</span><br><span class="line">&#125;</span><br><span class="line">&lt;a class="btn btn-success btn-sm ainline" v-on:click=""&gt;另一种方法&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>如果你有更好的解决方案，请一起沟通。</p>
+<blockquote>
+<p>发现问题产生原因所在，和解决问题一样重要。</p>
+</blockquote>
+<h2 id="问题2：axios-js-在-Vue-js-的配合中的-this"><a href="#问题2：axios-js-在-Vue-js-的配合中的-this" class="headerlink" title="问题2：axios.js 在 Vue.js 的配合中的 this"></a>问题2：axios.js 在 Vue.js 的配合中的 this</h2><p>以前在使用 Vue 向后台发送 ajax 请求的时候，使用的是 vue-resource.js ，不过现在 Vue 已经停止更新 vue-resource ，转而建议使用 axios.js ，新手注定多踩坑。</p>
+<h3 id="问题描述：-1"><a href="#问题描述：-1" class="headerlink" title="问题描述："></a>问题描述：</h3><p>在 vue-resource 向后台发送 ajax 的时候，只需要简单的一行 js 代码就能搞定，当然 axios.js 也是很简单的一行就能搞定，但是问题出在了接收数据的环节。下面请看 vue-resource 的解决方案。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">el: <span class="string">"#app"</span>,</span><br><span class="line">data: &#123;</span><br><span class="line">    userListApiUrl: <span class="string">'/Home/UserList'</span>,</span><br><span class="line">    jsondata: []</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    getRequest: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$http.get(<span class="keyword">this</span>.userListApiUrl).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.jsondata = res.body;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>其中，在 <code>then(function (res){}</code> 函数中，直接就能把从后台返回的数据赋值给  this.jsondata ，很简洁也很简单。</p>
+<p>但是 axios 按照这个格式去写的话，也能拿到后台返回的数据，但是就是不能将返回的数据 赋值给 this.jsondata</p>
+<p>(axios 的语法不再前面添加 this)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">el: <span class="string">"#app"</span>,</span><br><span class="line">data: &#123;</span><br><span class="line">    userListApiUrl: <span class="string">'/Home/UserList'</span>,</span><br><span class="line">    jsondata: []</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    getRequest: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">         axios.get(<span class="keyword">this</span>.userListApiUrl).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">               <span class="keyword">this</span>.jsondata = res.data;</span><br><span class="line">         &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="思考过程：-1"><a href="#思考过程：-1" class="headerlink" title="思考过程："></a>思考过程：</h3><p>出现这样的问题一直百思不得其解，难不成只能一直使用 vue-resource ？ 向困难低头不是我的作风。羊毛出在羊身上，从浏览器上寻找问题。</p>
+<p>通过对 js 代码打断点发现了一个现象：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://wx1.sinaimg.cn/large/006CBSf2ly1fzoyis80vaj30tj07d0sz.jpg" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>这个 this 好像指向了 Window 对象，回头查看两段代码，发现了区别：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-resource</span></span><br><span class="line"><span class="keyword">this</span>.$http.get(<span class="keyword">this</span>.userListApiUrl).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.jsondata = res.body;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// axios</span></span><br><span class="line">axios.get(<span class="keyword">this</span>.userListApiUrl).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.jsondata = res.data;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>vue-resource 在使用前加了 this，根据代码所在的位置，可以判断出第一个和第二个 this 指向的对象都是 user 这个 Vue 对象，因此该段代码的作用域还是在new Vue() 中，这样的话里面的第三个 this 指向的也是 user 对象。</p>
+<p>同时， vue-resource 能在前面添加 this 说明 vue-resource 集成在了 Vue 框架中，因此需要添加 this. 才能正常使用，但是在 axios 有没有集成到 Vue 框架中我并不知道啊（事后实验发现在 Vue 中通过 this 并不能访问到 axios 也可能是我的操作不对），官方的Demo就直接这样写了也没见加 this，因此在 <code>axios</code> 代码段中，第一个 this 因为作用域的原因，指向的是 user 这个 Vue 对象，但是里面的 this 因为没有集成到 Vue 同时 <code>axios.js</code> 是独立的 js 文件，作用域为顶级作用域，因此第二个 this 指向的是 Window 这个对象。</p>
+<h3 id="解决过程："><a href="#解决过程：" class="headerlink" title="解决过程："></a>解决过程：</h3><p>既然发现问题出在哪里了，那就比较容易解决了，既然 axios 内部的作用域是顶级作用域，那么 user 对象就和其处在同一个作用域中了，修改后的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">el: <span class="string">"#app"</span>,</span><br><span class="line">data: &#123;</span><br><span class="line">    userListApiUrl: <span class="string">'/Home/UserList'</span>,</span><br><span class="line">    jsondata: []</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    getRequest: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">         axios.get(<span class="keyword">this</span>.userListApiUrl).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">               user.jsondata = res.data;</span><br><span class="line">         &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>同时，根据 Vue 的生命周期钩子函数的执行顺序，在此位置访问 user 应该是没有问题的。</p>
+<p>问题解决。</p>
+<p>如果你有其他的看法，一起交流。</p>
+<blockquote>
+<p>多看，多实践。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/">axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端问题/">前端问题</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&title=《问题与解决方案汇总（1）》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&title=《问题与解决方案汇总（1）》 — Hexo&source=开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 Bootstr..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《问题与解决方案汇总（1）》 — Hexo&url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/11/2019-3-12 art-template/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">art-template 踩坑</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/07/2019-1-8 GitHub私人仓库免费/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">GitHub：无限制的免费私人仓库</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&title=《问题与解决方案汇总（1）》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&title=《问题与解决方案汇总（1）》 — Hexo&source=开发过程中少不了踩坑，记录下各个踩坑的详情，给自己带来便利的同时，也能给其他人提供或多或少的帮助，这就再好不过了。第一期有两个问题，分别是 Bootstr..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《问题与解决方案汇总（1）》 — Hexo&url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADFElEQVR42u3aQW7bUAwEUN//0um2gBFpSH4DEf28KhJZ0mOBsuT81yv+/Pzy+f+371e+//b9npNnXd/nwAcbGxv7Ieyfy09+TcLOy5Hcf/Ke2NjY2PvY1w0muXV+ZfK5fsNeKbGxsbGxr1tU0syuGdXWhY2NjY39uQZWpV4/NxlasLGxsbEnA0YPU21L8+EHGxsbeys7T0X//p8/km9jY2Nj/2H2ZGWfPD5vHr2m2FRgY2NjL2LnDWC0vimuiqqttPf+2NjY2JvY1f+x92LgvDTJEyfjEzY2NvZudnUkmBzH6Q0/yXPLwQA2Njb2w9nJ4Ztei6ou9JNy54PHzRCCjY2NvYh9KtDttZZq0SetFxsbG3sfuzc2VIPeall7S65yx8bGxsZewa4C8iGhFyf0yl0NIbCxsbG/jZ0Aqj+ZRxH5ABOFBNjY2Ngr2PkqZ7L6rw4M1SJWGzA2Njb209nVf/qvf94bDKojSnJ856YQ2NjY2IvY85eIFjfFklW/Vb0bNjY29iZ2PkL0Bo9ezNBbIRXKgY2Njb2OfWrtnoe1+RgzjyWwsbGxd7Or48c83O2NH6fw2NjY2LvZzS+3RpdPHN+pvhU2Njb2DnYvRu0NIZPFUG/IKScV2NjY2A9k50deqq2iegQnz6VPFRcbGxt7H7vXYJqHHYtl6q2uCkslbGxs7Iez83ZVDXrzWDdfPE3aJDY2NvZWdu8B+ZHK+TWTxnlzXgkbGxt7Bbt3UCZ/oWroe2qBVQgJsLGxsR/Onhyv6a2NzobBzZUTNjY29lL2fHFfjWxf8acaPN+8FTY2NvY6dt5mqk2lFx6cKuuv38XGxsZeze4FqJ8o07ztRcEANjY29mPZp1Y8efny6/O7Fc4lYWNjY69jVxtAPgacOgA0aXu98BgbGxv7iey8afVesdcgT8UAUTyAjY2NvYLdC3rzckzK1xs5bp6LjY2N/cXsPF6thr7V8o1CYmxsbOyvZ09ChV4Jqruxm78MbGxs7HXsXrg7KUrvyjzAuFlOYWNjYy9i91rFZGHUY3zibtjY2NgPZ/8DJ5xpBP0E/sYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

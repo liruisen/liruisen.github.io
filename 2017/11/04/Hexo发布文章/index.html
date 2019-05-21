@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>Hexo发布文章 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="前面咱们已经搭建好了Hexo博客，并成功发布到了Github上面，但是怎么才能把新写的文章发布上去呢？  创建新文章方法1：进入你的博客目录，在 /source/_posts 文件夹下直接建立一个.md文件。 需要注意的是，文件内容的开头有固定的格式： 12345---title: Hexo发布文章date: 2018-11-03 19:52:39tags:Hexo---  title 是文章的">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo发布文章">
+<meta property="og:url" content="https://liruisen.github.io/2017/11/04/Hexo发布文章/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前面咱们已经搭建好了Hexo博客，并成功发布到了Github上面，但是怎么才能把新写的文章发布上去呢？  创建新文章方法1：进入你的博客目录，在 /source/_posts 文件夹下直接建立一个.md文件。 需要注意的是，文件内容的开头有固定的格式： 12345---title: Hexo发布文章date: 2018-11-03 19:52:39tags:Hexo---  title 是文章的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo发布文章">
+<meta name="twitter:description" content="前面咱们已经搭建好了Hexo博客，并成功发布到了Github上面，但是怎么才能把新写的文章发布上去呢？  创建新文章方法1：进入你的博客目录，在 /source/_posts 文件夹下直接建立一个.md文件。 需要注意的是，文件内容的开头有固定的格式： 12345---title: Hexo发布文章date: 2018-11-03 19:52:39tags:Hexo---  title 是文章的">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo发布文章</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo发布文章</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-04T06:43:04.000Z" itemprop="datePublished" class="page-time">
+  2017-11-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo教程/">Hexo教程</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建新文章"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建新文章</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法1："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">方法1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法2："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">方法2：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发布文章"><span class="post-toc-number">2.</span> <span class="post-toc-text">发布文章</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">3.</span> <span class="post-toc-text">注意</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo发布文章" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo发布文章</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-04 14:43:04" datetime="2017-11-04T06:43:04.000Z" itemprop="datePublished">2017-11-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo教程/">Hexo教程</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>前面咱们已经搭建好了Hexo博客，并成功发布到了Github上面，但是怎么才能把新写的文章发布上去呢？</p>
+</blockquote>
+<h2 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h2><h3 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h3><p>进入你的博客目录，在 <strong>/source/_posts</strong> 文件夹下直接建立一个<code>.md</code>文件。</p>
+<p>需要注意的是，文件内容的开头有固定的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo发布文章</span><br><span class="line">date: 2018-11-03 19:52:39</span><br><span class="line">tags:Hexo</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>title</code> 是文章的标题</li>
+<li><code>date</code> 是文章的发布时间</li>
+<li><code>tags</code> 是文章的标签</li>
+</ul>
+<p>后面写正文就可以了！</p>
+<h3 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h3><p>进入博客目录，使用 <code>Git  Bash Here</code> 命令窗口，或者 Windows 自带的 <code>CMD</code> 命令窗口，输入下面命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新建文章名称&quot;</span><br></pre></td></tr></table></figure>
+<p>这样就会在  <strong>/source/_posts</strong> 文件夹下，新建好一个 <code>.md</code> 文件，同时该文件中的头部信息 （title、data、tags）也会给你默认生成，后面接着写正文就可以了 。</p>
+<h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><p>新文章写好了，但是直接启动 hexo 博客或直接访问托管的 Github 平台的话，会发现并没有写好的文章，这是因为写好的文章现在并没有被 hexo引擎解析，同时也没有推送到 Github 上生成。</p>
+<p>在该博客项目文件夹下进入命令行窗口 <code>Git  Bash Here</code> 和 <code>CMD</code> 都可以。</p>
+<p><strong>输入命令：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>hexo generate : 生成修改</li>
+<li>hexo deploy    ：将生成的修改部署到 Github 上</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>部署到GitHub时，可能因为网速、被墙等原因，需要多次运行 hexo deploy ；有时候可以运行 hexo clean 后在运行上述代码。</li>
+<li><code>.md</code> 文件不要用记事本打开，建议使用具有 <code>markdown</code>语法的程序打开，比如：<code>Typora</code> 、<code>subline text</code>、<code>notepad++</code> 等，也可以使用在线 <code>markdown</code> 编辑器 。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&title=《Hexo发布文章》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&title=《Hexo发布文章》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/11/04/Hexo发布文章/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo发布文章》 — Hexo&url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/06/配置Git/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">配置Git</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/03/Hexo-Github-pages搭建私人博客/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo + Github pages搭建私人博客</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&title=《Hexo发布文章》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&title=《Hexo发布文章》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/11/04/Hexo发布文章/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo发布文章》 — Hexo&url=https://liruisen.github.io/2017/11/04/Hexo发布文章/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/11/04/Hexo发布文章/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aQY7CMAwFUO5/6c4BgOrbLiMleVkhKG0eC+PYfr3idX1Z79e8X//+afKU1y8WBgbGsozrdiWM+/fvN9p77gcqBgbGAYxvEay6oSQE3383CdMYGBgY1VvnAfc+BazeAQMDA6N3BE3ez4+7GBgYGNVDbLXGlZTnEtLDZ3EMDIwFGXnV/f9f/6S/gYGBsRRjEi7zw2ceIq/WwsDA2JvRG4PIk7nquMZoLAMDA2NTxnxgIt90nnTel+cKt8DAwNiIkX9tfn2VHaWbGBgYxzCSLU4Oovm2ysEaAwPjMEY+JPEsMr9zVDXEwMDYiNEbDkuOuL2WQHnTvdk0DAyMZRn5rSfJXPWnzEt1GBgYuzKSVmLeAHhqzKIaiDEwMDDyDfUaltWk8+u0CAYGxqaM5OM8FM7ZzWELDAyMAxh5YavXPMjHLKpNiHLYxcDAWJZxBataaMsHKfKfrBxqMTAwtmD0krBqea73D1DgYWBgbM2YBN/JyGkSpieFPwwMjP0Y9yndpEBWbW3mjA/XY2BgHMPIxyzmYfSp4y4GBsY5jN7wVj4S0dxcHHwxMDB2ZVzFVW129op3ebOhcPLGwMBYljFpc1breb0hsN6zMDAw9mNUhyf+f9rhgZkRDAyMLRi9cnwSRp9N9QqNAQwMjIMZvdJYteVQDfoYGBgY1eGtHJOkg9EBGAMD4wBGrxmQB838mp+X2zAwMBZkTGpZvePuJCkcJawYGBjrMf4A06hLqYUEHL8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

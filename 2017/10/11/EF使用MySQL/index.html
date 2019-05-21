@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>EF使用MySQL | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="ASP.NET MVC,EF,MySQL">
+    <meta name="description" content="新项目需要使用MVC+EF+MySQL，以前使用的数据库都是微软的亲儿子SQL Server，所以在使用的时候基本没有遇到过什么问题，但是这次在使用MySQL的时候却一直出现问题，看到的博客很多，千篇一律还没能解决问题，整理此博客，用以记录与分享  EF如何使用SQL Server作为数据源不再多说，不太了解的话查看此博客，下面将讲述EF如何使用MySQL ，本次开发环境为 VS2017，MyS">
+<meta name="keywords" content="ASP.NET MVC,EF,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EF使用MySQL">
+<meta property="og:url" content="https://liruisen.github.io/2017/10/11/EF使用MySQL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="新项目需要使用MVC+EF+MySQL，以前使用的数据库都是微软的亲儿子SQL Server，所以在使用的时候基本没有遇到过什么问题，但是这次在使用MySQL的时候却一直出现问题，看到的博客很多，千篇一律还没能解决问题，整理此博客，用以记录与分享  EF如何使用SQL Server作为数据源不再多说，不太了解的话查看此博客，下面将讲述EF如何使用MySQL ，本次开发环境为 VS2017，MyS">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xs2iij30ee09bjrh.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xrbtnj30ee09bwel.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xtl27j30hf0hpt9o.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xs1u1j30hc07saae.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xux2dj30h60r4q62.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhzb4ipndj306o04za9u.jpg">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EF使用MySQL">
+<meta name="twitter:description" content="新项目需要使用MVC+EF+MySQL，以前使用的数据库都是微软的亲儿子SQL Server，所以在使用的时候基本没有遇到过什么问题，但是这次在使用MySQL的时候却一直出现问题，看到的博客很多，千篇一律还没能解决问题，整理此博客，用以记录与分享  EF如何使用SQL Server作为数据源不再多说，不太了解的话查看此博客，下面将讲述EF如何使用MySQL ，本次开发环境为 VS2017，MyS">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xs2iij30ee09bjrh.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">EF使用MySQL</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">EF使用MySQL</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-11T08:58:13.000Z" itemprop="datePublished" class="page-time">
+  2017-10-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-配置环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.配置环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-使用Nuget-安装-MySQL-Data-Entity-和-MySQL-Data"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.使用Nuget 安装 MySQL.Data.Entity 和 MySQL.Data</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#划重点-这里容易出问题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">划重点,这里容易出问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-闪退"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">(1) .闪退</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">(2) .您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-上述三者版本一致，但是仍然不能正常创建"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text"> (3) .上述三者版本一致，但是仍然不能正常创建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-给定关键字不在字典中"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text"> (4) 给定关键字不在字典中</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-EF使用MySQL" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">EF使用MySQL</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-11 16:58:13" datetime="2017-10-11T08:58:13.000Z" itemprop="datePublished">2017-10-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>新项目需要使用MVC+EF+MySQL，以前使用的数据库都是微软的亲儿子SQL Server，所以在使用的时候基本没有遇到过什么问题，但是这次在使用MySQL的时候却一直出现问题，看到的博客很多，千篇一律还没能解决问题，整理此博客，用以记录与分享</p>
+</blockquote>
+<p>EF如何使用SQL Server作为数据源不再多说，不太了解的话<a href="http://superforest.cn/index.php/2018/07/01/14.html" target="_blank" rel="noopener">查看此博客</a>，下面将讲述EF如何使用MySQL ，本次开发环境为 <strong>VS2017</strong>，MySQL版本为：<strong>MySQL5.5</strong>（影响不大）</p>
+<hr>
+<p>[TOC]</p>
+<h2 id="1-配置环境"><a href="#1-配置环境" class="headerlink" title="1.配置环境"></a>1.配置环境</h2><p><strong>添加实体数据模型</strong><br>在项目 &gt; 添加 &gt; 新建项 &gt; 数据 &gt; ADO.NET实体数据模型 &gt; 添加 &gt; 从数据生成 &gt; 新建连接<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xs2iij30ee09bjrh.jpg" alt="选择数据源" title>
+                </div>
+                <div class="image-caption">选择数据源</div>
+            </figure><br>在这里可以看到，并没有MySQL的数据源。<br>这是因为没有安装MySQL与VS的集成组件<a href="https://dev.mysql.com/downloads/windows/visualstudio/" target="_blank" rel="noopener">下载地址</a>和MySQL连接组件<a href="https://dev.mysql.com/downloads/file/?id=480088" target="_blank" rel="noopener">下载地址</a>，安装完毕后就有了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xrbtnj30ee09bwel.jpg" alt="在这里插入图片描述" title>
+                </div>
+                <div class="image-caption">在这里插入图片描述</div>
+            </figure></p>
+<h2 id="2-使用Nuget-安装-MySQL-Data-Entity-和-MySQL-Data"><a href="#2-使用Nuget-安装-MySQL-Data-Entity-和-MySQL-Data" class="headerlink" title="2.使用Nuget 安装 MySQL.Data.Entity 和 MySQL.Data"></a>2.使用Nuget 安装 MySQL.Data.Entity 和 MySQL.Data</h2><h3 id="划重点-这里容易出问题"><a href="#划重点-这里容易出问题" class="headerlink" title="划重点,这里容易出问题"></a><font color="red">划重点,这里容易出问题</font></h3><p><strong>常见问题</strong></p>
+<h4 id="1-闪退"><a href="#1-闪退" class="headerlink" title="(1) .闪退"></a><font color="red">(1) .闪退</font></h4><p>在上一步，安装完 <strong>mysql-connector-net 组件</strong> 和 <strong>mysql-for-visualstudio 组件</strong>后，虽然在VS上出现了 <strong>MySQL Database</strong> 选项，但是如果直接点击<strong>继续</strong>的话，会出现闪退。这是因为没有在Nuget中安装  MySQL.Data.Entity 和 MySQL.Data 这两个包。</p>
+<p>如同在使用 SQL Server 作为数据源的时候，需要在 Nuget 中安装 EntityFramwork 包，才能正常创建ADO.NET实体数据模型，这里也是一样，如果不安装   MySQL.Data.Entity 和 MySQL.Data 这两个包，同样无法创建以 MySQL 为数据源的 ADO.NET 实体数据模型。</p>
+<h4 id="2-您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……"><a href="#2-您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……" class="headerlink" title="(2) .您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……"></a><font color="red">(2) .您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……</font></h4><p>上面在Nuget中，安装过 MySQL.Data.Entity 和 MySQL.Data 这两个包后，应该就可以进入下一步了，但是这里面可能还会遇到另外一个问题  <strong>您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序……</strong> 如图所示：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xtl27j30hf0hpt9o.jpg" alt="您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序" title>
+                </div>
+                <div class="image-caption">您的项目引用了最新实体框架；但是，找不到数据链接所需的与版本兼容的实体框架数据库提供程序</div>
+            </figure><br>这个问题困扰了我很久，在网上找到了很多关于这个问题的博客，虽然博主都给了解决方案，但是我使用那些解决方案并没有能很好的解决问题，<strong>最后找到了其他的、更简单的解决方案解决了问题</strong>。</p>
+<p>大家还记得前面安装的 <strong>mysql-connector-net 组件</strong> 吗， MySQL官网上这个组件的版本最新的是 <strong>8.0.12</strong>，但是 VS2017 的 Nuget 包管理器中 MySQL.Data.Entity 稳定版最新版本为<strong>6.10.8</strong> MySQL.Data稳定版最新版本为 <strong>8.0.12</strong> ，出现上面的报错，就是因为这三者版本不一致,<font color="red"><strong>三者版本必须一致</strong></font> ，否则就会报这个错误！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xs1u1j30hc07saae.jpg" alt="三者版本" title>
+                </div>
+                <div class="image-caption">三者版本</div>
+            </figure>
+<p>可以先添加指定版本的 MySQL.Data.Entity 这样会自动添加上对应版本的 MySQL.Data</p>
+<p><strong>这样就可以顺利创建 ADO.NET实体数据模型了</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhy8xux2dj30h60r4q62.jpg" alt="在这里插入图片描述" title>
+                </div>
+                <div class="image-caption">在这里插入图片描述</div>
+            </figure></p>
+<h4 id="3-上述三者版本一致，但是仍然不能正常创建"><a href="#3-上述三者版本一致，但是仍然不能正常创建" class="headerlink" title=" (3) .上述三者版本一致，但是仍然不能正常创建"></a><font color="red"> (3) .上述三者版本一致，但是仍然不能正常创建</font></h4><p>检查项目的 <strong>.netframwork</strong> 版本，不同的 <strong>MySQL.Data.Entity</strong> 版本有不同的 <strong>.netframwork </strong> 最低版本支持，在 packages 文件夹或 Nuget 中查看所需支持的最低 <strong>.netframwork</strong> 版本，检测所建项目的 <strong>.netframwork</strong> 版本是否符合要求。</p>
+<h4 id="4-给定关键字不在字典中"><a href="#4-给定关键字不在字典中" class="headerlink" title=" (4) 给定关键字不在字典中"></a><font color="red"> (4) 给定关键字不在字典中</font></h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fwhzb4ipndj306o04za9u.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这个问题开始并没有碰到，一切正常，不过后来在别人电脑上操作，上午创建一切正常，但是下午就出现了这个问题，然后就一直无法创建，在CSDN上发现了一篇博客，解决了问题，后面为参考博客原文：</p>
+<p>——————————————————————参考博客———————————————————————</p>
+<p><strong>导致这个问题的原因有很多，比如数据库编码不一致、mysql connector的版本不一致等等</strong></p>
+<p>解决办法：</p>
+<p>1.确报VS中使用的MySQL版本（NuGet获取相应即可）与当前电脑安装的Mysql Connector版本一致；</p>
+<p>2.关闭VS ，在系统盘中找到文件 DefaultView.SEView 并删除。</p>
+<p>通常路径为：用户\AppData\Microsoft\VisualStudio\xx\ServerExplorer</p>
+<p>参考原文链接：<a href="https://blog.csdn.net/iceagezh/article/details/78924154" target="_blank" rel="noopener">https://blog.csdn.net/iceagezh/article/details/78924154</a> </p>
+<p>——————————————————————参考博客End—————————————————————</p>
+<p>我使用的是第二种方案解决的问题，因为前面三者的版本都一致，不过 <strong>DefaultView.SEView</strong> 这个文件并不是很好找，根据博主给的地址没有找到，我使用的是 <a href="http://www.voidtools.com/downloads/" target="_blank" rel="noopener"><strong>Everything</strong> </a> 软件找到的这个文件，并删除，找到了2个这个文件，都删除了，通过删除后的VS的状态，怀疑这个文件是用来保存每次连接数据库的信息文件，因为删除过这个文件后曾经在VS中使用EF连接数据库的账号密码都清空了，不过已经能正常创建 ADO.NET 实体数据模型了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次遇到了不少的问题，但是本质上来说也算不上是特别严重的问题，VS2017是真的好用，微软对亲儿子和其他人家的儿子态度真是不同！下面是问题解决总结：</p>
+<ol>
+<li>安装 <strong>mysql-connector-net 组件</strong> 和 <strong>mysql-for-visualstudio </strong>组件，mysql-for-visualstudio 组件无版本要求，但是 mysql-connector-net 组件需要与后面在 Nuget 中引用的 MySQL.Data.Entity 和 MySQL.Data 版本一致。如果不安装这两个组件，在选择数据源的时候不会出现MySQL Database选项</li>
+<li>“引用了最新的实体框架，但是找不到数据链接所需的与版本兼容的实体框架数据库提供程序…”，检查 <strong>mysql-connector-net 组件、 MySQL.Data.Entity 包、MySQL.Data 包</strong>，三者的版本是否一致</li>
+<li>不能引用 <strong>MySQL.Data.Entity 包、MySQL.Data 包</strong>，检查项目的 .netframework 版本是否满足这两个包的最低版本需求。</li>
+<li>“给定关键字不在字典中”，关闭VS，找到并删除 DefaultView.SEView 文件。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-NET-MVC/">ASP.NET MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EF/">EF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&title=《EF使用MySQL》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&title=《EF使用MySQL》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/10/11/EF使用MySQL/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF使用MySQL》 — Hexo&url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/03/Hexo-Github-pages搭建私人博客/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hexo + Github pages搭建私人博客</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/11/EF框架/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">EF框架使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&title=《EF使用MySQL》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&title=《EF使用MySQL》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/10/11/EF使用MySQL/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF使用MySQL》 — Hexo&url=https://liruisen.github.io/2017/10/11/EF使用MySQL/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/10/11/EF使用MySQL/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aO3LDMAwFQN//0krrRvQDSGVG5LLKxFbMdYHg9/nE5/o6d6+O33/3bP4pCw4GBsZrGdfwJNdKeHd/efxqcjcMDIxzGMklkuCYPzW+en43DAwMjPGF8sQxCb55QomBgYFRZSTXrf4GAwMD47l0rVeg5qF5QS2OgYHxQkbedf//nx+Zb2BgYLyKcRVPdUhZDZFX62BgYOzNmFmDWDXO7AVcDAyMcxhrV7Xy1Yq8iI1gGBgYWzN6IfWJMUBvYPCjd4iBgbEFIy9TxyFvpqGfM25DPAYGxtaM8kLDoqCZr24Ukk4MDIwDGPnKRXXdodqqay5YYGBgHMCorlxUg2+S8OVht5AaYmBgvJwxDqzVgFhdI5thRO02DAyMLRi9IWV1YDB/6SgxxcDA2JQxP//MW3KP74xgYGBsyphZpKj2u2bK10JqiIGBsSmjN1ysXmvV11GeQmBgYGzEyDF5gK4moL3SFwMD4wRGtUxdm9712nC3SSEGBsYBjCTMPbEcNhPKMTAwzmH0LpqUsnlSmCzO/ugaYmBgbM2oBs2Z8WcvZC/4v4GBgfFCxlU889S8tddMCjEwMLZj9GaC+XJYPlRI3t8bJGBgYOzByMvIPCzOfHPNxBEDA+MARh4o8wZcHpqryEItjoGBcSSjd3oJZeEOGBgYGHEhmgfcfGiaLGFgYGCcwMjHk/kSRj7a7D2FgYFxDqNXOuZht7qo0WNjYGBsyvgD2D4suvmz1ikAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

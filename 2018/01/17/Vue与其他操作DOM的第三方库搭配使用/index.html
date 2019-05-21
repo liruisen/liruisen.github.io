@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>:Vue与其他操作DOM的第三方库搭配使用 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="Vue">
+    <meta name="description" content="本次环境为直接引用 Vue.js（开发版） , 没有使用脚手架  Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 DOM 操作，但是在很多业务里，避免不了去使用一些第三方的库，比如 popper.js、swiper.js 等，这些基于原生 JavaScript 的库都有创建和更新及销毁的完整生命周期，如果与 Vue 搭配使用的话，不可避免的会出现直接操作 DOM 的现象，这个时">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content=":Vue与其他操作DOM的第三方库搭配使用">
+<meta property="og:url" content="https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本次环境为直接引用 Vue.js（开发版） , 没有使用脚手架  Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 DOM 操作，但是在很多业务里，避免不了去使用一些第三方的库，比如 popper.js、swiper.js 等，这些基于原生 JavaScript 的库都有创建和更新及销毁的完整生命周期，如果与 Vue 搭配使用的话，不可避免的会出现直接操作 DOM 的现象，这个时">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fy9k1n6q3rj30f901pjr8.jpg">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=":Vue与其他操作DOM的第三方库搭配使用">
+<meta name="twitter:description" content="本次环境为直接引用 Vue.js（开发版） , 没有使用脚手架  Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 DOM 操作，但是在很多业务里，避免不了去使用一些第三方的库，比如 popper.js、swiper.js 等，这些基于原生 JavaScript 的库都有创建和更新及销毁的完整生命周期，如果与 Vue 搭配使用的话，不可避免的会出现直接操作 DOM 的现象，这个时">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fy9k1n6q3rj30f901pjr8.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">:Vue与其他操作DOM的第三方库搭配使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">:Vue与其他操作DOM的第三方库搭配使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-17T03:14:10.000Z" itemprop="datePublished" class="page-time">
+  2018-01-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/Vue/">Vue</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用场景"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异步更新队列"><span class="post-toc-number">2.</span> <span class="post-toc-text">异步更新队列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方法</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Vue与其他操作DOM的第三方库搭配使用" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">:Vue与其他操作DOM的第三方库搭配使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-17 11:14:10" datetime="2018-01-17T03:14:10.000Z" itemprop="datePublished">2018-01-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/Vue/">Vue</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>本次环境为直接引用 Vue.js（开发版） , 没有使用脚手架</p>
+</blockquote>
+<p>Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 DOM 操作，但是在很多业务里，避免不了去使用一些第三方的库，比如 popper.js、swiper.js 等，这些基于原生 JavaScript 的库都有创建和更新及销毁的完整生命周期，如果与 Vue 搭配使用的话，不可避免的会出现直接操作 DOM 的现象，这个时候需要合理的利用一些 Vue 的机制 : $nextTick</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>先来看一个简单的demo</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">"div"</span> v-<span class="keyword">if</span>=<span class="string">"showDiv"</span>&gt;这是一段文本&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="getText"&gt;获取Div内容&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var app=new Vue(&#123;</span></span><br><span class="line"><span class="regexp">    el:"#app",</span></span><br><span class="line"><span class="regexp">    data:&#123;</span></span><br><span class="line"><span class="regexp">        showDiv:false</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    methods:&#123;</span></span><br><span class="line"><span class="regexp">        getText:function()&#123;</span></span><br><span class="line"><span class="regexp">            this.showDiv=true;</span></span><br><span class="line"><span class="regexp">            var text=document.getElementById('div').innerHTML;</span></span><br><span class="line"><span class="regexp">            console.log(text);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p>很简单的一段代码：有一个 div ，默认使用 v-if 进行隐藏，点击按钮后，改变 v-if的值，将 div 的值显示出来，同时拿到这个值，输出到控制台上。</p>
+<p>按照正常的思路，如果 v-if 的值是 false，直接去获取 div 的内容是获取不到的，因为此时 div 还未被创建，那么应该在点击按钮后，改变 v-if 的值为 true ，div 才会被创建，此时才能被获取到。</p>
+<p>但是按照这种思路，控制台会抛出一个异常： <code>Cannot read property &#39;innerHTML&#39; of null</code> </p>
+<p><img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fy9k1n6q3rj30f901pjr8.jpg" alt></p>
+<p>意思是获取不到 div 元素。</p>
+<h2 id="异步更新队列"><a href="#异步更新队列" class="headerlink" title="异步更新队列"></a>异步更新队列</h2><p>按我们正常的思路来说上述代码应该是可以获取到 div 的，但是在实际运行过程中并未能获取到，这里面就涉及到 Vue 一个重要的概念：异步更新队列</p>
+<p>Vue 在观察到数据变化时，并不是直接更新 DOM ，而是开启一个队列，并缓冲在同一事件循环过程中发生的所有数据改变，在缓冲时会去除重复数据，从而避免不必要的计算和 DOM 操作。然后，在下一个事件循环 tick 中，Vue 刷新队列并执行实际（已去重的）工作。举个例子来说，如果使用 for 循环来动态改变数据 100 次，其实 Vue 只会应用最后一次改变，如果没有这种机制的话，DOM 就要重绘 100 次，这是一个很大的开销。</p>
+<p>关于队列，Vue 会根据当前浏览器环境优先使用 Promise.then 和 MutationObserver ，如果都不支持，就会使用 setTimeout 代替。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>知道 Vue 异步更新 DOM 的原理后，上面的报错应该就很容易理解了。在执行 <code>this.showDiv=true;</code> 时，div 仍然没有被创建出来，直到下一个 Vue 事件循环时，才开始创建。</p>
+<p>如果引用了其他的第三方库，需要立即创建、立即获取，这个时候就需要避开 Vue 的这种机制了，<code>$nextTick</code> 就是用来指导什么时候 DOM 更新完成的，所以上面的代码需要进行修改：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">"div"</span> v-<span class="keyword">if</span>=<span class="string">"showDiv"</span>&gt;这是一段文本&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="getText"&gt;获取Div内容&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var app=new Vue(&#123;</span></span><br><span class="line"><span class="regexp">    el:"#app",</span></span><br><span class="line"><span class="regexp">    data:&#123;</span></span><br><span class="line"><span class="regexp">        showDiv:false</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    methods:&#123;</span></span><br><span class="line"><span class="regexp">        getText:function()&#123;</span></span><br><span class="line"><span class="regexp">            this.showDiv=true;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/update begin</span></span><br><span class="line"><span class="regexp">            this.$nextTick(function()&#123;</span></span><br><span class="line"><span class="regexp">                var text=document.getElementById('div').innerHTML;</span></span><br><span class="line"><span class="regexp">                console.log(text);</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/update end</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这时再点击按钮，控制台就会打印出 div 的内容：<code>这是一段文本</code> 。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&title=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&title=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/30/Log4net使用/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Log4net使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/25/Spring-Net使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Spring.Net使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&title=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&title=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《:Vue与其他操作DOM的第三方库搭配使用》 — Hexo&url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADDUlEQVR42u3aW64aQQwFwOx/0+Q3UgQ6xybRxdR8IR7TXUbC2O5fv+Lr8eT689XXj9vr7/s8u9tmFWxsbOwb7MfL69l7Xt8hD8Hr9+Tr5hZsbGzsq+x8Q4/yytdqV5wFFxsbGxs7SR4zUgKeFT/Y2NjY2G0IknZPS21Dho2Njf1t7P0AoE1Lm+DOyiRsbGzsq+zZ2PVnPv4n821sbGzsH8zeNPrzpJVsq11rpcDGxsY+xM4TQN42ajfXJqF9WLGxsbHvsTftoeSZ/xOadg/Y2NjY38POm/V5WZK3/jdfTJTesLGxsU+wZ02lZLEkUc0S236AgY2NjX2D3f7obxr3yfGa/M5JWn36PDY2NvYhdvtXvk1j+9JllhqjsGJjY2MfYu8Xztv6bYDeO8bAxsbGvsdO/ui/t9EzG+Xmo4vo/tjY2Njn2ElSSV7dlxztFU0/nvXSsLGxsU+wZ8d3Nilq1niaHfHJqw9sbGzsz2XnCWAWlM04Nm9RtYUKNjY29iV2/ne/DdBjdLWba0cRdZWDjY2N/ePZs620Q9xZwsuPB+VfADY2NvY99uZ2+Wg2D0Qbpna8gY2NjX2PnTTiZ5tu2/dtE2pziAcbGxv7Krv4WLzRWetnFtZiMICNjY39Ney2CMkXbhNbgi9aS9jY2NhH2Uka2JQo7yLtDwxhY2NjX2K/KyG1YdqcKsqLoqixhY2NjX2I3TZu2iFrm5DaAqkdbGBjY2PfY+c/9y0+Tyqzg5Xt6BcbGxv7HrsdxLYRbdNS3ipqB8zY2NjY38neDHGTMiZJabMDnUURgo2NjX2Ivd/0LOHNjg1txsbY2NjYV9n7EmJTomzS1eq8EjY2NvbHsh/l1fL2LaR8SFAECBsbG/sQu00Am4M77RA3WTdvb+WDB2xsbOxPZG/aQ++Nbl78tMeA6vEANjY29geyZ2XArMjZHxjaJF1sbGxs7NnCbWupHf3WY2NsbGzsL2bvi4R9QNvPYmNjY38Duz1wmSebzdGf2SAhChM2Njb2IfYsVWw2t2G0Ac2Dgo2Njf2B7N8KlRYRfnZZFQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

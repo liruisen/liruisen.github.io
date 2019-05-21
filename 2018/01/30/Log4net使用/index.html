@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>Log4net使用 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="log4net,mvc">
+    <meta name="description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+<meta name="keywords" content="log4net,mvc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Log4net使用">
+<meta property="og:url" content="https://liruisen.github.io/2018/01/30/Log4net使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlax883u8j30pi0gu0t9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlazpxg2sj30i30733yg.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlb0omvxpj30tm0idgmz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlb5zpz2tj30jc0adaa3.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbb6oowfj30kw0383yf.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbj5v6iuj310608faa9.jpg">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Log4net使用">
+<meta name="twitter:description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlax883u8j30pi0gu0t9.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Log4net使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Log4net使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-30T13:12:55.000Z" itemprop="datePublished" class="page-time">
+  2018-01-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4net配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">Log4net配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本配置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基本配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进一步配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">进一步配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化程序"><span class="post-toc-number">3.</span> <span class="post-toc-text">初始化程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打印日志信息"><span class="post-toc-number">4.</span> <span class="post-toc-text">打印日志信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">基本使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者——消费者模式"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">生产者——消费者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新建异常信息监控类"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">新建异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-FilterConfig-类中注册自己的异常信息监控类"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">在 FilterConfig 类中注册自己的异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在程序入口添加线程监控"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">在程序入口添加线程监控</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加引发异常的方法进行测试"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">添加引发异常的方法进行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要注意的地方"><span class="post-toc-number">4.2.5.</span> <span class="post-toc-text">需要注意的地方</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4Net相关概念"><span class="post-toc-number">5.</span> <span class="post-toc-text">Log4Net相关概念</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Log4net使用" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Log4net使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-30 21:12:55" datetime="2018-01-30T13:12:55.000Z" itemprop="datePublished">2018-01-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>##Log4Net</p>
+<blockquote>
+<p>Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件</p>
+<h2 id="Log4net配置"><a href="#Log4net配置" class="headerlink" title="Log4net配置"></a>Log4net配置</h2><p>在安装过Log4Net后需要对项目进行一些列配置（Web.Config），下面列举两种配置方案，一种是最基本的Log4Net的配置，另外一种是更加详细的配置。</p>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configSections</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--Log4net配置--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">section</span> <span class="attr">name</span>=<span class="string">"log4net"</span> <span class="attr">type</span>=<span class="string">"log4net.Config.Log4NetConfigurationSectionHandler, log4net"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Log4net配置END--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configSections</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">log4net</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"RollingLogFileAppender"</span> <span class="attr">type</span>=<span class="string">"log4net.Appender.RollingFileAppender"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">file</span> <span class="attr">value</span>=<span class="string">"test.txt"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">appendToFile</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">maxSizeRollBackups</span> <span class="attr">value</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">maximumFileSize</span> <span class="attr">value</span>=<span class="string">"1024KB"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rollingStyle</span> <span class="attr">value</span>=<span class="string">"Size"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">staticLogFileName</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">layout</span> <span class="attr">type</span>=<span class="string">"log4net.Layout.PatternLayout"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">conversionPattern</span> <span class="attr">value</span>=<span class="string">"%date [%thread] %-5level %logger - %message%newline"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">leval</span> <span class="attr">value</span>=<span class="string">"DEBUG"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"RollingLogFileAppender"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">log4net</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="进一步配置"><a href="#进一步配置" class="headerlink" title="进一步配置"></a>进一步配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configSections</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--Log4net配置--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">section</span> <span class="attr">name</span>=<span class="string">"log4net"</span> <span class="attr">type</span>=<span class="string">"log4net.Config.Log4NetConfigurationSectionHandler, log4net"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Log4net配置END--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configSections</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">log4net</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">level</span> <span class="attr">value</span>=<span class="string">"ERROR"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"SysAppender"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"WebLogger"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里进一步限制了日志级别，只有大于等于DEBUG的时候才会记录日志--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">level</span> <span class="attr">value</span>=<span class="string">"ERROR"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">logger</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--指定记录日志的方式，以滚动文件的方式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"SysAppender"</span> <span class="attr">type</span>=<span class="string">"log4net.Appender.RollingFileAppender,log4net"</span> &gt;</span></span><br><span class="line">      <span class="comment">&lt;!--指定存放日志文件的路径，这里放在App_Data路径下是为了安全--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"File"</span> <span class="attr">value</span>=<span class="string">"App_Data/"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--日志以追加的方式记录--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"AppendToFile"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"RollingStyle"</span> <span class="attr">value</span>=<span class="string">"Date"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--设置日志名称的生成规则--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"DatePattern"</span> <span class="attr">value</span>=<span class="string">"&amp;quot;Logs_&amp;quot;yyyyMMdd&amp;quot;.txt&amp;quot;"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--日志名称是否静态：否--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"StaticLogFileName"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--设置日志内容格式和布局设置--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">layout</span> <span class="attr">type</span>=<span class="string">"log4net.Layout.PatternLayout,log4net"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"ConversionPattern"</span> <span class="attr">value</span>=<span class="string">"%d [%t] %-5p %c - %m%n"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"Header"</span> <span class="attr">value</span>=<span class="string">"&amp;#13;&amp;#10;----------------------header--------------------------&amp;#13;&amp;#10;"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"Footer"</span> <span class="attr">value</span>=<span class="string">"&amp;#13;&amp;#10;----------------------footer--------------------------&amp;#13;&amp;#10;"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"consoleApp"</span> <span class="attr">type</span>=<span class="string">"log4net.Appender.ConsoleAppender,log4net"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">layout</span> <span class="attr">type</span>=<span class="string">"log4net.Layout.PatternLayout,log4net"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"ConversionPattern"</span> <span class="attr">value</span>=<span class="string">"%d [%t] %-5p %c - %m%n"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">log4net</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>需要注意：</strong></p>
+<ul>
+<li><p><code>&lt;configSections&gt;&lt;/configSections&gt;</code> 配置节中可能有多个组件的配置，这里只显示 log4net 的配置，需要根据自身的情况进行复制，不要全盘复制上去，容易影响自身原本的配置。</p>
+</li>
+<li><p><code>&lt;log4net&gt;&lt;log4net&gt;</code> 配置节在 <code>&lt;configSections&gt;&lt;/configSections&gt;</code>  配置节的外部/后部。</p>
+</li>
+<li>第二种配置有一个小问题未能解决：新的错误信息添加到旧的 TXT 文本中时，分割线未能正常显示，结尾线也未能正常显示。通过测试有个猜想，每次程序（网站）启动时，加载该配置，在此次程序运行中，只加载一次分割线，用于区分与上次程序运行时产生的异常信息，此次程序运行中后来的异常信息则不再添加分割线。如果你有其他的配置能解决这个问题或其他想法欢迎在下方留言一起讨论、学习！</li>
+</ul>
+<h2 id="初始化程序"><a href="#初始化程序" class="headerlink" title="初始化程序"></a>初始化程序</h2><p>在程序最开始的时候加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log4net.Config.XmlConfigurator.Configure();</span><br></pre></td></tr></table></figure>
+<p>项目用的是 ASP.MVC ，所以添加在了 Global.asax 文件中的 Appliction_Start() 方法中。</p>
+<p>编写此行代码需要引入 log4net 的命名空间 <code>using log4net;</code></p>
+<h2 id="打印日志信息"><a href="#打印日志信息" class="headerlink" title="打印日志信息"></a>打印日志信息</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>在需要打印日志的地方添加：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogManager.GetLogger(<span class="keyword">typeof</span>(Program)).Debug(<span class="string">"信息"</span>);</span><br></pre></td></tr></table></figure>
+<p>通过 LogManager.GetLogger 传递需要记录的日志类名获得这个类的 ILog  （这样在日志文件中就能看到这条日志是哪个类输出的了），然后调用 Debug 方法输出消息。因为一个类内部不止一个地方要打印日志，所以 一般把 ILog 声明为一个 static 字段：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Private <span class="keyword">static</span> ILog logger = LogManager.GetLogger(<span class="keyword">typeof</span>(Test))</span><br></pre></td></tr></table></figure>
+<p>输出错误消息用 ILog.Error 方法，第二个参数可以传递 Exception 对象，如：</p>
+<p><code>log.Error(&quot;***错误&quot;+ex)</code>、<code>log.Error(&quot;***错误&quot;,ex)</code></p>
+<h3 id="生产者——消费者模式"><a href="#生产者——消费者模式" class="headerlink" title="生产者——消费者模式"></a>生产者——消费者模式</h3><p>上面基本使用有一个问题，如果是网站类或大型系统，是很多人同一时间点进行使用，但是每次写入文件的日志信息可能就会有很多条，同一时间内多条日志同时写入文本就会造成 <strong>文件并发</strong> 问题。这里通过队列的方式来记录日志。</p>
+<p>思路：把所有产生的日志信息存放到一个队列里面，然后通过新建一个线程不断的从这个队列里面读取异常信息，然后往日志文件里面写。这个时候就不用担心多个日志信息同时写入日志文件引起的文件并发问题，这就是所谓的生产者——消费者模式。</p>
+<h4 id="新建异常信息监控类"><a href="#新建异常信息监控类" class="headerlink" title="新建异常信息监控类"></a>新建异常信息监控类</h4><p>新建一个类 MyErrorAttribute ，继承自全局异常类 HandleErrorAttribute。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">SpringLog4netDemo.Models</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyErrorAttribute</span>:<span class="title">HandleErrorAttribute</span></span><br><span class="line">    &#123;	</span><br><span class="line">    	<span class="comment">//创建静态队列</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Queue&lt;Exception&gt; ExceptionQueue = <span class="keyword">new</span> Queue&lt;Exception&gt;();</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnException</span>(<span class="params">ExceptionContext filterContext</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">        	<span class="comment">//将异常信息写入队列中</span></span><br><span class="line">            ExceptionQueue.Enqueue(filterContext.Exception);</span><br><span class="line">            <span class="keyword">base</span>.OnException(filterContext);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做的目的是通过修改全局异常类拿到触发异常的信息，存储到我们准备好的队列中，用于后面的存储。</p>
+<h4 id="在-FilterConfig-类中注册自己的异常信息监控类"><a href="#在-FilterConfig-类中注册自己的异常信息监控类" class="headerlink" title="在 FilterConfig 类中注册自己的异常信息监控类"></a>在 FilterConfig 类中注册自己的异常信息监控类</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"><span class="keyword">using</span> SpringLog4netDemo.Models;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">SpringLog4netDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FilterConfig</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RegisterGlobalFilters</span>(<span class="params">GlobalFilterCollection filters</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">// filters.Add(new HandleErrorAttribute());</span></span><br><span class="line">            filters.Add(<span class="keyword">new</span> MyErrorAttribute());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 App_Start 文件夹下 有三个类 ，修改其中的 FilterConfig.cs ，将我们自己写的异常信息监控类注入。</p>
+<h4 id="在程序入口添加线程监控"><a href="#在程序入口添加线程监控" class="headerlink" title="在程序入口添加线程监控"></a>在程序入口添加线程监控</h4><p>在 Global.asax 文件中的 Application_Start() 方法中添加一个线程，用于监控程序运行过程中是否有异常发生。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//新建线程用以检测日志</span><br><span class="line">ThreadPool.QueueUserWorkItem(o =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        if (MyErrorAttribute.ExceptionQueue.Count &gt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            Exception ex = MyErrorAttribute.ExceptionQueue.Dequeue();</span><br><span class="line">            if (ex != null)</span><br><span class="line">            &#123;</span><br><span class="line">                ILog logger = LogManager.GetLogger(&quot;ErrorMsg&quot;);</span><br><span class="line">                logger.Error(ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                Thread.Sleep(500);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            Thread.Sleep(500);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="添加引发异常的方法进行测试"><a href="#添加引发异常的方法进行测试" class="headerlink" title="添加引发异常的方法进行测试"></a>添加引发异常的方法进行测试</h4><p>在控制器 Home 中故意添加一个引发一场的 Action 的方法 TestLog 进行测试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult TestLog()</span><br><span class="line">    &#123;</span><br><span class="line">        int a = 5;</span><br><span class="line">        int b = 0;</span><br><span class="line">        int c = a / b;</span><br><span class="line">        return View();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>在浏览器进行测试：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlax883u8j30pi0gu0t9.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>打开项目所在目录下的 App_Data文件夹</strong></p>
+<p>打开项目所在目录下的 App_Data文件夹，可以看到已经有一个日志文件了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlazpxg2sj30i30733yg.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>打开该文件可以看到日志信息已经保存进去</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlb0omvxpj30tm0idgmz.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="需要注意的地方"><a href="#需要注意的地方" class="headerlink" title="需要注意的地方"></a>需要注意的地方</h4><p>在浏览器直接请求<code>http://localhost:5252/home/testlog</code> 时，VS会报错暂停，这个时候程序已经中断，但是还并未走到我们新注册的异常信息监控类里面的方法，也就是说异常信息还并未存到队列并且并未存储到本地。</p>
+<p>此时VS的页面是这样的：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlb5zpz2tj30jc0adaa3.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这个时候不要勾选 “<strong>SpringLog4netDemo.dll</strong>” 前面的选择框，勾选的话以后在此项目中的此类异常都会被VS屏蔽不再显示，在单独测试 Log4Net 的项目中，这个无所谓，但是如果是比较大的项目的话，这样就比较麻烦了，这个时候直接点击 <strong>继续</strong> 就可以继续运行了，或者有兴趣的话可以执行下一步查看程序执行的流程。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbb6oowfj30kw0383yf.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>如果手滑点到那里了怎么办呢？</strong></p>
+<p>打开 调试 &gt; 窗口 &gt; 异常设置 &gt; 选中全部选项 &gt; 检查所有选项中是否有屏蔽条件 &gt; 删除屏蔽条件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbj5v6iuj310608faa9.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="Log4Net相关概念"><a href="#Log4Net相关概念" class="headerlink" title="Log4Net相关概念"></a>Log4Net相关概念</h2><p>Log4Net 有3个重要的组件：loggers , appenders 和 layouts 。这3个组件协同工作使得开发者能够根据信息类型和级别（Level）记录信息，以及在运行时控制信息的格式化和信息的写入位置（如：控制台、文件、内存、数据库等）过滤器帮助这些组件控制追加器 （appender）的行为和把对象转化成字符串的对象渲染。</p>
+<p><strong>Appender：</strong>可以寄那个日志输出到不同的地方，不同的输出目标对应不同的 Appender，如 RollingFileAppender（滚动文件）、AdoNetAppender（数据库）、SmtpAppender（邮件）等。</p>
+<p><strong>level（级别）：</strong>标识这条日志信息的重要级别。None  &gt; Fatal &gt; ERROR &gt; WARN &gt; DEBUG &gt; INFO &gt;ALL ，设定一个 Level ，那么低于这个 Level 的日志是不会被写入到 Appender 中的。</p>
+<p>Log4Net 还可以设定多个 Appender，可以实现同时将日志记录到文件、数据库、发送邮件等；可以设定不同Appdener 的不同 level ，可以实现普通级别都记录到文件、ERROR以上级别都发送邮件；可以实现对不同的类设定不同的 Appender；还可以自定义 Appender ，自己实现将 ERROR 信息发送短信等。</p>
+<p>日志框架除了 Log4Net 外，还有 Enterprise Libray 中的 Logging Application Block、Apache 的 CommonLog 以及 NLog 等，使用起来都差不多。</p>
+<p>最后附上 Log4Net  的官方文档链接</p>
+<ul>
+<li><a href="https://logging.apache.org/log4net/release/config-examples.html" target="_blank" rel="noopener">Apache 官方文档——配置</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log4net/">log4net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mvc/">mvc</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/Log4net使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/Log4net使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/07/2019-1-8 GitHub私人仓库免费/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">GitHub：无限制的免费私人仓库</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">:Vue与其他操作DOM的第三方库搭配使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/Log4net使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/Log4net使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3a227kIBBFUf//TzuviSLjfaroloDNU9TpMSxHqqkL14XX/Ws9/Xb8/ad/y3eZsGTIkLEs4x6up++MGf8/J08g+z5SZciQcQCDHIKHWhKIx0dP95UhQ4YMEmTHz3kKo7WEUoYMGTLS0Nn/RIYMGTIIo5aupWE0LVA/UovLkCFjQQbvun//54/MN2TIkLEU4w4XafqTUNs/yZ9nypAhY2tG5xpEp5VfGwa8XMuQIUPG1owOoHa1oha4J+S2MmTIWJDRSQR5GK0NL4O9ZMiQcRijX4LOavqP95UhQ8ZpDH7BglwL4wG3E+JlyJBxDoMHPgKYVQbXimEZMmScwEg3IGG3VqymL0iGDBl7M2oNslmJHU83g3abDBkytmOkc85a6y0tg2uhXIYMGecwao9OA2ttwHnxtyJDhoztGJ2mf6fplh40fU0yZMjYg8GvRNQ68GQIcfWXDBkyjmHMSs4+0bB7+VyGDBlbM0jaVxsedAaiJMQHfxMZMmRsx+DFZJrYkReRNgRfLrDKkCFjOwaJXTxEpk06UkjHly1kyJCxHSMNtXwzcty0SH75f0OGDBkbMe5wpaPKNBzzcP+S28qQIWMjRn9KSDZIj8J3iTEyZMhYlpEGWZ7w9ccGQbCWIUPGAYyg6sVN/06YjscSMmTIkFErGsMBQDpUkCFDhoxOycoPStJB9E0ZMmQcwOCFKOnY8Q4fb6hNa7fJkCFjQUbtikO6TX8sOiFhlSFDxnqMH3Y5S6mj8y6sAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

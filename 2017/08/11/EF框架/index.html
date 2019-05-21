@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>EF框架使用 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="ASP.NET MVC,EF">
+    <meta name="description" content="本博客所有案例的开发环境为 VS2013 + SQL Server 2012 Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年">
+<meta name="keywords" content="ASP.NET MVC,EF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EF框架使用">
+<meta property="og:url" content="https://liruisen.github.io/2017/08/11/EF框架/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本博客所有案例的开发环境为 VS2013 + SQL Server 2012 Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://wx4.sinaimg.cn/large/006CBSf2ly1fzq3wum791j31ab0wtamc.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/large/006CBSf2ly1fzq4czg0ryj3224295e1n.jpg">
+<meta property="og:image" content="https://wx2.sinaimg.cn/large/006CBSf2ly1fzq4ak1dgqj32j21e04cw.jpg">
+<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EF框架使用">
+<meta name="twitter:description" content="本博客所有案例的开发环境为 VS2013 + SQL Server 2012 Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/large/006CBSf2ly1fzq3wum791j31ab0wtamc.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">EF框架使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">EF框架使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-11T08:58:13.000Z" itemprop="datePublished" class="page-time">
+  2017-08-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Entity-Framework实体框架简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Entity Framework实体框架简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、DataFirst"><span class="post-toc-number">2.</span> <span class="post-toc-text">一、DataFirst</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用EF，创建Model-（DataFirst）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">使用EF，创建Model （DataFirst）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用EF创建的内容"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用EF创建的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用EF进行增删改查"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">使用EF进行增删改查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查询"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#增加"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">增加</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">删除</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、ModelFirst"><span class="post-toc-number">3.</span> <span class="post-toc-text">二、ModelFirst</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">步骤：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项："><span class="post-toc-number">3.2.</span> <span class="post-toc-text">注意事项：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、CodeFirst"><span class="post-toc-number">4.</span> <span class="post-toc-text">三、CodeFirst</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤：-1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">步骤：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、Linq查询和Lambda查询"><span class="post-toc-number">5.</span> <span class="post-toc-text">四、Linq查询和Lambda查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Linq查询"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Linq查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Linq查询全部列并降序"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">Linq查询全部列并降序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Linq分页"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">Linq分页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Linq查询部分列"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">Linq查询部分列</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lambda查询"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Lambda查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#过滤筛选"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">过滤筛选</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Lambda升序排序排序查询"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">Lambda升序排序排序查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Lambda分页查询"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">Lambda分页查询</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-EF框架" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">EF框架使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-11 16:58:13" datetime="2017-08-11T08:58:13.000Z" itemprop="datePublished">2017-08-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本博客所有案例的开发环境为 VS2013 + SQL Server 2012</p>
+<h2 id="Entity-Framework实体框架简介"><a href="#Entity-Framework实体框架简介" class="headerlink" title="Entity Framework实体框架简介"></a>Entity Framework实体框架简介</h2><p>Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年6月27日，Entity Framework 7作为实体框架核心 1.0 发布，与 ASP.Net Core 1.0 和 .Net Core 1.0 一起发布，重命名为凸显出它是完全重新而不是增量升级，同时，EF7并不会取代EF6。</p>
+<p>在EF中的实体数据模型（EDM）由以下三种模型和具有相应文件扩展名的映射文件进行定义。<br>概念架构定义语言文件（.csdl）——定义概念模型<br>存储架构定义语言文件（.ssdl）——定义存储模型<br>映射规范语言文件（.msl）——定义存储模型与概念模型之间的映射M。</p>
+<p>实体框架 使用这些基于XML的模型和映射文件将对概念模型中的实体和关系的创建、读取、更新、和删除操作转换为数据源中的等效操作。EDM 甚至支持将概念模型中的实体映射到数据源中的存储过程。</p>
+<p>ORM（Object Relational Mapping）框架采用元数据来描述对象一关系映射细节，元数据一般采用XML格式，并且存放在专门的对象一映射文件中。</p>
+<p>广义上来说，ORM 可以被认为是 面向对象模型和关系型数据库的数据结构之间的相互转换。</p>
+<p>狭义上来说，ORM 可以被认为是，基于关系型数据库的数据存储，实现了一个虚拟的面向对象的数据访问接口。理想情况下，基于这样一个面对对象的接口，持续化一个OO对象应该不需要了解任何关系型数据库存储数据的实现细节。</p>
+<p>其他.NET ORM框架:</p>
+<ol>
+<li>PetaPoco : 与完备的 ORM 框架不同，PetaPoco 更加注重易用性和性能。使用 PataPoco 只需要引入一个C#文件，可以使用强类型的 POCO（Plain Old CLR Object）,并支持 T4 模板生成的类等。此外，由于 PetaPoco 是开源项目，因此添加条件来处理如空间数据等特定情况会很容易。</li>
+<li>Dapper :<br>性能方面高于 PetaPoco，速度只稍逊于手工编码的数据访问层（DAL、Data AccessLayer），还有一些对初学者会有帮助的、位于官网上的系列博文和一些独立博文教程。</li>
+</ol>
+<h2 id="一、DataFirst"><a href="#一、DataFirst" class="headerlink" title="一、DataFirst"></a>一、DataFirst</h2><h3 id="使用EF，创建Model-（DataFirst）"><a href="#使用EF，创建Model-（DataFirst）" class="headerlink" title="使用EF，创建Model （DataFirst）"></a>使用EF，创建Model （DataFirst）</h3><ol>
+<li><p>在解决方案中，创建所使用的项目。例如：ASP网站项目、WinForm窗体项目……</p>
+</li>
+<li><p>在新建的项目中，添加 &gt; 新建项 &gt; 数据 &gt; ADO.NET实体数据模型（.edmx）</p>
+</li>
+<li><p>在新建的.edmx中选择：从数据库生成（DatabaseFirst）</p>
+</li>
+<li><p>选择新建连接，填写连接数据库 &gt; 填写登录数据库信息 &gt; 选择或输入需要生成模型的数据库名称.</p>
+</li>
+<li><p>选择需要创建模型的表、视图、存储过程</p>
+</li>
+<li><p>点击下一步，直接生成（有些电脑可能会出现警告信息，忽视即可）。</p>
+<p><img src="https://wx4.sinaimg.cn/large/006CBSf2ly1fzq3wum791j31ab0wtamc.jpg" alt="image"></p>
+<p>​    （图片不清晰的话请在：浏览器上，鼠标右键，在新标签页中打开图片。即可看到清晰图片）</p>
+</li>
+</ol>
+<h3 id="使用EF创建的内容"><a href="#使用EF创建的内容" class="headerlink" title="使用EF创建的内容"></a>使用EF创建的内容</h3><p><strong>创建完成后，项目会默认引入两个命名空间</strong>：EntityFramework、System.Data.Entity</p>
+<ol>
+<li><p>最外层为.edmx文件，EF模型设计器，展示从数据库创建的模型，包括：表名、属性（表字段）、导航属性（外键、表与表之间的对应关系）、表与表之间1对1、1对多的关系。</p>
+</li>
+<li><p><code>Model1.Context.tt</code>、<code>Model.Designer.cs</code>、<code>Model.edmx.diagram</code>、<code>Model1.tt</code></p>
+<ol>
+<li><code>Model1.Context.tt</code>：包含<code>Model1.Context.cs</code>。<code>Model1.Context.tt</code>由T4模板生成，不可更改，<code>Model1.Context.cs</code>继承自<code>DbContext</code>，包括构造方法（继承自父类的构造方法，并在此传递配置文件的数据库连接字符串）、各个表所对应的<code>Dbset&lt;T&gt;</code>类型的自动属性。</li>
+<li><code>Model.Designer.cs</code>：自动生成，无需更改</li>
+<li><code>Model.edmx.diagram</code>：描述edmx文件的元素信息（名称、位置……）</li>
+<li><code>Model1.tt</code>：包含生成的Model.cs，自身由T4模板生成，无需修改</li>
+</ol>
+</li>
+</ol>
+<h3 id="使用EF进行增删改查"><a href="#使用EF进行增删改查" class="headerlink" title="使用EF进行增删改查"></a>使用EF进行增删改查</h3><h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">StudentMISEntities stu = <span class="keyword">new</span> StudentMISEntities();</span><br><span class="line"><span class="comment">//IQueryable&lt;Users&gt; userInfoList=from u in stu.Users</span></span><br><span class="line"><span class="keyword">var</span> userInfoList = <span class="keyword">from</span> u <span class="keyword">in</span> stu.Users</span><br><span class="line">                   <span class="keyword">where</span> u.id == <span class="number">10</span></span><br><span class="line">                   <span class="keyword">select</span> u;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> userInfoList)<span class="comment">//EF延迟加载机制，数据用到的时候才去数据库中查询，不用的时候不去查询，提高程序性能</span></span><br><span class="line">&#123;</span><br><span class="line">      Response.Write(item.uName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Users userInfo = <span class="keyword">new</span> Users();</span><br><span class="line">userInfo.uName = <span class="string">"2333"</span>;</span><br><span class="line">userInfo.uPassword = <span class="string">"123"</span>;</span><br><span class="line">userInfo.uRole = <span class="string">"学生"</span>;</span><br><span class="line">StudentMISEntities stu = <span class="keyword">new</span> StudentMISEntities();<span class="comment">//创建EF数据操作类实例</span></span><br><span class="line">stu.Users.Add(userInfo);<span class="comment">//把数据添加到EF，并添加标记</span></span><br><span class="line">stu.SaveChanges();<span class="comment">//把数据保存到数据库</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">StudentMISEntities stu = <span class="keyword">new</span> StudentMISEntities();</span><br><span class="line"><span class="keyword">var</span> userInfoList = <span class="keyword">from</span> u <span class="keyword">in</span> stu.Users</span><br><span class="line">                   <span class="keyword">where</span> u.id == <span class="number">16</span></span><br><span class="line">                   <span class="keyword">select</span> u;</span><br><span class="line">Users userInfo = userInfoList.FirstOrDefault();<span class="comment">//返回第一个元素，如果没有的话，返回null</span></span><br><span class="line"><span class="keyword">if</span> (userInfo!=<span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">   userInfo.uPassword = <span class="string">"12345678"</span>;</span><br><span class="line">   stu.Entry&lt;Users&gt;(userInfo).State = System.Data.Entity.EntityState.Modified;<span class="comment">//添加修改标记</span></span><br><span class="line">   stu.SaveChanges();</span><br><span class="line">   Response.Write(userInfo.uPassword);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">   Response.Write(<span class="string">"要修改的数据不存在"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> StudentMISEntities stu = <span class="keyword">new</span> StudentMISEntities();</span><br><span class="line"> <span class="keyword">var</span> userInfoList = <span class="keyword">from</span> u <span class="keyword">in</span> stu.Users</span><br><span class="line">                    <span class="keyword">where</span> u.id == <span class="number">17</span></span><br><span class="line">                    <span class="keyword">select</span> u;</span><br><span class="line">Users userInfo = userInfoList.FirstOrDefault();<span class="comment">//返回第一个元素，如果没有的话，返回null</span></span><br><span class="line"><span class="keyword">if</span> (userInfo!=<span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//stu.Users.Remove(userInfo);</span></span><br><span class="line">   stu.Entry&lt;Users&gt;(userInfo).State = System.Data.Entity.EntityState.Deleted;<span class="comment">//添加删除标记</span></span><br><span class="line">   stu.SaveChanges();</span><br><span class="line">   Response.Write(<span class="string">"已删除"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">   Response.Write(<span class="string">"要删除的数据不存在"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、ModelFirst"><a href="#二、ModelFirst" class="headerlink" title="二、ModelFirst"></a>二、ModelFirst</h2><blockquote>
+<p>除了支持 DatabaseFirst 外，EF 还支持 ModelFirst  、 CodeFirst，这两种类型不同于DatabaseFirst 先建立好数据库而后映射 Model ， ModelFirst 是通过 Model 映射创建数据库，而 CodeFirst 类似于 ModelFirst， 通过代码逻辑自行创建 Model 并映射数据库，但是不同于 ModelFirst 由 VS 自动创建。</p>
+</blockquote>
+<p>Model先行，通过Model创建数据库</p>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol>
+<li><p>在新建的项目中，添加 &gt; 新建项 &gt; 数据 &gt; ADO.NET实体数据模型（.edmx）</p>
+</li>
+<li><p>在新建的.edmx中选择：空模型（ModelFirst）</p>
+</li>
+<li><p>在.edmx图形化窗口中，右键 &gt; 新增 &gt; 实体</p>
+</li>
+<li><p>在新增实体页面 填写: 实体名（表名）、是否创建键属性（是否创建主键）、属性名称、属性类型 &gt; 确定</p>
+</li>
+<li><p>在.edmx图形化窗口中，在 实体 上右键 &gt; 新增 &gt;  标量属性（表字段）</p>
+</li>
+<li><p>选中标量属性，按快捷键 F4 或调出属性面板，可以更改标量属性的：类型、名称、长度（<strong>必改</strong>）</p>
+</li>
+<li><p>在多个实体，且实体之间有关联的时候，在.edmx图形化设计页面中，右键 &gt; 新建 &gt; 关联</p>
+</li>
+<li><p>在添加关联页面设置内容（默认即可）</p>
+</li>
+<li><p>在所有模型创建完毕，在.edmx页面 右键 &gt; 根据模型生成数据库</p>
+</li>
+<li><p>在 “生成数据库 向导” 页面，新建数据库连接 &gt; 设置连接字符串 &gt; 选择需要创建表的数据库 &gt; 点击下一步</p>
+</li>
+<li><p>生成数据库向导中，会生成 DDL（数据库设计语言），并另存为 .sql 文件</p>
+</li>
+<li><p>生成 .sql 文件后，建立的Model并没有映射到数据库引擎中，需要在 .sql 文件中，右键 &gt; 执行，即可。<br><img src="https://wx3.sinaimg.cn/large/006CBSf2ly1fzq4czg0ryj3224295e1n.jpg" alt="image"></p>
+<p>​    （图片不清晰的话请在：浏览器上，鼠标右键，在新标签页中打开图片。即可看到清晰图片）</p>
+</li>
+</ol>
+<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ol>
+<li>新建 <strong>标量属性</strong> 后，需要在属性面板对 标量属性的 <strong>长度</strong> 和 <strong>数据类型</strong> 进行限制，string 长度即为数据库内字段的 NVarChar 的长度 。</li>
+<li>在 .edmx 图形化页面 <strong>新建完实体</strong> 后，解决方案里面可能没有生成 Model.tt 文件（包含 Model 模型.cs），这时候在 .edmx 图形化页面: 右键 &gt; 添加代码生成项 &gt; 数据 &gt;EF 版本.x DbContext 生成器 &gt; 确定</li>
+<li>关于实体更新 <ol>
+<li>需映射数据库更新 </li>
+<li>更新实体后，VS 在生成的DDL数据库脚本中，是<strong>把原先创建好的表全部删除，再重新创建</strong>更新后的实体所对应的表，如果原数据表中存在数据，数据也会一并删除。（2）. 在更新数据库时一定要谨慎，做好数据库备份，同时如果只是小的改动（扩大字符长度），手动在数据库里 修改即可，或者仅把更新的sql脚本部分拷贝出来，复制到SQL Server执行</li>
+</ol>
+</li>
+</ol>
+<h2 id="三、CodeFirst"><a href="#三、CodeFirst" class="headerlink" title="三、CodeFirst"></a>三、CodeFirst</h2><p>先写代码，通过代码创建实体，映射数据库</p>
+<h3 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h3><ol>
+<li><p>新建项目，在项目里面通过 NuGet程序包 安装EntityFramework（该操作会自动引入EntityFramework以及相对应的命名空间）</p>
+</li>
+<li><p>在配置文件里面添加连接字符串</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connectionStrings</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"CodeFirstDemo"</span> <span class="attr">connectionString</span>=<span class="string">"server=.;uid=用户;pwd=密码;database=Test2"</span> <span class="attr">providerName</span>=<span class="string">"System.Data.SqlClient"</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">connectionStrings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建类 .cs ，设置类的属性、类之间的关联</p>
+</li>
+</ol>
+<p><strong>studentInfo</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeFirstDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StudentInfo</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> stuName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> DateTime subTime &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//建立联系</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">virtual</span> ClassInfo classInfo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>classInfo</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.ComponentModel.DataAnnotations;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeFirstDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClassInfo</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Id添加主键标识</span></span><br><span class="line">        [<span class="meta">Key</span>]</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//数据类型为NVarChar（32），且不可为空</span></span><br><span class="line">        [<span class="meta">StringLength(32)</span>]</span><br><span class="line">        [<span class="meta">Required</span>]</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> clsName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">Required</span>]</span><br><span class="line">        <span class="keyword">public</span> DateTime sbuTime &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//建立联系</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">virtual</span> ICollection&lt;StudentInfo&gt; sutdentInfo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>创建 EF数据操作类 codeFirstDbcontex </li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Data.Entity;</span><br><span class="line"><span class="keyword">using</span> System.Data.Entity.ModelConfiguration.Conventions;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeFirst</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">codeFirstDbcontext</span>:<span class="title">DbContext</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//调用父类的构造方法，并传递 配置文件内的 数据库连接字符串 字段</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">codeFirstDbcontext</span>(<span class="params"></span>) : <span class="title">base</span>(<span class="params"><span class="string">"name=connStr"</span></span>)</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> DbSet&lt;ClassInfo&gt; ClassInfo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> DbSet&lt;StudentInfo&gt; Student &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">DbModelBuilder modelBuilder</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//实体模型映射成表的时候执行</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//移除 将表名设置为实体类型名称的复数版本的约定</span></span><br><span class="line">            <span class="comment">//模型名映射在数据库表的时候，可能会出现复数（s）</span></span><br><span class="line">            modelBuilder.Conventions.Remove&lt;PluralizingTableNameConvention&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>执行</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">codeFirstDbcontext db = <span class="keyword">new</span> codeFirstDbcontext();</span><br><span class="line"><span class="comment">//如果 数据库中不存在库，则创建</span></span><br><span class="line">db.Database.CreateIfNotExists();</span><br><span class="line">ClassInfo clsInfo = <span class="keyword">new</span> ClassInfo();</span><br><span class="line">clsInfo.clsName = <span class="string">"16级.NET班"</span>;</span><br><span class="line">clsInfo.sbuTime = DateTime.Now;</span><br><span class="line">db.ClassInfo.Add(clsInfo);</span><br><span class="line">db.SaveChanges();</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://wx2.sinaimg.cn/large/006CBSf2ly1fzq4ak1dgqj32j21e04cw.jpg" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>​    （图片不清晰的话请在：浏览器上，鼠标右键，在新标签页中打开图片。即可看到清晰图片）</p>
+<h2 id="四、Linq查询和Lambda查询"><a href="#四、Linq查询和Lambda查询" class="headerlink" title="四、Linq查询和Lambda查询"></a>四、Linq查询和Lambda查询</h2><h3 id="Linq查询"><a href="#Linq查询" class="headerlink" title="Linq查询"></a>Linq查询</h3><h4 id="Linq查询全部列并降序"><a href="#Linq查询全部列并降序" class="headerlink" title="Linq查询全部列并降序"></a>Linq查询全部列并降序</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = <span class="keyword">from</span> u <span class="keyword">in</span> db.Users</span><br><span class="line">               <span class="keyword">where</span> u.id &gt; <span class="number">8</span></span><br><span class="line">               <span class="keyword">orderby</span> u.id <span class="keyword">ascending</span>  <span class="comment">//descending降序</span></span><br><span class="line">               <span class="keyword">select</span> u;</span><br><span class="line"><span class="keyword">foreach</span> (Users userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line">  Response.Write(userInfo.id + <span class="string">":"</span> + userInfo.uName + <span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Linq分页"><a href="#Linq分页" class="headerlink" title="Linq分页"></a>Linq分页</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pageIndex = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span> pageSize = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> userInfoList = (<span class="keyword">from</span> u <span class="keyword">in</span> db.Users</span><br><span class="line">                    <span class="keyword">where</span> u.id &gt; <span class="number">8</span></span><br><span class="line">                    <span class="keyword">orderby</span> u.id <span class="keyword">ascending</span>  <span class="comment">//descending降序</span></span><br><span class="line">                    <span class="keyword">select</span> u).Skip((pageIndex - <span class="number">1</span>) * pageSize).Take(pageSize);</span><br><span class="line"><span class="keyword">foreach</span> (Users userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line">    Response.Write(userInfo.id + <span class="string">":"</span> + userInfo.uName + <span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Linq查询部分列"><a href="#Linq查询部分列" class="headerlink" title="Linq查询部分列"></a>Linq查询部分列</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = <span class="keyword">from</span> u <span class="keyword">in</span> db.Users</span><br><span class="line">                <span class="keyword">where</span> u.id &gt; <span class="number">8</span></span><br><span class="line">                <span class="comment">//使用匿名类,设置两个字段UName，UPwd</span></span><br><span class="line">                <span class="keyword">select</span> <span class="keyword">new</span> &#123; UName = u.uName, UPwd = u.uPassword &#125;;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span>  userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line"> Response.Write(userInfo.UName+<span class="string">":"</span>+userInfo.UPwd+<span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Lambda查询"><a href="#Lambda查询" class="headerlink" title="Lambda查询"></a>Lambda查询</h3><h4 id="过滤筛选"><a href="#过滤筛选" class="headerlink" title="过滤筛选"></a>过滤筛选</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = db.Users.Where&lt;Users&gt;(u =&gt; u.id &gt; <span class="number">8</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line">     Response.Write(userInfo.id + <span class="string">":"</span> + userInfo.uName + <span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Lambda升序排序排序查询"><a href="#Lambda升序排序排序查询" class="headerlink" title="Lambda升序排序排序查询"></a>Lambda升序排序排序查询</h4><p><strong>对Id进行升序排序排序</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = db.Users.Where&lt;Users&gt;(U =&gt; <span class="literal">true</span>).OrderBy&lt;Users, <span class="keyword">int</span>&gt;(u =&gt; u.id);</span><br></pre></td></tr></table></figure>
+<p><strong>对Id进行降序排序排序</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = db.Users.Where&lt;Users&gt;(U =&gt; <span class="literal">true</span>).OrderByDescending&lt;Users, <span class="keyword">int</span>&gt;(u =&gt; u.id);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line">    Response.Write(userInfo.id + <span class="string">":"</span> + userInfo.uName + <span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>在以用户名为前提倒序排序的基础上，如果用户名相同，则使用Id作为依据对用户名相同的用户进行倒序排序</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userInfoList = db.Users.Where&lt;Users&gt;(u =&gt; <span class="literal">true</span>).OrderByDescending(u =&gt; u.uName).ThenByDescending&lt;Users,<span class="keyword">int</span>&gt;(u =&gt; u.id);</span><br></pre></td></tr></table></figure>
+<h4 id="Lambda分页查询"><a href="#Lambda分页查询" class="headerlink" title="Lambda分页查询"></a>Lambda分页查询</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pageIndex = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span> pageSize = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> userInfoList = db.Users.Where&lt;Users&gt;(U =&gt; <span class="literal">true</span>).OrderByDescending&lt;Users, <span class="keyword">int</span>&gt;(u =&gt; u.id).Skip&lt;Users&gt;((pageIndex<span class="number">-1</span>)*pageSize).Take&lt;Users&gt;(pageSize);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> userInfo <span class="keyword">in</span> userInfoList)</span><br><span class="line">&#123;</span><br><span class="line">    Response.Write(userInfo.id + <span class="string">":"</span> + userInfo.uName + <span class="string">"&lt;hr/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-NET-MVC/">ASP.NET MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EF/">EF</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/08/11/EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/08/11/EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/08/11/EF框架/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2017/08/11/EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/08/11/EF框架/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/11/EF使用MySQL/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">EF使用MySQL</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>liruisen &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/08/11/EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/08/11/EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/08/11/EF框架/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2017/08/11/EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/08/11/EF框架/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3awY7CMAxFUf7/pzubWYw0SrjPSRF1blYISsnpwtiOXy+8rsH6/ym5/u81o1953bFkyJDxWMY1XSkj5aXvD6kyZMg4gDGKYPNr5oHyChf/XRkyZMiY3y7dEOHNA7QMGTJkrAdccp95gfoV/xsyZMj4ekYtXVtJ/kgb7pZaXIYMGQ9k8K7751/fcr4hQ4aMRzH2hksSlPfu5/eeMmTIaM1IC9S0lUYSvpWCWYYMGScweCMsLSDTK/kjQHFahgwZjRgrIZIPYZDHkR5nDv83ZMiQ0ZQx2hA/KuBBfGXwAgV0GTJkNGWst8/S5LJ2kPnmWzJkyDiAsXf8Yj3hi8csZMiQcQCDp3G1tl1tkGKejMa1uAwZMh7OSIckSFlbSyLTBFGGDBm9GemoBC9B0wCaPpSgfJUhQ0YLRq01z9lpyN4wMyJDhoxGDN5cI0VsLb3jBXMwMyJDhoxGjNrWeSufhPX1lpwMGTJ6M9KgybeYDlLUymAZMmScySANNZ7erd8/ZsuQIaMpo7aV2uFlbbwDPTgZMmQczEgHIwgyPR5A6aMMGTIOYPCmGE8ZyafbilgZMmQ0ZVzhqjXgdg1qvEkKZciQ0ZSx97CT36E2urFynCBDhoynM/jABCFxZBpwi09ahgwZjRhp4KvBePMubg7KkCFDBjhcrB0ekKYeKmJlyJAhY/lokwfx2hCGDBkyTmCspHf8W/zO8WCZDBkyWjPu6GWtNOlqIVuGDBlNGT+LzX+t2fOIPQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(TェT)别离开我！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
