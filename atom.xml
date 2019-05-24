@@ -18,8 +18,8 @@
   
   <entry>
     <title>恢复HEXO</title>
-    <link href="https://liruisen.github.io/2019/05/21/2019-5-21%E6%81%A2%E5%A4%8DHexo/"/>
-    <id>https://liruisen.github.io/2019/05/21/2019-5-21恢复Hexo/</id>
+    <link href="https://liruisen.github.io/2019/05/21/2019-05-21%20%E6%81%A2%E5%A4%8DHexo/"/>
+    <id>https://liruisen.github.io/2019/05/21/2019-05-21 恢复Hexo/</id>
     <published>2019-05-21T03:43:04.000Z</published>
     <updated>2019-05-21T05:26:34.858Z</updated>
     
@@ -47,32 +47,9 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://liruisen.github.io/2019/05/20/hello-world/"/>
-    <id>https://liruisen.github.io/2019/05/20/hello-world/</id>
-    <published>2019-05-20T13:49:55.301Z</published>
-    <updated>2019-05-20T13:49:55.301Z</updated>
-    
-    <content type="html"><![CDATA[<p>this is change txt.</p><p>测试批处理命令</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;this is change txt.&lt;/p&gt;
-&lt;p&gt;测试批处理命令&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Nginx使用</title>
-    <link href="https://liruisen.github.io/2019/03/29/2019-3-29%20Nginx/"/>
-    <id>https://liruisen.github.io/2019/03/29/2019-3-29 Nginx/</id>
+    <link href="https://liruisen.github.io/2019/03/29/2019-03-29%20Nginx/"/>
+    <id>https://liruisen.github.io/2019/03/29/2019-03-29 Nginx/</id>
     <published>2019-03-29T05:12:55.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -95,8 +72,8 @@
   
   <entry>
     <title>art-template 踩坑</title>
-    <link href="https://liruisen.github.io/2019/03/11/2019-3-12%20art-template/"/>
-    <id>https://liruisen.github.io/2019/03/11/2019-3-12 art-template/</id>
+    <link href="https://liruisen.github.io/2019/03/11/2019-03-12%20art-template/"/>
+    <id>https://liruisen.github.io/2019/03/11/2019-03-12 art-template/</id>
     <published>2019-03-11T03:12:55.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -119,8 +96,8 @@
   
   <entry>
     <title>问题与解决方案汇总（1）</title>
-    <link href="https://liruisen.github.io/2019/01/30/2019-1-30%200.%E5%89%8D%E7%AB%AFbootstrap%E8%A1%A8%E6%A0%BC%E4%B8%8Eaxios%E8%AF%B7%E6%B1%82/"/>
-    <id>https://liruisen.github.io/2019/01/30/2019-1-30 0.前端bootstrap表格与axios请求/</id>
+    <link href="https://liruisen.github.io/2019/01/30/2019-01-30%20%E5%89%8D%E7%AB%AFbootstrap%E8%A1%A8%E6%A0%BC%E4%B8%8Eaxios%E8%AF%B7%E6%B1%82/"/>
+    <id>https://liruisen.github.io/2019/01/30/2019-01-30 前端bootstrap表格与axios请求/</id>
     <published>2019-01-30T08:58:13.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -147,8 +124,8 @@
   
   <entry>
     <title>GitHub：无限制的免费私人仓库</title>
-    <link href="https://liruisen.github.io/2019/01/07/2019-1-8%20GitHub%E7%A7%81%E4%BA%BA%E4%BB%93%E5%BA%93%E5%85%8D%E8%B4%B9/"/>
-    <id>https://liruisen.github.io/2019/01/07/2019-1-8 GitHub私人仓库免费/</id>
+    <link href="https://liruisen.github.io/2019/01/07/2019-01-08%20GitHub%E7%A7%81%E4%BA%BA%E4%BB%93%E5%BA%93%E5%85%8D%E8%B4%B9/"/>
+    <id>https://liruisen.github.io/2019/01/07/2019-01-08 GitHub私人仓库免费/</id>
     <published>2019-01-07T08:58:13.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -173,9 +150,36 @@
   </entry>
   
   <entry>
+    <title>Git系列——2.Git分支</title>
+    <link href="https://liruisen.github.io/2018/02/24/2018-02-24%20Git%E6%95%99%E7%A8%8B2/"/>
+    <id>https://liruisen.github.io/2018/02/24/2018-02-24 Git教程2/</id>
+    <published>2018-02-24T13:43:04.000Z</published>
+    <updated>2019-05-24T13:35:34.701Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于git的学习有一个阶段，如果是从未接触过命令行式开发（Linux、cmd）的萌新的话，建议先去了解下什么是Git，Git有什么用，关于这些网上已经有了很多的介绍了，我也根据我的理解写了一篇关于Git的介绍，<a href="www.superforest.ml">点击链接查看</a>  ，同时</p><h1 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h1><h2 id="创建、切换分支"><a href="#创建、切换分支" class="headerlink" title="创建、切换分支"></a>创建、切换分支</h2><p><code>git branch X分支名X</code>  ：创建分支 x分支名x</p><p><code>git checkout x分支名x</code> ：切换到 x分支名x</p><p><code>git checkout -b x分支名x</code> ：创建并切换到 x分支名x</p><h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>前面三条命令就是简单的创建分支和切换分支的方式，在创建过分支后，接下来咱们看看如何将两个分支合并到一起。就是说我们新建一个分支，在其上开发某个新功能，开发完成后再合并回主线。</p><h3 id="git-merge-x分支名x"><a href="#git-merge-x分支名x" class="headerlink" title="git merge x分支名x"></a>git merge x分支名x</h3><p>git merge 在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点，或者说 我要把这两个父节点本身及它们所有的祖先都包含进来。如图所示：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006CBSf2ly1g3cnqja4yhj30be0auweo.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>我们准备了两个分支，每个分支上各有一个独有的提交。这意味着没有一个分支包含了我们修改的所有内容。咱们通过合并这两个分支来解决这个问题。通过 <code>git merge bugFix</code> 把 <code>bugFix</code> 合并到 <code>master</code> 里（注意我们当前的分支在master上）</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g3cqfdko1xj30bi0ag0sz.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>首先，<code>master</code> 现在指向了一个拥有两个父节点的提交记录。假如从 <code>master</code> 开始沿着箭头向上看，在到达起点的路上会经过所有的提交记录。这意味着 <code>master</code> 包含了对代码库的所有修改。</p><p>此时将分支切换到 <code>bugFix</code>上，执行<code>git merge master</code> 将master分支合并到 bugFix 上</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://wx1.sinaimg.cn/large/006CBSf2ly1g3cnvon20oj30bs0az74h.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>因为 <code>master</code> 继承自 <code>bugFix</code>，Git 什么都不用做，只是简单地把 <code>bugFix</code> 移动到 <code>master</code> 所指向的那个提交记录。现在所有提交记录的颜色都一样了，这代表每一个分支都包含了代码库的所有修改！</p><h3 id="git-rebase-x分支名x"><a href="#git-rebase-x分支名x" class="headerlink" title="git rebase x分支名x"></a>git rebase x分支名x</h3><p>Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。Rebase 的优势就是可以创造更线性的提交历史，如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。</p><p>还是准备了两个分支；注意当前所在的分支是 bugFix（星号标识的是当前分支）我们想要把 bugFix 分支里的工作直接移到 master 分支上。移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006CBSf2ly1g3cme0hek4j30bh0ait8w.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>当执行过 <code>git rebase master</code> 后，现在 bugFix 分支上的工作在 master 的最顶端，同时我们也得到了一个更线性的提交序列。注意，提交记录 C3 依然存在（树上那个半透明的节点），而 C3’ 是我们 Rebase 到 master 分支上的 C3 的副本。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g3cmejwqqdj30bk09uaa9.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>需要注意的是，此时的master还未更新，还在C2的位置。此时我们只需要<code>checkout master</code> 切换到master分支，再执行 <code>git rebase bugFix</code>。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g3cmihcp6aj30br0al0sw.jpg" alt="image" title>                </div>                <div class="image-caption">image</div>            </figure><p>由于 <code>bugFix</code> 继承自 <code>master</code>，所以 Git 只是简单的把 <code>master</code> 分支的引用向前移动了一下而已。此时看起来修改记录只有完整的一条记录！</p><hr><p>参考记录：</p><ul><li><p><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">learngitbranching</a></p></li><li><p><a href="https://www.cnblogs.com/cposture/p/git_merge_rebase.html" target="_blank" rel="noopener">Git 分支的合并【Learn Git Branching】</a></p></li><li><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896954848507552" target="_blank" rel="noopener">廖雪峰Git教程</a></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;关于git的学习有一个阶段，如果是从未接触过命令行式开发（Linux、cmd）的萌新的话，建议先去了解下什么是Git，Git有什么用，关于这些网上已经有了很多的介绍了，我也根据我的理解写了一篇关于Git的介绍，&lt;a href=&quot;www.superforest.ml&quot;&gt;点击链
+      
+    
+    </summary>
+    
+      <category term="Git教程" scheme="https://liruisen.github.io/categories/Git%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="Git" scheme="https://liruisen.github.io/tags/Git/"/>
+    
+      <category term="Github" scheme="https://liruisen.github.io/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Log4net使用</title>
-    <link href="https://liruisen.github.io/2018/01/30/Log4net%E4%BD%BF%E7%94%A8/"/>
-    <id>https://liruisen.github.io/2018/01/30/Log4net使用/</id>
+    <link href="https://liruisen.github.io/2018/01/30/2018-01-30%20Log4net%E4%BD%BF%E7%94%A8/"/>
+    <id>https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/</id>
     <published>2018-01-30T13:12:55.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -206,8 +210,8 @@
   
   <entry>
     <title>:Vue与其他操作DOM的第三方库搭配使用</title>
-    <link href="https://liruisen.github.io/2018/01/17/Vue%E4%B8%8E%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9CDOM%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%90%AD%E9%85%8D%E4%BD%BF%E7%94%A8/"/>
-    <id>https://liruisen.github.io/2018/01/17/Vue与其他操作DOM的第三方库搭配使用/</id>
+    <link href="https://liruisen.github.io/2018/01/17/2018-01-17%20Vue%E4%B8%8E%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9CDOM%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%90%AD%E9%85%8D%E4%BD%BF%E7%94%A8/"/>
+    <id>https://liruisen.github.io/2018/01/17/2018-01-17 Vue与其他操作DOM的第三方库搭配使用/</id>
     <published>2018-01-17T03:14:10.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -236,8 +240,8 @@
   
   <entry>
     <title>Spring.Net使用</title>
-    <link href="https://liruisen.github.io/2017/11/25/Spring-Net%E4%BD%BF%E7%94%A8/"/>
-    <id>https://liruisen.github.io/2017/11/25/Spring-Net使用/</id>
+    <link href="https://liruisen.github.io/2017/11/25/2017-11-25%20Spring-Net%E4%BD%BF%E7%94%A8/"/>
+    <id>https://liruisen.github.io/2017/11/25/2017-11-25 Spring-Net使用/</id>
     <published>2017-11-25T06:20:06.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -265,13 +269,13 @@
   </entry>
   
   <entry>
-    <title>配置Git</title>
-    <link href="https://liruisen.github.io/2017/11/06/%E9%85%8D%E7%BD%AEGit/"/>
-    <id>https://liruisen.github.io/2017/11/06/配置Git/</id>
+    <title>Git系列——1.配置Git</title>
+    <link href="https://liruisen.github.io/2017/11/06/2017-11-06%20%E9%85%8D%E7%BD%AEGit/"/>
+    <id>https://liruisen.github.io/2017/11/06/2017-11-06 配置Git/</id>
     <published>2017-11-06T03:43:04.000Z</published>
-    <updated>2019-05-20T13:49:55.301Z</updated>
+    <updated>2019-05-24T10:01:10.204Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h1><blockquote><p>换了电脑，但是新电脑上面并没有安装Git，重新安装后需要进行密钥和用户配置，虽然就没几行命令，但是每次去百度搜索还是费心，写成博客，以后直接找自己写的。</p></blockquote><h2 id="设置user-name和user-email信息："><a href="#设置user-name和user-email信息：" class="headerlink" title="设置user.name和user.email信息："></a>设置user.name和user.email信息：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure><h2 id="生成密钥文件："><a href="#生成密钥文件：" class="headerlink" title="生成密钥文件："></a>生成密钥文件：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure><p>回车默认不需要设置密码。</p><h2 id="把生成的密钥添加到Github上"><a href="#把生成的密钥添加到Github上" class="headerlink" title="把生成的密钥添加到Github上"></a>把生成的密钥添加到Github上</h2><ol><li><p>找到 <code>.ssh</code> 文件夹内的 <code>id_rsa.pub</code> 文件</p><p>通常文件目录为 <code>C:\Users\Administrator\.ssh</code> ,用记事本打开 id_rsa.pub 文件，复制文件中的全部内容到剪切板。</p></li><li><p>把密钥复制到 Github 的配置上</p><p><img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fx43h9cxjkj312s0c2myz.jpg" alt><img src="http://ww1.sinaimg.cn/mw690/006CBSf2ly1fx43k0hqqmj30ky0c2aa6.jpg" alt></p></li></ol><h2 id="检测Github上的ssh密钥是否添加成功："><a href="#检测Github上的ssh密钥是否添加成功：" class="headerlink" title="检测Github上的ssh密钥是否添加成功："></a>检测Github上的ssh密钥是否添加成功：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure><p><a href="https://sm.myapp.com/original/Development/Git-2.19.1-64-bit.exe" target="_blank" rel="noopener">Git下载地址</a>  (官网下载太慢，这是腾讯软件中心的下载链接)</p><h2 id="Git学习链接："><a href="#Git学习链接：" class="headerlink" title="Git学习链接："></a>Git学习链接：</h2><ul><li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a></li><li><a href="http://stormzhang.com/github/2016/05/25/learn-github-from-zero1/" target="_blank" rel="noopener">stormzhang Git系列教程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h1><blockquote><p>换了电脑，但是新电脑上面并没有安装Git，重新安装后需要进行密钥和用户配置，虽然就没几行命令，但是每次去百度搜索还是费心，写成博客，以后直接找自己写的。</p></blockquote><h2 id="设置user-name和user-email信息："><a href="#设置user-name和user-email信息：" class="headerlink" title="设置user.name和user.email信息："></a>设置user.name和user.email信息：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure><h2 id="生成密钥文件："><a href="#生成密钥文件：" class="headerlink" title="生成密钥文件："></a>生成密钥文件：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure><p>回车默认不需要设置密码。</p><h2 id="把生成的密钥添加到Github上"><a href="#把生成的密钥添加到Github上" class="headerlink" title="把生成的密钥添加到Github上"></a>把生成的密钥添加到Github上</h2><ol><li><p>找到 <code>.ssh</code> 文件夹内的 <code>id_rsa.pub</code> 文件</p><p>通常文件目录为 <code>C:\Users\Administrator\.ssh</code> ,用记事本打开 <code>id_rsa.pub</code> 文件，复制文件中的全部内容到剪切板。</p></li><li><p>把密钥复制到 Github 的配置上</p><p><img src="http://ww1.sinaimg.cn/large/006CBSf2ly1fx43h9cxjkj312s0c2myz.jpg" alt><img src="http://ww1.sinaimg.cn/mw690/006CBSf2ly1fx43k0hqqmj30ky0c2aa6.jpg" alt></p></li></ol><h2 id="检测Github上的ssh密钥是否添加成功："><a href="#检测Github上的ssh密钥是否添加成功：" class="headerlink" title="检测Github上的ssh密钥是否添加成功："></a>检测Github上的ssh密钥是否添加成功：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure><p>只要显示下面这句标识，就证明我们已经的秘钥已经添加成功了。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006CBSf2ly1g3ck1lkgi1j30gk04k3z0.jpg" alt="{8C405715-3228-4A2D-B99B-0AC2DFE363FC}.png" title>                </div>                <div class="image-caption">{8C405715-3228-4A2D-B99B-0AC2DFE363FC}.png</div>            </figure><p>但是，有的时候在将秘钥添加到Github上面以后，可能并不能直接上传或Clone厂库，会弹出来一个窗口进行验证Github（Gitee）的账号密码，输入即可，以后就不需要在此输入了。</p><p><a href="https://sm.myapp.com/original/Development/Git-2.19.1-64-bit.exe" target="_blank" rel="noopener">Git下载地址</a>  (官网下载太慢，这是腾讯软件中心的下载链接)</p><h2 id="Git学习链接："><a href="#Git学习链接：" class="headerlink" title="Git学习链接："></a>Git学习链接：</h2><ul><li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a></li><li><a href="http://stormzhang.com/github/2016/05/25/learn-github-from-zero1/" target="_blank" rel="noopener">stormzhang Git系列教程</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -294,8 +298,8 @@
   
   <entry>
     <title>Hexo发布文章</title>
-    <link href="https://liruisen.github.io/2017/11/04/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/"/>
-    <id>https://liruisen.github.io/2017/11/04/Hexo发布文章/</id>
+    <link href="https://liruisen.github.io/2017/11/04/2017-11-04%20Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/"/>
+    <id>https://liruisen.github.io/2017/11/04/2017-11-04 Hexo发布文章/</id>
     <published>2017-11-04T06:43:04.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -322,8 +326,8 @@
   
   <entry>
     <title>Hexo + Github pages搭建私人博客</title>
-    <link href="https://liruisen.github.io/2017/11/03/Hexo-Github-pages%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://liruisen.github.io/2017/11/03/Hexo-Github-pages搭建私人博客/</id>
+    <link href="https://liruisen.github.io/2017/11/03/2017-11-03%20Hexo-Github-pages%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://liruisen.github.io/2017/11/03/2017-11-03 Hexo-Github-pages搭建私人博客/</id>
     <published>2017-11-03T02:43:04.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -348,8 +352,8 @@
   
   <entry>
     <title>EF使用MySQL</title>
-    <link href="https://liruisen.github.io/2017/10/11/EF%E4%BD%BF%E7%94%A8MySQL/"/>
-    <id>https://liruisen.github.io/2017/10/11/EF使用MySQL/</id>
+    <link href="https://liruisen.github.io/2017/10/11/2017-10-11%20EF%E4%BD%BF%E7%94%A8MySQL/"/>
+    <id>https://liruisen.github.io/2017/10/11/2017-10-11 EF使用MySQL/</id>
     <published>2017-10-11T08:58:13.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
@@ -380,8 +384,8 @@
   
   <entry>
     <title>EF框架使用</title>
-    <link href="https://liruisen.github.io/2017/08/11/EF%E6%A1%86%E6%9E%B6/"/>
-    <id>https://liruisen.github.io/2017/08/11/EF框架/</id>
+    <link href="https://liruisen.github.io/2017/08/11/2017-08-11%20EF%E6%A1%86%E6%9E%B6/"/>
+    <id>https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/</id>
     <published>2017-08-11T08:58:13.000Z</published>
     <updated>2019-05-20T13:49:55.301Z</updated>
     
