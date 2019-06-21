@@ -26,14 +26,14 @@
 <meta name="keywords" content="ASP.NET MVC,EF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EF框架使用">
-<meta property="og:url" content="https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/index.html">
+<meta property="og:url" content="https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本博客所有案例的开发环境为 VS2013 + SQL Server 2012 Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx4.sinaimg.cn/large/006CBSf2ly1fzq3wum791j31ab0wtamc.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/006CBSf2ly1fzq4czg0ryj3224295e1n.jpg">
 <meta property="og:image" content="https://wx2.sinaimg.cn/large/006CBSf2ly1fzq4ak1dgqj32j21e04cw.jpg">
-<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta property="og:updated_time" content="2019-06-21T08:32:46.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EF框架使用">
 <meta name="twitter:description" content="本博客所有案例的开发环境为 VS2013 + SQL Server 2012 Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。2016年">
@@ -143,8 +143,8 @@
         <h1 class="title">EF框架使用</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-08-11T08:58:13.000Z" itemprop="datePublished" class="page-time">
-  2017-08-11
+                <time datetime="2018-03-11T08:58:13.000Z" itemprop="datePublished" class="page-time">
+  2018-03-11
 </time>
 
 
@@ -175,7 +175,7 @@
     <div class="post-card">
         <h1 class="post-card-title">EF框架使用</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-08-11 16:58:13" datetime="2017-08-11T08:58:13.000Z" itemprop="datePublished">2017-08-11</time>
+            <time class="post-time" title="2018-03-11 16:58:13" datetime="2018-03-11T08:58:13.000Z" itemprop="datePublished">2018-03-11</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
@@ -271,8 +271,10 @@
 <li>新建 <strong>标量属性</strong> 后，需要在属性面板对 标量属性的 <strong>长度</strong> 和 <strong>数据类型</strong> 进行限制，string 长度即为数据库内字段的 NVarChar 的长度 。</li>
 <li>在 .edmx 图形化页面 <strong>新建完实体</strong> 后，解决方案里面可能没有生成 Model.tt 文件（包含 Model 模型.cs），这时候在 .edmx 图形化页面: 右键 &gt; 添加代码生成项 &gt; 数据 &gt;EF 版本.x DbContext 生成器 &gt; 确定</li>
 <li>关于实体更新 <ol>
-<li>需映射数据库更新 </li>
+<li>需映射数据库更新 <ol start="2">
 <li>更新实体后，VS 在生成的DDL数据库脚本中，是<strong>把原先创建好的表全部删除，再重新创建</strong>更新后的实体所对应的表，如果原数据表中存在数据，数据也会一并删除。（2）. 在更新数据库时一定要谨慎，做好数据库备份，同时如果只是小的改动（扩大字符长度），手动在数据库里 修改即可，或者仅把更新的sql脚本部分拷贝出来，复制到SQL Server执行</li>
+</ol>
+</li>
 </ol>
 </li>
 </ol>
@@ -357,7 +359,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -367,22 +369,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -405,13 +407,20 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/10/11/2017-10-11 EF使用MySQL/" id="post-prev" class="post-nav-link">
+      <a href="/2018/06/09/2018-06-09 EF使用MySQL/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">EF使用MySQL</h4>
       </a>
     </div>
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/11/2018-3-11 EF框架/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">EF框架使用</h4>
+      </a>
+    </div>
   
 </nav>
 
@@ -529,7 +538,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -539,22 +548,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&title=《EF框架使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EF框架使用》 — Hexo&url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/&via=https://liruisen.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2017/08/11/2017-08-11 EF框架/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/03/11/2017-08-11 EF框架/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -565,7 +574,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aMW7DMAwF0Nz/0u7aoXY+SadA6KepiF1LTwNBkXq94nH8GtXfr99JvnbbwMDA+FrGcTnOJkgmy7+TzHu9KRgYGE9gnC2iGhzP/qu3QcnaMDAwMCak5P1eWMfAwMDoLT35Jf8yBgYGRu8Qmyd/OTiZ6+azOAYGxhcy8qr7///9kf4GBgbGVzGO4kiOoMlhNdmmwqowMDBWMybNyOQIml+/mDdHMTAwtjImH60ePntXMSIYBgbGYxjVUlpeVktgvZLfHwEXAwNjHaM3QfUg2kscq+EeAwNjKyOZuFeTnxfRCtuKgYGxmtEr008C8aSBWt5oDAyMFYzJsqpJXtJOuE4lT59iYGCsZlSTtupdrHtbpOVyGwYGxjpGHuDyxDFJOqtPCwkiBgbGCsa8eZkX1D7RTsDAwMDIJ2v2TgeXw970NzAwMNYx8tJ/tWFQLdU1m6kYGBirGb0ULV9EtVSXbwQGBsYzGdUSWDJ9/nQeRTEwMHYzele7qhc1qsjygRkDA+MBjOoS8xZjr5BXDtYYGBgPYExK/71rGXmbM8oAMTAwljKO4qgebpPF3RC4MTAwVjOqncFJ6zG/8tW7rIaBgbGbkQTZZPpyozFugo5ujmBgYCxiJI3DauqWX7OYtDMxMDAweplmXsLrtTxvC7gYGBhLGUkDMm8PJOlgsk0YGBhPYCSH2F4YzY/HvTcxMDCewPhELWuyxGpiioGBsZrxAzAzYL5kr0VtAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS47DIBBF0ex/0+4FJKD7qkxLwPUoShzD8aBUHz4ffD1f1/f38/tH94z+9VlxyZAhY1vGM706C5Dn8HXnL0WGDBk3MEabSIPj6F/8Bc3XHX4vQ4YMGThokiVrJBkyZMhIA26a2KWhXIYMGTJqRWwaiDuF68JaXIYMGRsyeOPs/z8vmW/IkCFjK8YTXjzhmxer5DUFu5IhQ8bRDB7geELWKXdb+5EhQ8YFjNoQMR1YpkcxgmRRhgwZhzJII4yEyz6s1vL7keHKkCHjaEatlCWFaC1xDMK9DBkyjmaQZlmtKdZvovHQLEOGjDsZ6eGGzq/pjDKetcqQIWNzRq01z5to83vIM0nQlyFDxtmM/qmqdDyZvhrUbpMhQ8aVjE5bn7TJ4mDKy1cZMmQcxyCpIT+KwVtmb40TZMiQIYOXuHy7PFgHI1IZMmQczUiXmS/JG22ddl5xhiBDhoxtGaQ0TZv+adHLA+4wTZQhQ8bRDPJzZwzJ083aQRAZMmTcw6jlkv2kkBeuqJyWIUPGBYx0eNk5lkGCaRysZciQcQGDN7w6gbI25kR7kyFDxqGMJ7w6AZr3x+LALUOGjKMZnZL13RHpPKDHvUMZMmQcx+gXoq+d+MCvTIYMGXcySLHKE7j0mMWSWlyGDBkXM3hpSkrf2sizeFpEhgwZ1zDe2noappekhjJkyNiKwYcB/MDE/PlkqLCk3SZDhowNGbx0rBW66RbT8YAMGTKOZvwB5oRgvgyWW+0AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

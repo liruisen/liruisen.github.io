@@ -22,13 +22,13 @@
     
     
     <meta name="keywords" content="log4net,mvc">
-    <meta name="description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+    <meta name="description" content="Log4Net Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（Web.">
 <meta name="keywords" content="log4net,mvc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Log4net使用">
-<meta property="og:url" content="https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/index.html">
+<meta property="og:url" content="https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+<meta property="og:description" content="Log4Net Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（Web.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlax883u8j30pi0gu0t9.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlazpxg2sj30i30733yg.jpg">
@@ -36,10 +36,10 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlb5zpz2tj30jc0adaa3.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbb6oowfj30kw0383yf.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlbj5v6iuj310608faa9.jpg">
-<meta property="og:updated_time" content="2019-05-20T13:49:55.301Z">
+<meta property="og:updated_time" content="2019-05-26T08:24:21.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log4net使用">
-<meta name="twitter:description" content="##Log4Net  Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W">
+<meta name="twitter:description" content="Log4Net Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8  安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件 Log4net配置在安装过Log4Net后需要对项目进行一些列配置（Web.">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006CBSf2ly1fxlax883u8j30pi0gu0t9.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
@@ -168,12 +168,12 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4net配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">Log4net配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本配置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基本配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进一步配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">进一步配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化程序"><span class="post-toc-number">3.</span> <span class="post-toc-text">初始化程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打印日志信息"><span class="post-toc-number">4.</span> <span class="post-toc-text">打印日志信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">基本使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者——消费者模式"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">生产者——消费者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新建异常信息监控类"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">新建异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-FilterConfig-类中注册自己的异常信息监控类"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">在 FilterConfig 类中注册自己的异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在程序入口添加线程监控"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">在程序入口添加线程监控</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加引发异常的方法进行测试"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">添加引发异常的方法进行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要注意的地方"><span class="post-toc-number">4.2.5.</span> <span class="post-toc-text">需要注意的地方</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4Net相关概念"><span class="post-toc-number">5.</span> <span class="post-toc-text">Log4Net相关概念</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4Net"><span class="post-toc-number">1.</span> <span class="post-toc-text">Log4Net</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4net配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">Log4net配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本配置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">基本配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进一步配置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">进一步配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化程序"><span class="post-toc-number">4.</span> <span class="post-toc-text">初始化程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打印日志信息"><span class="post-toc-number">5.</span> <span class="post-toc-text">打印日志信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">基本使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者——消费者模式"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">生产者——消费者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新建异常信息监控类"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">新建异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-FilterConfig-类中注册自己的异常信息监控类"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">在 FilterConfig 类中注册自己的异常信息监控类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在程序入口添加线程监控"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">在程序入口添加线程监控</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加引发异常的方法进行测试"><span class="post-toc-number">5.2.4.</span> <span class="post-toc-text">添加引发异常的方法进行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要注意的地方"><span class="post-toc-number">5.2.5.</span> <span class="post-toc-text">需要注意的地方</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Log4Net相关概念"><span class="post-toc-number">6.</span> <span class="post-toc-text">Log4Net相关概念</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-2018-01-30 Log4net使用" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-2018-4-30 Log4net使用" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Log4net使用</h1>
@@ -194,8 +194,7 @@
             
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>##Log4Net</p>
-<blockquote>
+            <h2 id="Log4Net"><a href="#Log4Net" class="headerlink" title="Log4Net"></a>Log4Net</h2><blockquote>
 <p>Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8</p>
 </blockquote>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件</p>
@@ -331,7 +330,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -341,22 +340,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -388,7 +387,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/01/17/2018-01-17 Vue与其他操作DOM的第三方库搭配使用/" id="post-next" class="post-nav-link">
+      <a href="/2018/01/17/2019-01-17 Vue与其他操作DOM的第三方库搭配使用/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">:Vue与其他操作DOM的第三方库搭配使用</h4>
       </a>
@@ -510,7 +509,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&title=《Log4net使用》 — Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -520,22 +519,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&title=《Log4net使用》 — Hexo&source=liruisen'Blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4net使用》 — Hexo&url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/&via=https://liruisen.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/2018-01-30 Log4net使用/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/01/30/2018-4-30 Log4net使用/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -546,7 +545,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3a0YrbMBAF0P3/n95C6UOha+feGYukcPwUFkfWUcCjvZqvr/j6/n39/fnqurrnarT78a/+8vCFh4eHN5p6O9180v+Okzw3X4L7b+Hh4eGd4+XFIP9u8ipPysn9Mr2YDx4eHt5beTP2/T35yHh4eHj/Ly/ZQOfTykMHPDw8vE/jJWFEHkyc21gfzFrw8PDwYt7sAOy9n4+f7+Hh4eGNTtXzUDV/fPLS38/zz2h4eHh4B3hPPbJtlso34nkxKP5jwMPDw1vz2kkn4emsySBZjk1jAR4eHt6elx9iRUdNi7aDvAUhj4Dx8PDwTvCSupEfO20arfbtVpdLj4eHh3eYlzcBJIf9bdk40pqAh4eH9yjvqXartqgUax//DJdhBB4eHt4BXlsGnionecAxLDx4eHh4h3nt0Hnr1aZRoI1x8fDw8E7zNgHBLJadHYC1S/lA/oGHh4cXH321B2At6dkmrWhLjYeHh3eAt3kR75fj2Xhi1VOGh4eH12UI9VZ4FtQmSzOLjKMwAg8PD+/YAVh7tW1Ss2WtR8PDw8M7zHsqSJ2x86KSLxAeHh7eOV7xhXirnVPb5oN6S42Hh4f3KG/12o2Po2YTnbVYvRgZDw8Pb81LGq1ydntAdb9k+3AEDw8P7wRvE6duWlrbTXa7ZHh4eHjneHms0BaJfcDR3omHh4f3CbxZK8C+zLRF6PJOPDw8vAO8/AFtAJGHBbNlHYYReHh4eGved3m1L/HN1ryNgKMtNR4eHt6aN6sk7dD7xqx8DsMjNDw8PLySlxeD5LXbvrjbO/M54OHh4Z3mzZLP9nCrjWLbCvbDmHh4eHhv5c2igXY5ZsdsL7bUeHh4eB/Ayx9THPAHoUM+Hzw8PLzTvDwIyCe6iYk3OTQeHh7eaV77+P0rO28gmBWe1eri4eHh3T3rF6755CnQcs87AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3aQW7DMAxE0dz/0i7QbWvpjyijNfW9Coo00dNiQlH8fPBzfT/j1z/fP37n3V/uPnPDI0OGjNcyruEzXu540ePPGW8BX5sMGTLOYfCPIwtN/zfdPhkyZMjg4cgLR7IFa6EsQ4YMGWmMcl5aSsqQIUMGKdHWjqZpo+3xs7gMGTJeyNh1MfDE6z+435AhQ8Y/Y1zhw+OSXG3y90xWJUOGjNYMXrrxYypfKC86URzLkCGjKWOtBUYGufiBc7wGVCzKkCHjSAYJvrRxVmnGTTZOhgwZrRlpc41HJC8010J5MYhlyJDxQkbQzAqbYiQo44baHV6GDBmtGWuBmDbR9h6hb1ciQ4aMpoy0BOSHTF5i8ivSye+GDBkyDmCkTTc+kEFaY6Q9dxvQMmTIOIDBry33HlbXxjtkyJBxGoMfJncNZKwFMbrClCFDxgEMDuBFYRriaZn4S+DKkCGjHaMSr+kFQHokDn4MZMiQcQAjbX7VS700dieHXhkyZLRm8EBMByYqpMUxDhkyZDRlkDYZL+NKe4m/Md4PGTJktGBUxrn4SMSDB2YZMmS0ZlQuBtLDZ6WIJOMXMmTI6Mq4wicdgKgEMW/5yZAhozejEnPpxWQ6nJqOrMmQIaM3Y23ogR9rd23QJOJlyJBxACNt6PMYrQxnxBeZMmTIOJ5RXxYZ3VgsN2XIkCEDt9gqW8DbdhsCV4YMGS9k8GY9vz0kkZoG9yRwZciQ0ZRRaYqlX8DLvrjdJkOGjJ6MLzCanpx89tbzAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
