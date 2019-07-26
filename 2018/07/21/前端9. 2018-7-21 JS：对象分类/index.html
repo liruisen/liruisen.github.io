@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>对象分类 | Blog Sweets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="JS高级,面对对象">
+    <meta name="description" content="前面有两篇文章写了JavaScript对象的一些基础知识。但是，我们所讲解的对象，只是特定的一部分，并不能涵盖全部的JavaScript对象。比如说，我们不论怎样编写代码，都没法绕开Array，实现一个跟原生的数组行为一模一样的对象，这是由于原生数组的底层实现了一个自动随着下标变化的length属性。并且，在浏览器环境中，也无法单纯依靠JavaScript代码实现div对象，只能靠document">
+<meta name="keywords" content="JS高级,面对对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象分类">
+<meta property="og:url" content="https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/index.html">
+<meta property="og:site_name" content="Blog Sweets">
+<meta property="og:description" content="前面有两篇文章写了JavaScript对象的一些基础知识。但是，我们所讲解的对象，只是特定的一部分，并不能涵盖全部的JavaScript对象。比如说，我们不论怎样编写代码，都没法绕开Array，实现一个跟原生的数组行为一模一样的对象，这是由于原生数组的底层实现了一个自动随着下标变化的length属性。并且，在浏览器环境中，也无法单纯依靠JavaScript代码实现div对象，只能靠document">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g55idvv4v6j30mk08v76n.jpg">
+<meta property="og:updated_time" content="2019-07-26T02:31:41.095Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象分类">
+<meta name="twitter:description" content="前面有两篇文章写了JavaScript对象的一些基础知识。但是，我们所讲解的对象，只是特定的一部分，并不能涵盖全部的JavaScript对象。比如说，我们不论怎样编写代码，都没法绕开Array，实现一个跟原生的数组行为一模一样的对象，这是由于原生数组的底层实现了一个自动随着下标变化的length属性。并且，在浏览器环境中，也无法单纯依靠JavaScript代码实现div对象，只能靠document">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g55idvv4v6j30mk08v76n.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">对象分类</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">对象分类</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-21T08:42:04.000Z" itemprop="datePublished" class="page-time">
+  2018-07-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript中的对象分类"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript中的对象分类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#宿主对象"><span class="post-toc-number">2.</span> <span class="post-toc-text">宿主对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内置对象·固有对象"><span class="post-toc-number">3.</span> <span class="post-toc-text">内置对象·固有对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内置对象·原生对象"><span class="post-toc-number">4.</span> <span class="post-toc-text">内置对象·原生对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数对象与构造器对象"><span class="post-toc-number">5.</span> <span class="post-toc-text">函数对象与构造器对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特殊行为的对象"><span class="post-toc-number">6.</span> <span class="post-toc-text">特殊行为的对象</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端9. 2018-7-21 JS：对象分类" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">对象分类</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-21 16:42:04" datetime="2018-07-21T08:42:04.000Z" itemprop="datePublished">2018-07-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>前面有两篇文章写了JavaScript对象的一些基础知识。但是，我们所讲解的对象，只是特定的一部分，并不能涵盖全部的JavaScript对象。比如说，我们不论怎样编写代码，都没法绕开Array，实现一个跟原生的数组行为一模一样的对象，这是由于原生数组的底层实现了一个自动随着下标变化的length属性。并且，在浏览器环境中，也无法单纯依靠JavaScript代码实现div对象，只能靠document.createElement来创建。这也说明了JavaScript的对象机制并非简单的属性集合+原型。因此来总结下JS的对象及分类。</p>
+<h2 id="JavaScript中的对象分类"><a href="#JavaScript中的对象分类" class="headerlink" title="JavaScript中的对象分类"></a>JavaScript中的对象分类</h2><p>可以把对象分成以下几类。</p>
+<ul>
+<li>宿主对象（host Objects）：由JavaScript宿主环境提供的对象，它们的行为完全由宿主环境决定。</li>
+<li>内置对象（Built-in Objects）：由JavaScript语言提供的对象。<ul>
+<li>固有对象（Intrinsic Objects ）：由标准规定，随着JavaScript运行时创建而自动创建的对象实例。</li>
+<li>原生对象（Native Objects）：可以由用户通过Array、RegExp等内置构造器或者特殊语法创建的对象。</li>
+<li>普通对象（Ordinary Objects）：由{}语法、Object构造器或者class关键字定义类创建的对象，它能够被原型继承。</li>
+</ul>
+</li>
+</ul>
+<h2 id="宿主对象"><a href="#宿主对象" class="headerlink" title="宿主对象"></a>宿主对象</h2><p>首先我们来看看宿主对象。</p>
+<p>JavaScript宿主对象千奇百怪，但是前端最熟悉的无疑是浏览器环境中的宿主了。在浏览器环境中，我们都知道全局对象是window，window上又有很多属性，如document。实际上，这个全局对象window上的属性，一部分来自JavaScript语言，一部分来自浏览器环境。</p>
+<p>JavaScript标准中规定了全局对象属性，w3c的各种标准中规定了Window对象的其它属性。宿主对象也分为固有的和用户可创建的两种，比如document.createElement就可以创建一些dom对象。</p>
+<h2 id="内置对象·固有对象"><a href="#内置对象·固有对象" class="headerlink" title="内置对象·固有对象"></a>内置对象·固有对象</h2><p>固有对象是由标准规定，随着JavaScript运行时创建而自动创建的对象实例。固有对象在任何JS代码执行前就已经被创建出来了，它们通常扮演者类似基础库的角色。我们前面提到的“类”其实就是固有对象的一种。</p>
+<h2 id="内置对象·原生对象"><a href="#内置对象·原生对象" class="headerlink" title="内置对象·原生对象"></a>内置对象·原生对象</h2><p>我们把JavaScript中，能够通过语言本身的构造器创建的对象称作原生对象。在JavaScript标准中，提供了30多个构造器。按照不同应用场景，可以把原生对象分成了以下几个种类。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g55idvv4v6j30mk08v76n.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过这些构造器，我们可以用new运算创建新的对象，所以我们把这些对象称作原生对象。几乎所有这些构造器的能力都是无法用纯JavaScript代码实现的，它们也无法用class/extend语法来继承。</p>
+<p>这些构造器创建的对象多数使用了私有字段,例如：</p>
+<ul>
+<li>Error: [[ErrorData]]</li>
+<li>Boolean: [[BooleanData]]</li>
+<li>Number: [[NumberData]]</li>
+<li>Date: [[DateValue]]</li>
+<li>RegExp: [[RegExpMatcher]]</li>
+<li>Symbol: [[SymbolData]]</li>
+<li>Map: [[MapData]]</li>
+</ul>
+<p>这些字段使得原型继承方法无法正常工作，所有这些原生对象都是为了特定能力或者性能，而设计出来的“特权对象”</p>
+<h2 id="函数对象与构造器对象"><a href="#函数对象与构造器对象" class="headerlink" title="函数对象与构造器对象"></a>函数对象与构造器对象</h2><p>前面介绍了对象的一般分类，在JavaScript中，还有一个看待对象的不同视角，这就是用对象来模拟函数和构造器。，JavaScript为这一类对象预留了私有字段机制，并规定了抽象的函数对象与构造器对象的概念。</p>
+<p>函数对象的定义是：具有[[call]]私有字段的对象，构造器对象的定义是：具有私有字段[[construct]]的对象。</p>
+<p>JavaScript用对象模拟函数的设计代替了一般编程语言中的函数，它们可以像其它语言的函数一样被调用、传参。任何宿主只要提供了“具有[[call]]私有字段的对象”，就可以被 JavaScript 函数调用语法支持。或者可以这样说，任何对象只需要实现[[call]]，它就是一个函数对象，可以去作为函数被调用。而如果它能实现[[construct]]，它就是一个构造器对象，可以作为构造器被调用。</p>
+<p>对于为JavaScript提供运行环境的我们来说，只要字段符合，我们在上文中提到的宿主对象和内置对象（如Symbol函数）可以模拟函数和构造器。不过用function关键字创建的函数必定同时是函数和构造器，虽然它们表现出来的行为效果却并不相同。</p>
+<p>对于宿主和内置对象来说，它们实现[[call]]（作为函数被调用）和[[construct]]（作为构造器被调用）不总是一致的。比如内置对象 Date 在作为构造器调用时产生新的对象，作为函数时，则产生字符串，见以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>())</span><br></pre></td></tr></table></figure>
+<p>而浏览器宿主环境中，提供的Image构造器，则根本不允许被作为函数调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Image); </span><br><span class="line"><span class="built_in">console</span>.log(Image());<span class="comment">//抛出错误</span></span><br></pre></td></tr></table></figure>
+<p>再比如基本类型（String、Number、Boolean），它们的构造器被当作函数调用，则产生类型转换的效果。</p>
+<p>同时，在ES6之后 =&gt; 语法创建的函数仅仅是函数，它们无法被当作构造器使用，见以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> (<span class="function"><span class="params">a</span> =&gt;</span> <span class="number">0</span>) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>对于用户使用 function 语法或者Function构造器创建的对象来说，[[call]]和[[construct]]行为总是相似的，它们执行同一段代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> v = f(); <span class="comment">//把f作为函数调用</span></span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> f(); <span class="comment">//把f作为构造器调用</span></span><br></pre></td></tr></table></figure>
+<p>因此大致可以认为，它们[[construct]]的执行过程如下：</p>
+<ul>
+<li>以 Object.protoype 为原型创建一个新对象；</li>
+<li>以新对象为 this，执行函数的[[call]]；</li>
+<li>如果[[call]]的返回值是对象，那么，返回这个对象，否则返回第一步创建的新对象。</li>
+</ul>
+<p>这样的规则造成了个有趣的现象，如果我们的构造器返回了一个新的对象，那么new创建的新对象就变成了一个构造函数之外完全无法访问的对象，这一定程度上可以实现“私有”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getValue:<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.a</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> cls;</span><br><span class="line">o.getValue(); <span class="comment">//100</span></span><br><span class="line"><span class="comment">//a在外面永远无法访问到</span></span><br></pre></td></tr></table></figure>
+<h2 id="特殊行为的对象"><a href="#特殊行为的对象" class="headerlink" title="特殊行为的对象"></a>特殊行为的对象</h2><p>除了上面介绍的对象之外，在固有对象和原生对象中，有一些对象的行为跟正常对象有很大区别。</p>
+<p>它们常见的下标运算（就是使用中括号或者点来做属性访问）或者设置原型跟普通对象不同，这里我简单总结一下。</p>
+<ul>
+<li>Array：Array的length属性根据最大的下标自动发生变化。</li>
+<li>Object.prototype：作为所有正常对象的默认原型，不能再给它设置原型了。</li>
+<li>String：为了支持下标运算，String的正整数属性访问会去字符串里查找。</li>
+<li>Arguments：arguments的非负整数型下标属性跟对应的变量联动。</li>
+<li>模块的namespace对象：特殊的地方非常多，跟一般对象完全不一样，尽量只用于import吧。</li>
+<li>类型数组和数组缓冲区：跟内存块相关联，下标运算比较特殊。</li>
+<li>bind后的function：跟原来的函数相关联。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面对对象/">面对对象</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&title=《对象分类》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&title=《对象分类》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《对象分类》 — Blog Sweets&url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/09/26/算法2：复杂度分析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">复杂度分析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">原型与原型链</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
+        </p>
+        
+    </div>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div> -->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&title=《对象分类》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&title=《对象分类》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《对象分类》 — Blog Sweets&url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/07/21/前端9. 2018-7-21 JS：对象分类/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3aS44bMQwFwLn/pSdAVgkytt8jJcMIqleGP7KqFyKb5NdXfH3/vh69/vN6/tvnqz1f89H6By48PDy80dYfXf9+p70dj1Z4/k6+nxe3GA8PD+8aLwkGCXJzIxJSvmc8PDy8T+AlB/3zTbcr4OHh4f0fvKRMMGMnIQcPDw/vc3h5OpukzvlW2gBzsdaCh4eHF/P2DbD3v35rfw8PDw8vDgntWEDyq9mB/j268PDw8G7wZkNObcmgbYbNEuXiiQEPDw9vwZs93ueDUG2xeNNI++EdPDw8vAu8zQN/ntS2pdjZeFYRHvDw8PDWvOSQnR3feSqc/7a9EXh4eHg3eG1aPBu3alc4RcXDw8M7y2vLoy0mgbVli2IneHh4eBd4dQyJC755Uy1vubWFEjw8PLz389pxqNlR3h73w+CEh4eHd4iXFx3a8YLNqMG+0fXXEwMeHh7eUV5eeJ21xzYpdfJ62ADDw8PDW/PyL+WbTpLm2bjVZuwADw8P7xTvVDqbbzH5x/Zm1XEPDw8Pb8Rriws5Mr8F7QpF6RkPDw/vAq89uDfJ976d1v4XHh4e3j3eMBMPUvBTpYe6jnLgQQMPDw9vcqxvWlbtGEG7q3y3eHh4eGd5s5Q3P4eT8DD792hcDA8PD+8CLy+JJhs620jL0/Gi1oKHh4e35rVliNlwwCw1zwcIDsQ9PDw8vBGvbcxvRgf2BY5oNAEPDw/vAi/Pu2fNp7bw2pYnigCGh4eHd4j3XV75edsGgM3wQV2MwMPDw1vwTk0utaXb5yl7/ukmaOHh4eFteHlzKyedCht5G+zFTBkeHh7eBV5bMtizk4LCKprh4eHhfQBvVhrI15zt8MXtwMPDw/sAXpsit4BZQHq4Ezw8PLxrvLYYMRuoatv/STn4RSDBw8PDu8Brn+j3BYhZ8fcAAw8PD2/L+wW3mSvwPnC0kwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

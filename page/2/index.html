@@ -15,7 +15,7 @@
     
     
     <meta name="referrer" content="no-referrer">
-    <title>Hexo</title>
+    <title>Blog Sweets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#EAFC6F">
@@ -25,18 +25,18 @@
     <meta name="description" content="liruisen&apos;Blog">
 <meta name="keywords" content="ruisenLi,liruisen">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Blog Sweets">
 <meta property="og:url" content="https://liruisen.github.io/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Blog Sweets">
 <meta property="og:description" content="liruisen&apos;Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Blog Sweets">
 <meta name="twitter:description" content="liruisen&apos;Blog">
     
-        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
@@ -113,7 +113,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Hexo</div>
+        <div class="flex-col header-title ellipsis">Blog Sweets</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -135,7 +135,7 @@
 <header class="content-header index-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Hexo</h1>
+        <h1 class="title">Blog Sweets</h1>
         <h5 class="subtitle">
             
                 
@@ -151,6 +151,393 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-前端8. 2018-7-19 JS：原型与原型链" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-19 21:18:04" datetime="2018-07-19T13:18:04.000Z" itemprop="datePublished">2018-07-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/">原型与原型链</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        什么是原型？原型是顺应人类自然思维的产物。中文中有个成语叫做“照猫画虎”，这里的猫看起来就是虎的原型，所以，由此我们可以看出，用原型来描述对象的方法可以说是古已有之。
+在JS的面对对象文章里面写过，在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象。最为成功的是使用“类”的方式来描述对象，这诞生了诸如 C++、Java等流行的编程语言。这个流派叫做基于类的编程语言。还有一种就是...
+    
+
+        <a href="/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面对对象/">面对对象</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端7. 2018-6-20 JS：面对对象" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-06-20 15:30:04" datetime="2018-06-20T07:30:04.000Z" itemprop="datePublished">2018-06-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/06/20/前端7. 2018-6-20 JS：面对对象/">JS面对对象</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言在学习JS的面对对象的时候遇到一些疑惑，原因在于事先学习过C#的面对对象，因此在学习JS面对对象时候总喜欢把二者放在一起参考学习，因此经常会有疑惑，因为二者的面对对象相差很大。在网上找过很多资料看过很多观点之后，来写一写自己的理解吧。
+很多人说JavaScript并非“面向对象的语言”，而是“基于对象的语言”，甚至东哥也是这样给我解惑的，但是我在问 “如何定义面向对象和基于对象” 时，东...
+    
+
+        <a href="/2018/06/20/前端7. 2018-6-20 JS：面对对象/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面对对象/">面对对象</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-2018-06-09 EF使用MySQL" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-06-09 16:58:13" datetime="2018-06-09T08:58:13.000Z" itemprop="datePublished">2018-06-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/06/09/2018-06-09 EF使用MySQL/">EF使用MySQL</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+新项目需要使用MVC+EF+MySQL，以前使用的数据库都是微软的亲儿子SQL Server，所以在使用的时候基本没有遇到过什么问题，但是这次在使用MySQL的时候却一直出现问题，看到的博客很多，千篇一律还没能解决问题，整理此博客，用以记录与分享
+
+EF如何使用SQL Server作为数据源不再多说，不太了解的话查看此博客，下面将讲述EF如何使用MySQL ，本次开发环境为 VS2017，...
+    
+
+        <a href="/2018/06/09/2018-06-09 EF使用MySQL/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-NET-MVC/">ASP.NET MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EF/">EF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端6. 2018-5-12 JS：数据类型转换" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-12 11:20:04" datetime="2018-05-12T03:20:04.000Z" itemprop="datePublished">2018-05-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/12/前端6. 2018-5-12 JS：数据类型转换/">JS的数据类型转换</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        JS类型转换前面讲了基本类型，这篇来总结下类型转换。
+因为JS是弱类型语言，所以类型转换发生非常频繁，大部分我们熟悉的运算都会先进行类型转换。大部分类型转换符合人类的直觉，但是如果我们不去理解类型转换的严格定义，很容易造成一些代码中的判断失误。
+其中最为臭名昭著的是JS中的“ == ”运算，因为试图实现跨类型的比较，它的规则复杂到几乎没人可以记住。这里也不打算讲解==的规则，它属于设计失误，...
+    
+
+        <a href="/2018/05/12/前端6. 2018-5-12 JS：数据类型转换/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端5. 2018-5-10 JS：JS的数据类型" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-10 11:20:04" datetime="2018-05-10T03:20:04.000Z" itemprop="datePublished">2018-05-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/10/前端5. 2018-5-10 JS：JS的数据类型/">JS的数据类型</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        上篇 JS 的博客写了我看大牛划分的 JS 顶层体系分类，还记得吗？是 语义、文法、运行时，这篇文章就从运行时的角度去看 JavaScript 的类型系统。
+
+运行时类型是代码实际执行过程中我们用到的类型。所有的类型数据都会属于7个类型之一。从变量、参数、返回值到表达式中间结果，任何JavaScript代码运行过程中产生的数据，都具有运行时类型。
+
+在正式开始之前，我先留下几个问题，如果能全...
+    
+
+        <a href="/2018/05/10/前端5. 2018-5-10 JS：JS的数据类型/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端4. 2018-4-18 JS：基本架构和目录" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-18 11:20:04" datetime="2018-04-18T03:20:04.000Z" itemprop="datePublished">2018-04-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/18/前端4. 2018-4-18 JS：基本架构和目录/">JS学习体系</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+大二的时候就学习了JS，但是那个时候主要还是在学习JS的DOM操作和事件，关于W3CSchool中JS的其他部分，东哥并没有深入的去讲解，但是我的性子耐不住啊，在学过DOM操作和事件以后，就去查了 W3CSchool、CSDN、敲了Demo、问了东哥，得出这个系列的博客。
+
+构建JS的知识框架关于JS在深入学习以后，发现东西真是多，类型转换、this指针、闭包、变量提升、作用域链、原型链…...
+    
+
+        <a href="/2018/04/18/前端4. 2018-4-18 JS：基本架构和目录/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端2. 2018-3-18 HTML语义化2：为什么使用" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-18 11:20:04" datetime="2018-03-18T03:20:04.000Z" itemprop="datePublished">2018-03-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/">怎么使用HTML语义化？</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+上篇文章总结了下关于HTML的语义化，以及我在学习语义化标签后，对语义化标签使用的看法。这篇主要写我觉的比较重要的语义标签使用场景以及使用。
+
+ 与C#这样严格的编程语言相比，HTML中语义标签的使用更接近我们平常说话用的自然语言。我们平时说话并没有唯一的标准措辞，语义标签的使用也是一样。下面写几个我觉得比较重要的语义标签使用场景。
+作为自然语言延伸的语义类标签语义这个词从定义上就是文科的...
+    
+
+        <a href="/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML语义化/">HTML语义化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端1. 2018-3-16 HTML语义化1：是什么" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-16 10:43:04" datetime="2018-03-16T02:43:04.000Z" itemprop="datePublished">2018-03-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/03/16/前端1. 2018-3-16 HTML语义化1：是什么/">什么是HTML语义化？</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+HTML的标签可以分为很多种，比如head里面的元信息类标签，又比如img、video、audio之类的替换型媒体标签，又或者如div、span等布局标签。在HTML5以前以及现在，布局大多使用Div进行布局，但是 H5 标准中一个特点就是标签的语义化。关于什么是语义化的标签、使用他有什么好处，在接触之前我也是不了解的，为了快速开发大多使用 div 进行布局，然后通过有业务含义的class...
+    
+
+        <a href="/2018/03/16/前端1. 2018-3-16 HTML语义化1：是什么/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML语义化/">HTML语义化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-2018-3-11 EF框架" class="article-card article-type-post" itemprop="blogPost">
@@ -200,59 +587,10 @@ Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NE
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-2018-02-24 Git教程2" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-2017-08-11 EF框架" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-02-24 21:43:04" datetime="2018-02-24T13:43:04.000Z" itemprop="datePublished">2018-02-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git教程/">Git教程</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/02/24/2018-02-24 Git教程2/">Git系列——2.Git分支</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        关于git的学习有一个阶段，如果是从未接触过命令行式开发（Linux、cmd）的萌新的话，建议先去了解下什么是Git，Git有什么用，关于这些网上已经有了很多的介绍了，我也根据我的理解写了一篇关于Git的介绍，点击链接查看  ，同时
-Git分支创建、切换分支git branch X分支名X  ：创建分支 x分支名x
-git checkout x分支名x ：切换到 x分支名x
-git chec...
-    
-
-        <a href="/2018/02/24/2018-02-24 Git教程2/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2018-4-30 Log4net使用" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-01-30 21:12:55" datetime="2018-01-30T13:12:55.000Z" itemprop="datePublished">2018-01-30</time>
+        <time class="post-time" title="2018-03-11 16:58:13" datetime="2018-03-11T08:58:13.000Z" itemprop="datePublished">2018-03-11</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
@@ -266,7 +604,7 @@ git chec...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/01/30/2018-4-30 Log4net使用/">Log4net使用</a>
+      <a class="post-title-link" href="/2018/03/11/2017-08-11 EF框架/">EF框架使用</a>
     </h3>
   
 
@@ -276,169 +614,18 @@ git chec...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Log4Net
-Log4Net是 apache 公司一款开源的日志记录组件，功能很强大，使用却很简单，本文主要讲述在 ASP.NET MVC中使用 Log4Net。本次开发环境：VS2017、 Log4Net2.0.8
-
-安装可以直接在 VS NuGet 中搜索 Log4Net 进行安装，也可以去官网下载相应的dll文件
-Log4net配置在安装过Log4Net后需要对项目进行一些列配置（W...
+        本博客所有案例的开发环境为 VS2013 + SQL Server 2012
+Entity Framework实体框架简介Entity Framework 实体框架（EF）是ADO.NET的开源对象关系映射（ORM）框架，它是 .NET Framework 的一部分，是一组支持开发面向数据的软件应用程序的技术。微软为实现 .NET 跨平台，将 EF 从 .NET 分离，使EF更加组件化。20...
     
 
-        <a href="/2018/01/30/2018-4-30 Log4net使用/" class="post-more waves-effect waves-button">
+        <a href="/2018/03/11/2017-08-11 EF框架/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log4net/">log4net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mvc/">mvc</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2019-01-17 Vue与其他操作DOM的第三方库搭配使用" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-01-17 11:14:10" datetime="2018-01-17T03:14:10.000Z" itemprop="datePublished">2018-01-17</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/Vue/">Vue</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/01/17/2019-01-17 Vue与其他操作DOM的第三方库搭配使用/">:Vue与其他操作DOM的第三方库搭配使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-本次环境为直接引用 Vue.js（开发版） , 没有使用脚手架
-
-Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 DOM 操作，但是在很多业务里，避免不了去使用一些第三方的库，比如 popper.js、swiper.js 等，这些基于原生 JavaScript 的库都有创建和更新及销毁的完整生命周期，如果与 Vue 搭配使用的话，不可避免的会出现直接操作 DOM 的现象，...
-    
-
-        <a href="/2018/01/17/2019-01-17 Vue与其他操作DOM的第三方库搭配使用/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2018-3-25 Spring-Net使用" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-25 14:20:06" datetime="2017-11-25T06:20:06.000Z" itemprop="datePublished">2017-11-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/MVC/">MVC</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/25/2018-3-25 Spring-Net使用/">Spring.Net使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        一、Spring.NET 简单使用
-最近用到了 Spring.NET ,不过在第一次使用的时候就遇到了一些问题，打算整理成系列博客，不断的总结和分享。
-
-1. 什么是 Spring.NET ?Spring 框架本是 Java 平台上一个应用非常多的、开源的框架。虽然语言是固定的，但是好的方法应该是通用的，于是 Spring 框架 就被程序员从 Java 平台搬迁到了 .NET 平台。
-通过S...
-    
-
-        <a href="/2017/11/25/2018-3-25 Spring-Net使用/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Net/">Spring.Net</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2017-11-06 配置Git" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-06 11:43:04" datetime="2017-11-06T03:43:04.000Z" itemprop="datePublished">2017-11-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git教程/">Git教程</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/06/2017-11-06 配置Git/">Git系列——1.配置Git</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        配置Git
-换了电脑，但是新电脑上面并没有安装Git，重新安装后需要进行密钥和用户配置，虽然就没几行命令，但是每次去百度搜索还是费心，写成博客，以后直接找自己写的。
-
-设置user.name和user.email信息：12git config --global user.name "你的GitHub用户名"git config --global user.email "你的GitHub注册邮...
-    
-
-        <a href="/2017/11/06/2017-11-06 配置Git/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-NET-MVC/">ASP.NET MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EF/">EF</a></li></ul>
 
     </div>
     
@@ -451,7 +638,7 @@ Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 D
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </div>
 </nav>
 
@@ -476,16 +663,18 @@ Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 D
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
         </p>
+        
     </div>
-    <div class="bottom">
-        <p><span>liruisen &copy; 2015 - 2019</span>
-            <span>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
             </span>
         </p>
-    </div>
+    </div> -->
 </footer>
 
     </main>
@@ -497,7 +686,7 @@ Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 D
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/page/2/&title=Hexo&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/page/2/&title=Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -507,7 +696,7 @@ Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 D
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/page/2/&title=Hexo&source=liruisen'Blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/page/2/&title=Blog Sweets&source=liruisen'Blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -517,7 +706,7 @@ Vue  的核心思想是数据驱动 DOM，也建议我们避免直接去进行 D
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Hexo&url=https://liruisen.github.io/page/2/&via=https://liruisen.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Blog Sweets&url=https://liruisen.github.io/page/2/&via=https://liruisen.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -578,23 +767,6 @@ lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '(TェT)别离开我！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!欢迎回来!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

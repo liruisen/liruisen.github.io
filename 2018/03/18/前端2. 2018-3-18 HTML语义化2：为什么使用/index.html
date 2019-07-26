@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>怎么使用HTML语义化？ | Blog Sweets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="JS高级,HTML语义化">
+    <meta name="description" content="上篇文章总结了下关于HTML的语义化，以及我在学习语义化标签后，对语义化标签使用的看法。这篇主要写我觉的比较重要的语义标签使用场景以及使用。   与C#这样严格的编程语言相比，HTML中语义标签的使用更接近我们平常说话用的自然语言。我们平时说话并没有唯一的标准措辞，语义标签的使用也是一样。下面写几个我觉得比较重要的语义标签使用场景。 作为自然语言延伸的语义类标签语义这个词从定义上就是文科的，因此">
+<meta name="keywords" content="JS高级,HTML语义化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么使用HTML语义化？">
+<meta property="og:url" content="https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/index.html">
+<meta property="og:site_name" content="Blog Sweets">
+<meta property="og:description" content="上篇文章总结了下关于HTML的语义化，以及我在学习语义化标签后，对语义化标签使用的看法。这篇主要写我觉的比较重要的语义标签使用场景以及使用。   与C#这样严格的编程语言相比，HTML中语义标签的使用更接近我们平常说话用的自然语言。我们平时说话并没有唯一的标准措辞，语义标签的使用也是一样。下面写几个我觉得比较重要的语义标签使用场景。 作为自然语言延伸的语义类标签语义这个词从定义上就是文科的，因此">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g51xf37o3xj30cm0ee77m.jpg">
+<meta property="og:updated_time" content="2019-07-26T01:10:34.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎么使用HTML语义化？">
+<meta name="twitter:description" content="上篇文章总结了下关于HTML的语义化，以及我在学习语义化标签后，对语义化标签使用的看法。这篇主要写我觉的比较重要的语义标签使用场景以及使用。   与C#这样严格的编程语言相比，HTML中语义标签的使用更接近我们平常说话用的自然语言。我们平时说话并没有唯一的标准措辞，语义标签的使用也是一样。下面写几个我觉得比较重要的语义标签使用场景。 作为自然语言延伸的语义类标签语义这个词从定义上就是文科的，因此">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g51xf37o3xj30cm0ee77m.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">怎么使用HTML语义化？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">怎么使用HTML语义化？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-18T03:20:04.000Z" itemprop="datePublished" class="page-time">
+  2018-03-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作为自然语言延伸的语义类标签"><span class="post-toc-number">1.</span> <span class="post-toc-text">作为自然语言延伸的语义类标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免歧义"><span class="post-toc-number">2.</span> <span class="post-toc-text">避免歧义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作为标题摘要的语义类标签"><span class="post-toc-number">3.</span> <span class="post-toc-text">作为标题摘要的语义类标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作为整体结构的语义类标签"><span class="post-toc-number">4.</span> <span class="post-toc-text">作为整体结构的语义类标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端2. 2018-3-18 HTML语义化2：为什么使用" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">怎么使用HTML语义化？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-18 11:20:04" datetime="2018-03-18T03:20:04.000Z" itemprop="datePublished">2018-03-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>上篇文章总结了下关于HTML的语义化，以及我在学习语义化标签后，对语义化标签使用的看法。这篇主要写我觉的比较重要的语义标签使用场景以及使用。</p>
+</blockquote>
+<p> 与C#这样严格的编程语言相比，HTML中语义标签的使用更接近我们平常说话用的自然语言。我们平时说话并没有唯一的标准措辞，语义标签的使用也是一样。下面写几个我觉得比较重要的语义标签使用场景。</p>
+<h2 id="作为自然语言延伸的语义类标签"><a href="#作为自然语言延伸的语义类标签" class="headerlink" title="作为自然语言延伸的语义类标签"></a>作为自然语言延伸的语义类标签</h2><p>语义这个词从定义上就是文科的，因此语义问题是个文科问题，所以我们这里讲语义标签的使用的第一个场景，也是最自然的使用场景，就是：<strong>作为自然语言和纯文本的补充，用来表达一定的结构或者消除歧义。</strong></p>
+<p>先举个例子：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g51xf37o3xj30cm0ee77m.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如图，在【犀利】的上方可以加上标注，但是这种操作如果使用H5以前的内容来做的话，花费精力还是能够实现的。但是在HTML5中，就引入了这个表示ruby的标签，它由ruby、rt、rp三个标签来实现。</p>
+<p>所以说，这些情况里存在的语义，其实原本就存在了，只是我们用纯文字是没法表达的，HTML作为一种“超文本”语言，支持这些文字表达就是必要的了。</p>
+<h2 id="避免歧义"><a href="#避免歧义" class="headerlink" title="避免歧义"></a>避免歧义</h2><p>除了上述所说的作为自然语言延伸到语义类标签出现以外，<strong>还有一种情况是，HTML的有些标签实际上就是必要的，甚至必要的程度可以达到：如果没有这个标签，文字会产生歧义的程度。</strong></p>
+<p>这里介绍 <code>em</code> 标签</p>
+<p>例如下面这句话：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">今天我吃了一个苹果</span><br></pre></td></tr></table></figure>
+<p>看上去它很清楚，但是实际上，这句话放到不同上下文中，可能表达完全不同的意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">昨天我吃了一个香蕉。</span><br><span class="line">今天我吃了一个苹果。</span><br></pre></td></tr></table></figure>
+<p>再比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">昨天我吃了两个苹果。</span><br><span class="line">今天我吃了一个苹果。</span><br></pre></td></tr></table></figure>
+<p>试着读一读，这两段里面的“今天我吃了一个苹果”，你是不是发现读音不自觉地发生了变化？</p>
+<p>实际上，不仅仅是读音，这里的意思也发生了变化。前一段中，表示我今天吃的是苹果，而不是别的什么东西，后一段中，则表示我今天只吃了一个苹果，没有多吃。</p>
+<p>当没有上下文时，如何消除歧义呢？这就要用到em标签了。em表示重音：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">今天我吃了一个<span class="tag">&lt;<span class="name">em</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">em</span>&gt;</span>。</span><br><span class="line">今天我吃了<span class="tag">&lt;<span class="name">em</span>&gt;</span>一个<span class="tag">&lt;/<span class="name">em</span>&gt;</span>苹果。</span><br></pre></td></tr></table></figure>
+<p>通过em标签，我们可以消除这样的歧义。</p>
+<p>一些文章常常会拿em和strong做对比，实际上，只要理解了em的真正意思，它和strong可谓天差地别，并没有任何混淆的可能。</p>
+<h2 id="作为标题摘要的语义类标签"><a href="#作为标题摘要的语义类标签" class="headerlink" title="作为标题摘要的语义类标签"></a>作为标题摘要的语义类标签</h2><p>介绍完自然语言的语义场景后，另一个语义重要使用场景，就是文章的结构。中国古代小说就形成了“章-回”的概念，西方的戏剧也有幕的区分，所以人类的自然语言作品也是如出一辙。</p>
+<p>HTML也应该支持这样的需求。HTML语义标签中，有不少是用于支持这样的结构的标签。</p>
+<p>语义化的HTML能够支持自动生成目录结构，HTML标准中还专门规定了生成目录结构的算法，即使我们并不打算深入实践语义，也应该尽量在大的层面上保证这些元素的语义化使用。</p>
+<p>从HTML 5开始，就有了section标签，这个标签可不仅仅是一个“有语义的div”，它会改变h1-h6的语义。section的嵌套会使得其中的h1-h6下降一级，因此，在HTML5以后，只需要section和h1就足以形成文档的树形结构：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTML语义<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>balah balah balah balah<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>弱语义<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>balah balah<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>结构性元素<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>balah balah<span class="tag">&lt;/<span class="name">p</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">......</span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这段代码同样会形成前面例子的标题结构：</p>
+<ul>
+<li>HTML语义<ul>
+<li>弱语义</li>
+<li>结构性元素</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<h2 id="作为整体结构的语义类标签"><a href="#作为整体结构的语义类标签" class="headerlink" title="作为整体结构的语义类标签"></a>作为整体结构的语义类标签</h2><p>最后一个场景，随着越来越多的浏览器推出“阅读模式”，以及各种非浏览器终端的出现，语义化的HTML适合机器阅读的特性变得越来越重要。</p>
+<p>应用了语义化结构的页面，可以明确地提示出页面信息的主次关系，它能让浏览器很好地支持“阅读视图功能”，还可以让搜索引擎的命中率提升，同时，它也对视障用户的读屏软件更友好。（如果一个页面只有 span 和 div，视障软件如果把这个网页读给用户？ 读 “ div 开始 class=”tile” 今天天气很好 div 结束” 还是读 “标题：今天天气很好” 那个方式更好呢？）</p>
+<p>正确使用整体结构类的语义标签，可以让页面对机器更友好。比如，这里一个典型的body类似这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">            ……</span><br><span class="line">        <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">            ……</span><br><span class="line">        <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">address</span>&gt;</span>……<span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在body下面，有一个header，header里面是一个nav，跟header同级的有一个aside，aside里面也有一个nav。接下来是文章的整体，也就是一个一个的section。section里面可能还有嵌套，但是我们就不管了，最后是一个footer，这个footer里面可能有address这样的内容。</p>
+<p>除此之外，还有article，article是一种特别的结构，它表示具有一定独立性质的文章。所以，article和body具有相似的结构，同时，一个HTML页面中，可能有多个article存在。</p>
+<p>一个典型的场景是多篇新闻展示在同一个新闻专题页面中，这种类似报纸的多文章结构适合用article来组织。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span>……<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span>&gt;</span>……<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span>&gt;</span>……<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">footer</span>&gt;</span>……<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">        ……</span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">        ……</span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">address</span>&gt;</span><span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>body里面有自己的header和footer，然后里面是竖篇的article，每一个article里面都有自己的header、section、footer。这是一个典型的多文章结构。</p>
+<p>在这个结构里，我们看到了一些新标签，逐个介绍一下。</p>
+<ul>
+<li><strong>header</strong>，如其名，通常出现在前部，表示导航或者介绍性的内容。</li>
+<li><strong>footer</strong>，通常出现在尾部，包含一些作者信息、相关链接、版权信息等。</li>
+</ul>
+<p>header和footer一般都是放在article或者body的直接子元素，但是标准中并没有明确规定，footer也可以和aside，nav，section相关联（header不存在关联问题）。</p>
+<ul>
+<li><strong>aside</strong>，表示跟文章主体不那么相关的部分，它可能包含导航、广告等工具性质的内容。</li>
+</ul>
+<p>aside很容易被理解为侧边栏，实际上二者是包含关系，侧边栏是aside，aside不一定是侧边栏。</p>
+<p>aside和header中都可能出现导航（nav标签），二者的区别是，header中的导航多数是到文章自己的目录，而aside中的导航多数是到关联页面或者是整站地图。</p>
+<p>最后footer中包含address，这是个非常容易被误用的标签。address并非像date一样，表示一个给机器阅读的地址，而是表示“文章（作者）的联系方式”，address明确地只关联到article和body。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>根据本篇和上篇文章，介绍了一些基本原则和HTML文档的整体结构，从整体上了解了HTML语义。因此在回答是否要语义化的问题时：<strong>我们应该分开一些场景来看语义，把它用在合适的场景下，可以获得额外的效果。</strong></p>
+<p>回顾一下本篇的三个明确的场景：</p>
+<ul>
+<li>自然语言表达能力的补充；</li>
+<li>文章标题摘要；</li>
+<li>适合机器阅读的整体结构。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML语义化/">HTML语义化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&title=《怎么使用HTML语义化？》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&title=《怎么使用HTML语义化？》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《怎么使用HTML语义化？》 — Blog Sweets&url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/18/前端4. 2018-4-18 JS：基本架构和目录/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS学习体系</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/16/前端1. 2018-3-16 HTML语义化1：是什么/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">什么是HTML语义化？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
+        </p>
+        
+    </div>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div> -->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&title=《怎么使用HTML语义化？》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&title=《怎么使用HTML语义化？》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《怎么使用HTML语义化？》 — Blog Sweets&url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/03/18/前端2. 2018-3-18 HTML语义化2：为什么使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADRElEQVR42u3a0W6rMBAE0P7/T+e+VrqFzKyJBM7hqUoj8DFStzvrn5/4ev26fn9y9J3/r6N7nj/r6DtHq7r4wsbGxn4IO1luwj6/W7LcZA3Jy4i2HhsbG3s79nmBmSFXPm95uQUbGxsbOyk8K61C3sy0rwcbGxsb+5zd3uG8XLXxEzY2NjZ2HujMopyVgClvPz6SpWFjY2Pfnp23B/f/+SPzbWxsbOwbs1/llTQAszKWtCLtiOJwJdjY2NgbsfMCkP+LvzISzregHT9gY2Nj78puo5x2a4q9j6OrlbsVFRIbGxv7Iex8uSsRfB7xt/fJx8nDt4SNjY39QPbKb9shbh70509JAi9sbGzsndj5n/vkYe1BnDyimq0qCpWwsbGxt2AnUU4b2eTlpI2xVkbORXKGjY2N/RB2UhKSb7bDgHabZhFSPoTGxsbG3omd3y4f/a4MhvNR9KzVwcbGxn46uz1kkxSGvLAl25qHTUXpwsbGxt6OnZeu2Ri4HejOWp2iQGJjY2NvxF4Bt03IVaSVIOmPZ2FjY2M/nP0qr3aI2xa8hDcbGLzpwLCxsbG3YK80GHlAnzQM+bGbC7I0bGxs7O3YyWGaHJaPb9sjPvmmX3aGCBsbG/vG7Hy8em1TkUT5Sy3H0W+xsbGxN2LnjUce66xHQm25itqP2YwaGxsb+yHstoDNjsi0BbLdxPO2BBsbG3tvdh73X5XMrNxnNlrGxsbG3pU9W9xsyDobKrdPLI7sYGNjY2/Bnh3BaYvNrCC1LVD7erCxsbH3YK8HNPnxmtkwYL24/vE5NjY29kbsfBA7u/JiNhvi5lFXPQ/BxsbGfiB75ZM8ymkHD7P4KSqu2NjY2F/DbgtJW8Bmof9sbPyRiQc2Njb2bdj5qLXFXzUSnpWxKFTCxsbGfix7PSRqg55PtCvJFv/ktRQbGxv7Uez2T397uGc2Hr5qkHDBRmBjY2M/hL0e97SMNpDKX8kwVMLGxsbegp1E7SsD1/ZZeUkbPhcbGxv769n54Z56BBsvvW1C3hzZwcbGxv4adnvcZ9bkrEf8b8oeNjY29nbsWSi/fmIoHwMnpS4vh9jY2Ng7sVcWetWANmfkm3LBS8LGxsa+O/sf2qorJn8+JNkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

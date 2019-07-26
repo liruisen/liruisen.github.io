@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>JS面对对象 | Blog Sweets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="JS高级,面对对象">
+    <meta name="description" content="前言在学习JS的面对对象的时候遇到一些疑惑，原因在于事先学习过C#的面对对象，因此在学习JS面对对象时候总喜欢把二者放在一起参考学习，因此经常会有疑惑，因为二者的面对对象相差很大。在网上找过很多资料看过很多观点之后，来写一写自己的理解吧。 很多人说JavaScript并非“面向对象的语言”，而是“基于对象的语言”，甚至东哥也是这样给我解惑的，但是我在问 “如何定义面向对象和基于对象” 时，东哥给我">
+<meta name="keywords" content="JS高级,面对对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS面对对象">
+<meta property="og:url" content="https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/index.html">
+<meta property="og:site_name" content="Blog Sweets">
+<meta property="og:description" content="前言在学习JS的面对对象的时候遇到一些疑惑，原因在于事先学习过C#的面对对象，因此在学习JS面对对象时候总喜欢把二者放在一起参考学习，因此经常会有疑惑，因为二者的面对对象相差很大。在网上找过很多资料看过很多观点之后，来写一写自己的理解吧。 很多人说JavaScript并非“面向对象的语言”，而是“基于对象的语言”，甚至东哥也是这样给我解惑的，但是我在问 “如何定义面向对象和基于对象” 时，东哥给我">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-26T02:31:27.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS面对对象">
+<meta name="twitter:description" content="前言在学习JS的面对对象的时候遇到一些疑惑，原因在于事先学习过C#的面对对象，因此在学习JS面对对象时候总喜欢把二者放在一起参考学习，因此经常会有疑惑，因为二者的面对对象相差很大。在网上找过很多资料看过很多观点之后，来写一写自己的理解吧。 很多人说JavaScript并非“面向对象的语言”，而是“基于对象的语言”，甚至东哥也是这样给我解惑的，但是我在问 “如何定义面向对象和基于对象” 时，东哥给我">
+    
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS面对对象</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS面对对象</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-20T07:30:04.000Z" itemprop="datePublished" class="page-time">
+  2018-06-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是面对对象"><span class="post-toc-number">2.</span> <span class="post-toc-text">什么是面对对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript的面对对象"><span class="post-toc-number">3.</span> <span class="post-toc-text">JavaScript的面对对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript-对象的特征"><span class="post-toc-number">4.</span> <span class="post-toc-text">JavaScript 对象的特征</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript对象特色"><span class="post-toc-number">5.</span> <span class="post-toc-text">JavaScript对象特色</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript对象的两类属性"><span class="post-toc-number">6.</span> <span class="post-toc-text">JavaScript对象的两类属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">7.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端7. 2018-6-20 JS：面对对象" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS面对对象</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-20 15:30:04" datetime="2018-06-20T07:30:04.000Z" itemprop="datePublished">2018-06-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习JS的面对对象的时候遇到一些疑惑，原因在于事先学习过C#的面对对象，因此在学习JS面对对象时候总喜欢把二者放在一起参考学习，因此经常会有疑惑，因为二者的面对对象相差很大。在网上找过很多资料看过很多观点之后，来写一写自己的理解吧。</p>
+<p>很多人说JavaScript并非“面向对象的语言”，而是“基于对象的语言”，甚至东哥也是这样给我解惑的，但是我在问 “如何定义面向对象和基于对象” 时，东哥给我的回复我觉的并不能打消我的疑惑。</p>
+<p>JavaScript标准对基于对象的定义的具体内容是：“语言和宿主的基础设施由对象来提供，并且JavaScript程序即是一系列互相通讯的对象集合”。我觉得这里并不是表达弱化的面向对象的意思，反而是表达对象对于语言的重要性。</p>
+<h2 id="什么是面对对象"><a href="#什么是面对对象" class="headerlink" title="什么是面对对象"></a>什么是面对对象</h2><p>Object（对象）在英文中，是一切事物的总称，和面向对象编程的抽象思维有互通之处。</p>
+<p>在《面向对象分析与设计》Grady Booch总结为，从人类的认知角度来说，对象应该是下列事物之一：</p>
+<ol>
+<li>一个可以触摸或者可以看见的东西；</li>
+<li>人的智力可以理解的东西；</li>
+<li>可以指导思考或行动（进行想象或施加动作）的东西。</li>
+</ol>
+<p>有了对象的自然定义后，我们就可以描述编程语言中的对象了。在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象，最为常见的就是使用“类”的方式来描述对象，如Java、C#等。</p>
+<h2 id="JavaScript的面对对象"><a href="#JavaScript的面对对象" class="headerlink" title="JavaScript的面对对象"></a>JavaScript的面对对象</h2><p>而 JavaScript 早年却选择了一个更为冷门的方式：原型。同时因为一些公司政治原因，JavaScript推出之时受管理层之命被要求模仿Java，因此，JavaScript创始人Brendan Eich在“原型运行时”的基础上引入了new、this等语言特性，使之“看起来更像Java”。</p>
+<p>在 ES6 之前，大量的 JavaScript 程序员试图在原型体系的基础上，把JavaScript变得更像是基于类的编程。</p>
+<p>如果从运行时角度来谈论对象，就是在讨论JavaScript实际运行中的模型，这是由于任何代码执行都必定绕不开运行时的对象模型。幸运的是，从运行时的角度看，可以不必受到“基于类”的困扰，这是因为任何语言运行时类的概念都是被弱化的。</p>
+<h2 id="JavaScript-对象的特征"><a href="#JavaScript-对象的特征" class="headerlink" title="JavaScript 对象的特征"></a>JavaScript 对象的特征</h2><p>如果看了Grandy Booch《面向对象分析与设计》从而了解了对象的本质特征，那么对象有一下几个特点：</p>
+<ul>
+<li>对象具有唯一标识性：即使完全相同的两个对象，也并非同一个对象。</li>
+<li>对象有状态：对象具有状态，同一对象可能处于不同状态之下。</li>
+<li>对象具有行为：即对象的状态，可能因为它的行为产生变迁。</li>
+</ul>
+<p><strong>对象具有唯一标识性</strong>，各种语言的对象唯一标识性都是用内存地址来体现的， 对象具有唯一标识的内存地址，所以具有唯一的标识。因此任何不同的JavaScript对象其实是互不相等的。如下面代码中，，o1和o2初看是两个一模一样的对象，但是打印出来的结果却是false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(o1 == o2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>关于对象的第二个和第三个特征“<strong>状态和行为</strong>”，C# 中则称它们为“属性”和“方法”。但是，在 JavaScript中，将状态和行为统一抽象为“属性”，考虑到 JavaScript 中将函数设计成一种特殊对象，所以 JavaScript中的行为和状态都能用属性来抽象。</p>
+<p>如下面这段代码，就展示了普通属性和函数作为属性的一个例子，其中o是对象，d是一个属性，而函数f也是一个属性，尽管写法不太相同，但是对JavaScript来说，d和f就是两个普通属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; </span><br><span class="line">      d: <span class="number">1</span>,</span><br><span class="line">      f() &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="keyword">this</span>.d);</span><br><span class="line">      &#125;    </span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<p>总结一句话来看，在JavaScript中，对象的状态和行为其实都被抽象为了属性，尽管设计思路和C#、Java有一定差别，但是二者都很好地表现了对象的基本特征：标识性、状态和行为。</p>
+<h2 id="JavaScript对象特色"><a href="#JavaScript对象特色" class="headerlink" title="JavaScript对象特色"></a>JavaScript对象特色</h2><p>在实现了对象基本特征的基础上，JavaScript中对象独有的特色是：对象具有高度的动态性，这是因为JavaScript赋予了使用者在运行时为对象添改状态和行为的能力。因此，JavaScript对象的具体设计：<strong>具有高度动态性的属性集合。</strong></p>
+<p>比如，JavaScript 允许运行时向对象添加属性，这就跟绝大多数基于类的、静态的对象设计完全不同。</p>
+<p>下面这段代码就展示了运行时如何向一个对象添加属性，一开始我定义了一个对象o，定义完成之后，再添加它的属性b，这样操作是完全没问题的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line">o.b = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o.a, o.b); <span class="comment">//1 2</span></span><br></pre></td></tr></table></figure>
+<p>为了提高抽象能力，JavaScript的属性被设计成比别的语言更加复杂的形式，它提供了数据属性和访问器属性（getter/setter）两类。</p>
+<h2 id="JavaScript对象的两类属性"><a href="#JavaScript对象的两类属性" class="headerlink" title="JavaScript对象的两类属性"></a>JavaScript对象的两类属性</h2><p>对JavaScript来说，属性并非只是简单的名称和值，JavaScript用一组特征（attribute）来描述属性（property）。</p>
+<p>先来说第一类属性，<strong>数据属性</strong>。它比较接近于其它语言的属性概念。数据属性具有四个特征。</p>
+<ul>
+<li>value：就是属性的值。</li>
+<li>writable：决定属性能否被赋值。</li>
+<li>enumerable：决定for in能否枚举该属性。</li>
+<li>configurable：决定该属性能否被删除或者改变特征值。</li>
+</ul>
+<p>在大多数情况下，我们只关心数据属性的值即可。</p>
+<p>第二类属性是访问器（getter/setter）属性，它也有四个特征。</p>
+<ul>
+<li>getter：函数或undefined，在取属性值时被调用。</li>
+<li>setter：函数或undefined，在设置属性值时被调用。</li>
+<li>enumerable：决定for in能否枚举该属性。</li>
+<li>configurable：决定该属性能否被删除或者改变特征值。</li>
+</ul>
+<p>访问器属性使得属性在读和写时执行代码，它允许使用者在写和读属性时，得到完全不同的值，它可以视为一种函数的语法糖。</p>
+<p>我们通常用于定义属性的代码会产生数据属性，其中的writable、enumerable、configurable都默认为true。我们可以使用内置函数 Object.getOwnPropertyDescripter来查看，如以下代码所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line">o.b = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//a和b皆为数据属性</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o,<span class="string">"a"</span>) <span class="comment">// &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o,<span class="string">"b"</span>) <span class="comment">// &#123;value: 2, writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们在这里使用了两种语法来定义属性，定义完属性后，我们用JavaScript的API来查看这个属性，我们可以发现，这样定义出来的属性都是数据属性，writeable、enumerable、configurable都是默认值为true。</p>
+<p>如果我们要想改变属性的特征，或者定义访问器属性，我们可以使用 Object.defineProperty，示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"b"</span>, &#123;<span class="attr">value</span>: <span class="number">2</span>, <span class="attr">writable</span>: <span class="literal">false</span>, <span class="attr">enumerable</span>: <span class="literal">false</span>, <span class="attr">configurable</span>: <span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">//a和b都是数据属性，但特征值变化了</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o,<span class="string">"a"</span>); <span class="comment">// &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o,<span class="string">"b"</span>); <span class="comment">// &#123;value: 2, writable: false, enumerable: false, configurable: true&#125;</span></span><br><span class="line">o.b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o.b); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>这里我们使用了Object.defineProperty来定义属性，这样定义属性可以改变属性的writable和enumerable。</p>
+<p>我们同样用Object.getOwnPropertyDescriptor来查看，发现确实改变了writable和enumerable特征。因为writable特征为false，所以我们重新对b赋值，b的值不会发生变化。</p>
+<p>在创建对象时，也可以使用 get 和 set 关键字来创建访问器属性，代码如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; get a() &#123; <span class="keyword">return</span> <span class="number">1</span> &#125; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o.a); <span class="comment">// 1</span></span><br><span class="line"><span class="comment">//注意，访问访问器属性和访问数据属性一致，不用加（）</span></span><br></pre></td></tr></table></figure>
+<p>访问器属性跟数据属性不同，每次访问属性都会执行getter或者setter函数。这里我们的getter函数返回了1，所以o.a每次都得到1。</p>
+<p>这样，我们就理解了，实际上JavaScript 对象的运行时是一个“属性的集合”，属性以字符串或者Symbol为key，以数据属性特征值或者访问器属性特征值为value。</p>
+<p>对象是一个属性的索引结构（索引结构是一类常见的数据结构，我们可以把它理解为一个能够以比较快的速度用key来查找value的字典）。我们以上面的对象o为例，你可以想象一下“a”是key。</p>
+<p><code>{writable:true,value:1,configurable:true,enumerable:true}</code>是value。以前写的JS数据类型已经介绍了Symbol类型，能够以Symbol为属性名，这也是JavaScript对象的一个特色。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>追本溯源，以面对对象的基本原则和面对对象的基本特征来看，JavaScript只是与主流的Java、C++等面对对象语言采用了不同的设计思路，这样的对象系统设计虽然特别，但是JavaScript提供了完全运行时的对象系统，这使得它可以模仿多数面向对象编程范式，所以它也是正统的面向对象语言。</p>
+<p>如果想完全理解JavaScript对象，不能以Java、C#这些“基于类的面向对象”相关的知识，回到人类对对象的朴素认知和面向对象的语言无关基础理论，我们就能够理解JavaScript面向对象设计的思路。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面对对象/">面对对象</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&title=《JS面对对象》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&title=《JS面对对象》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS面对对象》 — Blog Sweets&url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">原型与原型链</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/09/2018-06-09 EF使用MySQL/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">EF使用MySQL</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
+        </p>
+        
+    </div>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div> -->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&title=《JS面对对象》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&title=《JS面对对象》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS面对对象》 — Blog Sweets&url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/06/20/前端7. 2018-6-20 JS：面对对象/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3aQW7jMBAEwPz/07vAngJkLXfPiIoPpZPh0BLLAchxD7++4uvPv+vn6+/vfL+Sz/4cmc/h5gsPDw9vNPVX16tpXSOvR+ZfyvV8rsfg4eHhneYlm0H7gPyvyTaQbCp4eHh4n8bLy9yk/L0ek29UeHh4eJ/MSx4z+yLaqePh4eF9Am/z4z8PFGYF+kNZCx4eHl7M2zTAfuv1Q/09PDw8vLKrniy4N4QFwXGE4Wzx8PDwDvDuChTaAwT5oYTZyKKThoeHh7fg5VHCnp1vOW2F/J/P4uHh4T3OSxblzSbRYtp2Gh4eHt69vE3E0I7J77D5avDw8PCe4eWL7+zQQF5k5yV71AzDw8PDO8bbL/ptrNDeoT0ngIeHh3ea1y7NbfC6CXZXQQkeHh7eMV6CmQUKecVbLPdxWIyHh4d3gpcv6HdNpd1y8mNYL+eJh4eHdytv03aalcX70KEo9PHw8PCO8ZKg4a7W1OxZ7dErPDw8vHO8PIbIC9k8kE02j1nU+5KNh4eHdxMvbzi1j5yFDu1/5k2xjoeHh3crb3YgIA9w9wcCZvf8T38PDw8P7wBvQ8oPrc7unETMUUqNh4eHt+a1k26jhDa8yEOQYQsNDw8Pb83Ljwi0ra/rJbs9apBvY29+MeDh4eE9wsvL7nbhbttj9ZqPh4eH9wivfdgmeG2j4ToOxsPDwzvAS4rpvJBtD1fNyus6qsDDw8O7ldeW0fkmkTfJku3ka3bh4eHhHebNluBkcW/D2bzNVux4eHh4eDfx2jU231ROvL8JRPDw8PDu5W2OWG0OUeXBR7IxvGmD4eHh4R3gta39fHxLmpXIb3434OHh4f0Sb9banx23SqKNKPbFw8PD+wDeDDArkWfBxGpjwMPDw7s158xL5HbMpq2Fh4eH9zxv81P/+nZtUX46sMDDw8Nb8/4CcsTFOm2ZWvMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

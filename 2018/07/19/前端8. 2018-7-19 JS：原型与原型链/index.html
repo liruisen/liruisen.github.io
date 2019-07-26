@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>原型与原型链 | Blog Sweets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="JS高级,面对对象">
+    <meta name="description" content="什么是原型？原型是顺应人类自然思维的产物。中文中有个成语叫做“照猫画虎”，这里的猫看起来就是虎的原型，所以，由此我们可以看出，用原型来描述对象的方法可以说是古已有之。 在JS的面对对象文章里面写过，在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象。最为成功的是使用“类”的方式来描述对象，这诞生了诸如 C++、Java等流行的编程语言。这个流派叫做基于类的编程语言。还有一种就是基于原">
+<meta name="keywords" content="JS高级,面对对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型与原型链">
+<meta property="og:url" content="https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/index.html">
+<meta property="og:site_name" content="Blog Sweets">
+<meta property="og:description" content="什么是原型？原型是顺应人类自然思维的产物。中文中有个成语叫做“照猫画虎”，这里的猫看起来就是虎的原型，所以，由此我们可以看出，用原型来描述对象的方法可以说是古已有之。 在JS的面对对象文章里面写过，在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象。最为成功的是使用“类”的方式来描述对象，这诞生了诸如 C++、Java等流行的编程语言。这个流派叫做基于类的编程语言。还有一种就是基于原">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g55h74fhqqj30y80extg7.jpg">
+<meta property="og:updated_time" content="2019-07-26T02:31:34.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原型与原型链">
+<meta name="twitter:description" content="什么是原型？原型是顺应人类自然思维的产物。中文中有个成语叫做“照猫画虎”，这里的猫看起来就是虎的原型，所以，由此我们可以看出，用原型来描述对象的方法可以说是古已有之。 在JS的面对对象文章里面写过，在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象。最为成功的是使用“类”的方式来描述对象，这诞生了诸如 C++、Java等流行的编程语言。这个流派叫做基于类的编程语言。还有一种就是基于原">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006CBSf2ly1g55h74fhqqj30y80extg7.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">原型与原型链</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">原型与原型链</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-19T13:18:04.000Z" itemprop="datePublished" class="page-time">
+  2018-07-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是原型？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是原型？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript的原型"><span class="post-toc-number">2.</span> <span class="post-toc-text">JavaScript的原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型链"><span class="post-toc-number">3.</span> <span class="post-toc-text">原型链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#早期版本中的类与原型"><span class="post-toc-number">4.</span> <span class="post-toc-text">早期版本中的类与原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6-中的类"><span class="post-toc-number">5.</span> <span class="post-toc-text">ES6 中的类</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端8. 2018-7-19 JS：原型与原型链" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">原型与原型链</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-19 21:18:04" datetime="2018-07-19T13:18:04.000Z" itemprop="datePublished">2018-07-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="什么是原型？"><a href="#什么是原型？" class="headerlink" title="什么是原型？"></a>什么是原型？</h2><p>原型是顺应人类自然思维的产物。中文中有个成语叫做“照猫画虎”，这里的猫看起来就是虎的原型，所以，由此我们可以看出，用原型来描述对象的方法可以说是古已有之。</p>
+<p>在JS的面对对象文章里面写过，在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象。最为成功的是使用“类”的方式来描述对象，这诞生了诸如 C++、Java等流行的编程语言。这个流派叫做基于类的编程语言。还有一种就是基于原型的编程语言，它们利用原型来描述对象。我们的JavaScript就是其中代表。</p>
+<p>“基于类”的编程提倡使用一个关注分类和类之间关系开发模型。在这类语言中，总是先有类，再从类去实例化一个对象。类与类之间又可能会形成继承、组合等关系。类又往往与语言的类型系统整合，形成一定编译时的能力。与此相对，“基于原型”的编程看起来更为提倡程序员去关注一系列对象实例的行为，而后才去关心如何将这些对象，划分到最近的使用方式相似的原型对象，而不是将它们分成类。</p>
+<p>基于原型的面向对象系统通过“复制”的方式来创建新对象。基于原型和基于类都能够满足基本的复用和抽象需求，但是适用的场景不太相同。</p>
+<p>原型系统的“复制操作”有两种实现思路：</p>
+<ul>
+<li>一个是并不真的去复制一个原型对象，而是使得新对象持有一个原型的引用；</li>
+<li>另一个是切实地复制对象，从此两个对象再无关联。</li>
+</ul>
+<p>而JavaScript选择的是第一种：<strong>并不真的去复制一个原型对象，而是使得新对象持有一个原型的引用；</strong></p>
+<h2 id="JavaScript的原型"><a href="#JavaScript的原型" class="headerlink" title="JavaScript的原型"></a>JavaScript的原型</h2><p>如果抛开JavaScript用于模拟Java类的复杂语法设施（如new、Function Object、函数的prototype属性等），原型系统可以说相当简单，可以用两条概括：</p>
+<ul>
+<li>如果所有对象都有私有字段[[prototype]]，就是对象的原型；</li>
+<li>读一个属性，如果对象本身没有，则会继续访问对象的原型，直到原型为空或者找到为止。</li>
+</ul>
+<p>这个模型在ES的各个历史版本中并没有很大改变，但从 ES6 以来，JavaScript提供了一系列内置函数，以便更为直接地访问操纵原型。三个方法分别为：</p>
+<ul>
+<li>Object.create 根据指定的原型创建新对象，原型可以是null；</li>
+<li>Object.getPrototypeOf 获得一个对象的原型；</li>
+<li>Object.setPrototypeOf 设置一个对象的原型。</li>
+</ul>
+<p>利用这三个方法，可以完全抛开类的思维，利用原型来实现抽象和复用。如下面的代码展示了用原型来抽象猫和虎的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cat = &#123;</span><br><span class="line">    say()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"meow~"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    jump()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"jump"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tiger = <span class="built_in">Object</span>.create(cat,  &#123;</span><br><span class="line">    say:&#123;</span><br><span class="line">        writable:<span class="literal">true</span>,</span><br><span class="line">        configurable:<span class="literal">true</span>,</span><br><span class="line">        enumerable:<span class="literal">true</span>,</span><br><span class="line">        value:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"roar!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> anotherCat = <span class="built_in">Object</span>.create(cat);</span><br><span class="line"></span><br><span class="line">anotherCat.say();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> anotherTiger = <span class="built_in">Object</span>.create(tiger);</span><br><span class="line"></span><br><span class="line">anotherTiger.say();</span><br></pre></td></tr></table></figure>
+<p>这段代码创建了一个“猫”对象，又根据猫做了一些修改创建了虎，之后我们完全可以用Object.create来创建另外的猫和虎对象，我们可以通过“原始猫对象”和“原始虎对象”来控制所有猫和虎的行为。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>关于JS的原型链，因为比较复杂加上JS语言的设计缺陷，就不详细描述了，具体可以看下面这张图，Person是自定义的对象，如果图看着不是太明白的话，可以写代码自定义个类，分别在浏览器中打印出原型、原型指向，再来看这个图。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/006CBSf2ly1g55h74fhqqj30y80extg7.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="早期版本中的类与原型"><a href="#早期版本中的类与原型" class="headerlink" title="早期版本中的类与原型"></a>早期版本中的类与原型</h2><p>在早期版本的JavaScript中，“类”的定义是一个私有属性 [[class]]，语言标准为内置类型诸如Number、String、Date等指定了[[class]]属性，以表示它们的类。语言使用者唯一可以访问[[class]]属性的方式是Object.prototype.toString。因此，在ES3和之前的版本，JS中类的概念是相当弱的，它仅仅是运行时的一个字符串属性。</p>
+<p>考虑到JavaScript语法中跟Java相似的部分，我们对类的讨论不能用“new运算是针对构造器对象，而不是类”来试图回避。所以，我们仍然要把new理解成JavaScript面向对象的一部分，那么new操作具体做了哪些事情？</p>
+<p>new 运算接受一个构造器和一组调用参数，实际上做了几件事：</p>
+<ul>
+<li>以构造器的 prototype 属性（注意与私有字段[[prototype]]的区分）为原型，创建新对象；</li>
+<li>将 this 和调用参数传给构造器，执行；</li>
+<li>如果构造器返回的是对象，则返回，否则返回第一步创建的对象。</li>
+</ul>
+<p>new 这样的行为，试图让函数对象在语法上跟类变得相似，但是，它客观上提供了两种方式，一是在构造器中添加属性，二是在构造器的 prototype 属性上添加属性。</p>
+<p>如下面代码，就展示了用构造器模拟类的两种方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.p1 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">this</span>.p2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.p1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> o1 = <span class="keyword">new</span> c1;</span><br><span class="line">o1.p2();</span><br><span class="line"><span class="comment">//--------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">c2.prototype.p1 = <span class="number">1</span>;</span><br><span class="line">c2.prototype.p2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.p1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> c2;</span><br><span class="line">o2.p2();</span><br></pre></td></tr></table></figure>
+<p>第一种方法是直接在构造器中修改this，给this添加属性。</p>
+<p>第二种方法是修改构造器的prototype属性指向的对象，它是从这个构造器构造出来的所有对象的原型。</p>
+<h2 id="ES6-中的类"><a href="#ES6-中的类" class="headerlink" title="ES6 中的类"></a>ES6 中的类</h2><p>好在ES6中加入了新特性class，new跟function搭配的怪异行为终于可以退休了（虽然运行时没有改变）,因此推荐使用ES6的语法来定义类，而令function回归原本的函数语义。</p>
+<p>ES6中引入了class关键字，并且在标准中删除了所有[[class]]相关的私有属性描述，类的概念正式从属性升级成语言的基础设施，从此，基于类的编程方式成为了JavaScript的官方编程范式。</p>
+<p>类的基本写法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(height, width) &#123;</span><br><span class="line">    <span class="keyword">this</span>.height = height;</span><br><span class="line">    <span class="keyword">this</span>.width = width;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Getter</span></span><br><span class="line">  get area() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.calcArea();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Method</span></span><br><span class="line">  calcArea() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.height * <span class="keyword">this</span>.width;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在现有的类语法中，getter/setter和method是兼容性最好的。</p>
+<p>我们通过get/set关键字来创建getter，通过括号和大括号来创建方法，数据型成员最好写在构造器里面。</p>
+<p>类的写法实际上也是由原型运行时来承载的，逻辑上JavaScript认为每个类是有共同原型的一组对象，类中定义的方法和属性则会被写在原型对象之上。</p>
+<p>此外，最重要的是，类提供了继承能力。我们来看一下下面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  speak() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' makes a noise.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name); <span class="comment">// call the super class constructor and pass in the name parameter</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  speak() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' barks.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> Dog(<span class="string">'Mitzie'</span>);</span><br><span class="line">d.speak(); <span class="comment">// Mitzie barks.</span></span><br></pre></td></tr></table></figure>
+<p>以上代码创造了Animal类，并且通过extends关键字让Dog继承了它，展示了最终调用子类的speak方法获取了父类的name。</p>
+<p>比起早期的原型模拟方式，使用extends关键字自动设置了constructor，并且会自动调用父类的构造函数，这是一种更少坑的设计。</p>
+<p>所以当我们使用类的思想来设计代码时，应该尽量使用class来声明类，而不是用旧语法，拿函数来模拟对象。一些激进的观点认为，class关键字和箭头运算符可以完全替代旧的function关键字，它更明确地区分了定义函数和定义类两种意图。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS高级/">JS高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面对对象/">面对对象</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&title=《原型与原型链》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&title=《原型与原型链》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原型与原型链》 — Blog Sweets&url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/21/前端9. 2018-7-21 JS：对象分类/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">对象分类</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/20/前端7. 2018-6-20 JS：面对对象/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS面对对象</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
+        </p>
+        
+    </div>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div> -->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&title=《原型与原型链》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&title=《原型与原型链》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原型与原型链》 — Blog Sweets&url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2018/07/19/前端8. 2018-7-19 JS：原型与原型链/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aS24jMQwFQN//0j3ArDLwuPNIinYClFZGPmpVLyzikY9HvK6/6+vn5/X8988/f7Xn/f8mu40WHh4eXuvo94d+Bbg/aO/Q+XmSF42Hh4e3x0sug+RiuIJVfUr+QvHw8PB+Gu9UsVu9VPDw8PB+Ly/5+s4jiWopj4eHh/fTeL1COcH0LpIPZC14eHh4MW9Szn7q83p/Dw8PD6/VVa+u/AVtXAb/+S88PDy8Bd48iq0GE/PhqmSsoZCI4OHh4RV5+SPnrbJy/NoKSv7ZDQ8PD2+Bl0e0+Vf55EC9Ma9vLhU8PDy8BV5eheYxQdL66rXZRvEuHh4e3phXfQf5WMD9ztXrp/p0PDw8vD3eZGQqx1RD2zyYKNwCeHh4eId4vch10v7vNbSabTY8PDy8BV41nugNTp0q36ttMzw8PLz38JL2UnWYIL8SeoxjkQQeHh5ezLuCtRHC9ppe1SYcHh4e3lle/kU/OXo+iNAbQYiuBDw8PLxDvGoxvQfIBxGqjTE8PDy8DV61qT+JaPPSuRdYFG4/PDw8vBYvadgnpW2vCM5fzf1uL3+Lh4eHt8zLq9DqQXsDVUnk8c1T8PDw8JZ55WA0DnarLa7m1MP83sPDw8OLz5MfsTf21Cuvq7HIy9Pi4eHhLfCqo1fVkDdvlfUK+ujiwcPDw1vgJUNUvcBiMhDQG/Z6JEfHw8PDG/Cq5e+pUYNeoRwV0Hh4eHhv4U227pXX5UChd43h4eHhHeVdxdVrcZ0aFyjvj4eHh7fA68UTveB1QqqW/nh4eHjbvGqB26NW4+CkQsbDw8P7LC+Pd0dt+9aQQbUVF2UVeHh4eB/lzfes1vsHRqzw8PDw3sLLx6TyovkarOgMeHh4eGu8PHg9G+ZW44b1oSs8PDy8VrsrvyROvYgkXMiHt/Dw8PDWeH8AZ1AiFndSQzIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
