@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="referrer" content="no-referrer">
+    <title>Webpack使用 | Blog Sweets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EAFC6F">
+    
+    
+    <meta name="keywords" content="webpack,前端模块化">
+    <meta name="description" content="Webpack4.X使用基本配置创建文件夹创建一个根文件夹和一个 dist 子文件夹一个名为 src子文件，在src子文件夹下创建一个.html文件和一个.js入口文件。  根文件夹 dist文件夹 src文件夹 index.html main.js      注意：  src文件夹是我们的工程文件夹，我们所用的文件都要在这个文件夹里。 dist文件夹是我们最后打包输出的文件夹。（也可以不用建，w">
+<meta name="keywords" content="webpack,前端模块化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack使用">
+<meta property="og:url" content="https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/index.html">
+<meta property="og:site_name" content="Blog Sweets">
+<meta property="og:description" content="Webpack4.X使用基本配置创建文件夹创建一个根文件夹和一个 dist 子文件夹一个名为 src子文件，在src子文件夹下创建一个.html文件和一个.js入口文件。  根文件夹 dist文件夹 src文件夹 index.html main.js      注意：  src文件夹是我们的工程文件夹，我们所用的文件都要在这个文件夹里。 dist文件夹是我们最后打包输出的文件夹。（也可以不用建，w">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx4.sinaimg.cn/large/006CBSf2ly1g5es0ybktgj30c902tmx0.jpg">
+<meta property="og:updated_time" content="2019-07-27T15:04:26.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack使用">
+<meta name="twitter:description" content="Webpack4.X使用基本配置创建文件夹创建一个根文件夹和一个 dist 子文件夹一个名为 src子文件，在src子文件夹下创建一个.html文件和一个.js入口文件。  根文件夹 dist文件夹 src文件夹 index.html main.js      注意：  src文件夹是我们的工程文件夹，我们所用的文件都要在这个文件夹里。 dist文件夹是我们最后打包输出的文件夹。（也可以不用建，w">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/large/006CBSf2ly1g5es0ybktgj30c902tmx0.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Blog Sweets" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">liruisen</h5>
+          <a href="mailto:ruisenLi@163.com" title="ruisenLi@163.com" class="mail">ruisenLi@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/">
+                <i class="icon icon-lg icon-archives"></i>
+                全部
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liruisen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Webpack使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Webpack使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-01T01:20:04.000Z" itemprop="datePublished" class="page-time">
+  2019-04-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Webpack4-X使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">Webpack4.X使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建文件夹"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">创建文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装插件"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">安装插件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置快捷启动命令"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">设置快捷启动命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建配置文件"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">创建配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置loader"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置loader</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置css-loader加载样式"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">配置css-loader加载样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置file-loader加载图片"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">配置file-loader加载图片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Webpack-dev-server自动更新"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用Webpack-dev-server自动更新</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用html-webpack-plugin插件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用html-webpack-plugin插件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用babel转换ES6语法"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用babel转换ES6语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">小结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-4-1  Webpack使用" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Webpack使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-01 09:20:04" datetime="2019-04-01T01:20:04.000Z" itemprop="datePublished">2019-04-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Webpack4-X使用"><a href="#Webpack4-X使用" class="headerlink" title="Webpack4.X使用"></a>Webpack4.X使用</h1><h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><p>创建一个根文件夹和一个 dist 子文件夹一个名为 src子文件，在src子文件夹下创建一个.html文件和一个.js入口文件。</p>
+<ul>
+<li>根文件夹<ul>
+<li>dist文件夹</li>
+<li>src文件夹<ul>
+<li>index.html</li>
+<li>main.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ol>
+<li>src文件夹是我们的工程文件夹，我们所用的文件都要在这个文件夹里。</li>
+<li>dist文件夹是我们最后打包输出的文件夹。（也可以不用建，webpack会自动帮我们创建）</li>
+</ol>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在终端中运行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<p>进行文件夹的初始化，然后会出现我们的<code>package.json</code>文件。</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>在本地下载 <code>webpack</code>,<code>webpack-cli</code>,<code>webpack-dev-server</code>，这三个包</p>
+<p>运行的命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i webpack webpack-cli webpack-dev-server -D</span><br></pre></td></tr></table></figure>
+<h3 id="设置快捷启动命令"><a href="#设置快捷启动命令" class="headerlink" title="设置快捷启动命令"></a>设置快捷启动命令</h3><p>在 package.json 文件的 scripts 对象里，添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"start":"webpack --config webpack.config.js"</span><br></pre></td></tr></table></figure>
+<p>这样就可以直接在终端中使用命令 <strong>npm start</strong> 运行。</p>
+<p>webpack 会默认在你的根目录下找 webpack.config.js 文件，所以我们可以把命令简写成 “start” : “webpack”</p>
+<h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><p>在根目录下新建配置文件 <code>webpack.config.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>) <span class="comment">// 引用node包里的path工具</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode:<span class="string">'development'</span>,<span class="comment">// 设置打包方式为开发者模式，production为生产者模式</span></span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>,<span class="comment">// 配置入口文件</span></span><br><span class="line">    output:&#123; <span class="comment">//配置出口文件</span></span><br><span class="line">        filename:<span class="string">'bundle.js'</span>, <span class="comment">//配置打包后的文件名，前面可加hash值：[hash:8]-bundle.js</span></span><br><span class="line">        path:path.join(__dirname,<span class="string">'./dist'</span>)<span class="comment">// 配置打包后文件的输出路径</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行 npm start ，webpack 就会为我们自动打包，并自动创建 dist 文件夹，生成<code>bundle.js</code></p>
+<p><strong>注意：</strong>如果此时，我们在html文件里通过script标签引入bundle.js话，我们就已经可以看到效果了，当然我们需要在js文件里，写上一句<code>console.log(&quot;Hello webpack&quot;)</code>。如果能输出，这也证明，到现在为止，我们的使用是没有错误的。</p>
+<h2 id="配置loader"><a href="#配置loader" class="headerlink" title="配置loader"></a>配置loader</h2><h3 id="配置css-loader加载样式"><a href="#配置css-loader加载样式" class="headerlink" title="配置css-loader加载样式"></a>配置css-loader加载样式</h3><ol>
+<li><p>在html文件中写一个<code>&lt;div class=&quot;box&quot;&gt;hello world&lt;/div&gt;</code>【主要是为了看效果，写啥都行】</p>
+</li>
+<li><p>在src文件夹下，新建一个<code>style.css</code>文件，里面写上你喜欢的<code>box</code>的样式。</p>
+</li>
+<li><p>在js文件中引入.css文件，<code>import &#39;./style.css&#39;</code>（此时打包绝对失败）</p>
+</li>
+<li><p>安装两个包<code>style-loader,css-loader</code></p>
+<p>运行的命令：<code>cnpm i style-loader css-loader -D</code></p>
+</li>
+<li><p>在<code>webpack.config.js</code>文件中配置规则：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[ <span class="comment">//这里匹配的是规则</span></span><br><span class="line">            &#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,<span class="attr">use</span>:[<span class="string">'style-loader'</span>,<span class="string">'css-loader'</span>]&#125; <span class="comment">//这是一个正则表达式：匹配到以.css结尾的文件，以这两个loader来解析</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>这个 module对象 和前面的 配置出口文件 的对象是平级的。</p>
+</li>
+<li><p>此时，运行<code>npm start</code>打包后，即可在页面中看到效果。</p>
+</li>
+</ol>
+<h3 id="配置file-loader加载图片"><a href="#配置file-loader加载图片" class="headerlink" title="配置file-loader加载图片"></a>配置file-loader加载图片</h3><ol>
+<li><p>如果我们直接在.html文件里，使用src=“”引入文件，可能就会出现文件无法打包解析的情况。</p>
+</li>
+<li><p>如果我们在css文件里，通过background:url()，引入图片，打包会直接报错，此时我们就需要这个<code>file-loader</code>。</p>
+<p>运行命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i file-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>webpack.config.js</code>里的<code>rules</code>里配置规则：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.(png|svg|jpg|gif|webp)$/</span>,<span class="attr">use</span>:<span class="string">'file-loader'</span>&#125;<span class="comment">// 匹配到图片文件，以file-loader来解析。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时，运行<code>npm run build</code>即可发现图片显示出来了。</p>
+</li>
+</ol>
+<h2 id="使用Webpack-dev-server自动更新"><a href="#使用Webpack-dev-server自动更新" class="headerlink" title="使用Webpack-dev-server自动更新"></a>使用Webpack-dev-server自动更新</h2><p>前面说基本配置的时候，已经下载过<code>webpack-dev-server</code>这个包了，所以这里直接去配置。</p>
+<ol>
+<li><p>首先在<code>webpack.config.js</code>文件里，新建一个<code>devServer:{}</code>对象。</p>
+<p><strong>注意：</strong>这个对象，也是直属于<code>module.exports = {}</code>里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">devServer:&#123;</span><br><span class="line">    contentBase:&apos;./src&apos;,// 自动打包显示的文件路径，会自动找到src文件夹下的index.html文件</span><br><span class="line">    hot:true,// 启用热更新</span><br><span class="line">    port:3000, // 启用的端口号</span><br><span class="line">    open:true // 自动打开浏览器</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 package.json 文件，在这个文件的 scripts 对象里写上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"build":"webpack-dev-server"</span><br></pre></td></tr></table></figure>
+<p> 此时，我们就不需要再去运行npm start打包了，直接运行npm run build启动webpack-dev-server即可。甚至于，我们可以直接把start后面的webpack替换成我们的webpack-dev-server</p>
+<p>当然这个时候，我们是可以直接去运行webpack-dev-server了，但是启动成功后，当你在浏览器，访问<code>http://localhost:3000</code>的话，你会发现没有效果，连绿色的样式效果都没了。</p>
+</li>
+<li><p>问题就出在引用<code>bundle.js</code>的路径上.</p>
+<p>验证方法：</p>
+<p>我们把本地dist里的bundle.js删除，你会发现页面还是会显示，还是报的一样的错误。</p>
+<p>所以，我们要更改引入的bundle.js的路径，webpack-dev-server在运行的时候，其实帮我们把bundle.js托管到了内存里，既然这样，我们运行的时候，直接引入即可，不用搞那么多复杂的路径。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样，我们在运行的时候，就会发现样式回来了。</p>
+<p>不用停止webpack-dev-server，直接去更改样式，保存之后在浏览器里刷新，你就会发现，样式也自动帮我们打包了</p>
+</li>
+<li><p>顺带提一句，要想停止<code>webpack-dev-server</code>，使用<code>ctrl+c</code>，然后输入<code>Y</code>即可。</p>
+</li>
+</ol>
+<h2 id="使用html-webpack-plugin插件"><a href="#使用html-webpack-plugin插件" class="headerlink" title="使用html-webpack-plugin插件"></a>使用html-webpack-plugin插件</h2><ol>
+<li><p>要使用<code>html-webpack-plugin</code>插件，首先要先下载插件。</p>
+<p>运行命令：<code>cnpm i html-webpack-plugin -D</code></p>
+</li>
+<li><p>接着在<code>webpack.config.js</code>里进行插件的配置。</p>
+<ol>
+<li><p>首先要引入插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><p>接着，配置插件信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins:[</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">        filename:<span class="string">'index.html'</span>,<span class="comment">// 插件打包后输出的文件名</span></span><br><span class="line">        template:<span class="string">'./src/index.html'</span> <span class="comment">// 插件打包文件的路径</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>注意：plugins数组也是直属于<code>module.exports = {}</code></p>
+</li>
+</ol>
+<ol start="3">
+<li><p>这样我们在运行<code>npm run build</code>时，就可以看到效果。其实这个插件是把我们的html页面也托管到了内存里，实现页面的自动实时刷新。</p>
+</li>
+<li><p>如果我们查看网页源代码，你就会发现，它帮我们自动引入了bundle.js文件。</p>
+<p><img src="http://wx4.sinaimg.cn/large/006CBSf2ly1g5es0ybktgj30c902tmx0.jpg" alt></p>
+</li>
+</ol>
+<p>​    此时我们在引入bundle.js就显得多余了，直接删除在.html文件里引入的即可。</p>
+<h2 id="使用babel转换ES6语法"><a href="#使用babel转换ES6语法" class="headerlink" title="使用babel转换ES6语法"></a>使用babel转换ES6语法</h2><ol>
+<li><p>要使用<code>babel</code>，首先要下载三个包，分别是<code>babel-loader,@babel/core,@babel/preset-env</code></p>
+<p>运行命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i babel-loader @babel/core @babel/preset-env -D</span><br></pre></td></tr></table></figure>
+<p>提示：我们下载的是<code>7.X</code>的版本，<code>babel-loader是 8.X</code>命令中，千万不要写成 <code>babel-core，babel-preset-env</code> 这样的写法，是<code>babel6.X</code>的版本，和 <code>webpack4.X</code> 以及 <code>babel-loader8.X</code> 版本不符。</p>
+</li>
+<li><p>下载完成之后，配置我们的<code>webpack-config.js</code>文件：</p>
+<p>在我们的<code>rules</code>数组规则里添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>, </span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>, <span class="comment">//由于babel转换比较消耗性能，并且node_modules的文件比较多，也并不需要转换，所以要排除</span></span><br><span class="line">    use: [&#123;</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">            presets:[<span class="string">'@babel/preset-env'</span>] <span class="comment">//可以根据配置的目标浏览器或者运行环境来自动将ES2015+的代码转换为es5。</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;]<span class="comment">// 这里配置的是babel转换ES6语法的规则</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置完成之后，我们测试一下:在.html文件里写上一个按钮:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"点击"</span> <span class="attr">id</span>=<span class="string">"ipt"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在我们的.js文件里，用一下箭头函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ipt = <span class="built_in">document</span>.getElementById(<span class="string">'ipt'</span>);</span><br><span class="line">ipt.onclick = <span class="function"><span class="params">()</span> =&gt;</span> alert(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+<p><code>npm run build</code>运行之后，打包成功，点击按钮，会发现弹窗也正常显示。</p>
+</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>到这里，我们的webpack基本配置就算结束了，但是这样，你有可能也是只知道，webpack怎么做成可以让页面自动刷新，自动帮我们打包，解析ES6语法等等。建议大家，可以在读完这篇博客后，找一个自己写的小项目，比如一个简单的登录注册，去实地的测试一下webpack打包。当然webpack还有许许多多其他的地方，大家可以去看看<a href="https://www.webpackjs.com/guides/" target="_blank" rel="noopener">webpack官网。</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        如果觉得对你有所帮助，不妨收藏此站点！
+        
+    </div>
+    
+    <footer>
+        <a href="https://liruisen.github.io">
+            <img src="/img/avatar.jpg" alt="liruisen">
+            liruisen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端模块化/">前端模块化</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&title=《Webpack使用》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&title=《Webpack使用》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Webpack使用》 — Blog Sweets&url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/21/2019-05-21 恢复Hexo/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">恢复HEXO</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/29/2019-03-29 Nginx/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Nginx使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "u1MMLGaF4srqGcmqVYWYCdwM-gzGzoHsz",
+            appKey: "2RTP9o8nV3M5CFjgbkHi3Ole",
+            avatar: "retro",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        您的支持是我不断创作的动力！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>liruisen &copy; 2015 - 2019</span>
+        </p>
+        
+    </div>
+    <!-- <div class="bottom">
+         <p><span>liruisen &copy; 2015 - 2019</span>
+             <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div> -->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&title=《Webpack使用》 — Blog Sweets&pic=https://liruisen.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&title=《Webpack使用》 — Blog Sweets&source=liruisen'Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Webpack使用》 — Blog Sweets&url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/&via=https://liruisen.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liruisen.github.io/2019/04/01/2019-4-1  Webpack使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3a0W7CMAwFUP7/pztpT5NQy7UNk3BPniYKTU4evNjx4xGP43dcf378Gc+fPI+zt509fcPAwMD4WkYy2WRB1S1ozouBgXEDRjWYVhd9HZSTpy/WjIGBgfH0nesQef3+JLBiYGBgfI7RW24+LwYGxp0ZSRKbTzOnfjAXx8DA+EJG9WLgP//+4P0GBgbGlzCO4sgDZTV9Ha0KAwNjNaNX6rqeLCflT6OGDAwMjKWMJJj2Gr8m308S4NP/GxgYGEsZ1RJY0n6Rh+ZeKMfAwLgPI28FmzR7JWltvgYMDIx7MuZND73FVTfrRbqLgYGxlNE7olVbKPIktvcdDAyMOzBG0Xp89Tg5dGJgYNyBMT/kJcnnpAmsXG7DwMBYzaj2LTTrecWUON8aDAyMrYw8XZy0YvSayZpJLAYGxjpGEkwnl5TzNosCDwMDYylj3h6RHyV7R89C/o2BgbGakU+W/HYCzjfxxQkXAwNjEaNX3E/S1N6VZC/RxcDA2M2YFPffW1BL3n+6ZRgYGLdh9I59eXHtvcfN03ohBgbGOkav/SufuFfOm8yIgYGxj3EUx/XiklJa3t5RSJgxMDBWM6phbtJ4UW3RGF0MYGBgrGNU28Ly4FttCKv2TmBgYNyNUS3KNw9nxfcXfoWBgYFRbALrvaG3HgwMDIzksrN6wdl7Z5TEYmBgrGZUk9j5gvLQHAVuDAyM1YzqNO9ttsjLdtdbhoGBsZTxA4+kzFJ3Vn1YAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1275247741&web_id=1275247741')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
